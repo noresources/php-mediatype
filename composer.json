@@ -1,0 +1,43 @@
+{
+	"name": "noresources/ns-php-mediatype",
+	"version": "2.0.1",
+	"description": "Media Type",
+	"type": "library",
+	"keywords": [
+		"Utility",
+		"MIME"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Renaud Guillard",
+			"email": "dev@nore.fr",
+			"role": "lead"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/noresources/ns-php-mediatype/issues"
+	},
+	"autoload": {
+		"psr-4": {
+			"NoreSources\\MediaType\\": "src/"
+		}
+	},
+	"require": {
+		"php": ">= 5.5",
+		"psr/container": "^1.0",
+		"noresources/ns-php-core": "~2.0"
+	},
+	"scripts": {
+		"tests": "@php  ./vendor/bin/phpunit --color=never --bootstrap tests/bootstrap.php tests"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~8.0"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0.x-dev"
+		}
+	},
+	"minimum-stability": "dev"
+}
