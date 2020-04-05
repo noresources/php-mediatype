@@ -86,7 +86,7 @@ class MediaRange implements MediaTypeInterface, StringRepresentation
 	 *
 	 * @param MediaTypeInterface $a
 	 * @param MediaTypeInterface $b
-	 * @return number -1 if @c $a < @c $b, 1 if @c $a > @c $b, 0 if equal or not comparable
+	 * @return number -1 if $a < $b, 1 if $a > $b, 0 if equal or not comparable
 	 */
 	public static function compare(MediaTypeInterface $a, MediaTypeInterface $b)
 	{

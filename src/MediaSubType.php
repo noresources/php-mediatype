@@ -51,7 +51,7 @@ class MediaSubType implements StringRepresentation
 	/**
 	 *
 	 * @param integer $index
-	 * @return string|NULL Subtype facet at the given index or @c null if the index does not exists
+	 * @return string|NULL Subtype facet at the given index or null if the index does not exists
 	 */
 	public function getFacet($index)
 	{

@@ -32,7 +32,7 @@ interface MediaTypeInterface
 	 *
 	 * @param boolean $registeredOnly
 	 *        	When the structured syntax suffix is not present. The subtype may be returned.
-	 *        	If @c $registeredOnly is @c true. Only the subtype will be returned
+	 *        	If $registeredOnly is true. Only the subtype will be returned
 	 *        	only if it correspond to a registered suffix.
 	 *
 	 * @return string|array|string|NULL

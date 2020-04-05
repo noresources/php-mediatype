@@ -24,7 +24,7 @@ class StructuredSyntaxSuffixRegistry
 	 *
 	 * @param string $suffix
 	 *        	Structured syntax suffix. Optioaly prefixed with '+'
-	 * @return boolean @c true if the given string is a registered structured syntax suffix
+	 * @return boolean true if the given string is a registered structured syntax suffix
 	 */
 	public static function isRegistered($suffix)
 	{

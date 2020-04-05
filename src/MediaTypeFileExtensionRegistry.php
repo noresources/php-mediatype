@@ -26,7 +26,7 @@ class MediaTypeFileExtensionRegistry
 	/**
 	 *
 	 * @param string $extension
-	 * @return MediaType|false The media type commonly associated with the given file extension or @c false
+	 * @return MediaType|false The media type commonly associated with the given file extension or false
 	 *         if the extension is not recognized.
 	 */
 	public static function mediaTypeFromExtension($extension)
