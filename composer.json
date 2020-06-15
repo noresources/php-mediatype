@@ -1,6 +1,5 @@
 {
 	"name": "noresources/ns-php-mediatype",
-	"version": "2.0.1",
 	"description": "Media Type",
 	"type": "library",
 	"keywords": [
@@ -26,7 +25,8 @@
 	"require": {
 		"php": ">= 5.5",
 		"psr/container": "^1.0",
-		"noresources/ns-php-core": "~2.0"
+		"noresources/ns-php-core": "~2.0",
+		"noresources/ns-php-http-core": "~1.0"
 	},
 	"scripts": {
 		"tests": "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
@@ -36,7 +36,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "1.0.x-dev"
+			"dev-master": "1.1.x-dev"
 		}
 	},
 	"minimum-stability": "dev"

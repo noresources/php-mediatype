@@ -16,6 +16,7 @@ use NoreSources\MediaType\MediaTypeException;
 use NoreSources\MediaType\MediaRange;
 use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaTypeInterface;
+use NoreSources\Http\ParameterMap;
 
 final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 {
@@ -127,7 +128,7 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			}
 
 			$this->assertInstanceOf($parsed['class'], $mediaType, $text);
-			$this->assertEquals($parsed['type'], $mediaType->getMainType(), $text . ' name');
+			$this->assertEquals($parsed['type'], $mediaType->getType(), $text . ' name');
 
 			if ($parsed['subtype'])
 			{
@@ -271,5 +272,20 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 			$this->assertEquals($test[2], $result, $label . ' = ...');
 		}
+	}
+
+	public function testParameters()
+	{
+		$m = MediaType::fromString('text/plain');
+		$p = $m->getParameters();
+
+		$this->assertInstanceOf(ParameterMap::class, $p);
+
+		$p->offsetSet('Charset', 'utf-8');
+
+		$this->assertCount(1, $p, 'Parameter count');
+		$this->assertEquals('utf-8', $p['Charset'], 'Strict case getParameter');
+		$this->assertTrue($p->offsetExists('charset'), 'Case-insensitive offsetExists');
+		$this->assertEquals('utf-8', $p['charset'], 'Case-insensitive getParameter');
 	}
 }

@@ -54,11 +54,11 @@ class MediaTypeFileExtensionRegistry
 		if (!\is_array(self::$typesMap))
 			self::$typesMap = [];
 
-		if (!Container::keyExists(self::$typesMap, $mediaType->getMainType()))
-			self::$typesMap[$mediaType->getMainType()] = self::getData(
-				'types.' . $mediaType->getMainType());
+		if (!Container::keyExists(self::$typesMap, $mediaType->getType()))
+			self::$typesMap[$mediaType->getType()] = self::getData(
+				'types.' . $mediaType->getType());
 
-		return Container::keyValue(self::$typesMap[$mediaType->getMainType()], []);
+		return Container::keyValue(self::$typesMap[$mediaType->getType()], []);
 	}
 
 	private static function getData($suffix)

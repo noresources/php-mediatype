@@ -12,11 +12,13 @@ namespace NoreSources\MediaType;
 
 use NoreSources\Container;
 use NoreSources\StringRepresentation;
+use NoreSources\Http\ParameterMap;
+use NoreSources\Http\ParameterMapProviderTrait;
 
-class MediaRange implements MediaTypeInterface, StringRepresentation
+class MediaRange implements MediaTypeInterface
 {
 	use MediaTypeStructuredTextTrait;
-	use MediaTypeParameterMapTrait;
+	use ParameterMapProviderTrait;
 
 	const ANY = '*';
 
@@ -26,14 +28,13 @@ class MediaRange implements MediaTypeInterface, StringRepresentation
 	{
 		$this->mainType = $type;
 		$this->subType = $subType;
-		$this->initializeParameterMap();
 	}
 
 	/**
 	 *
 	 * @return string
 	 */
-	public function getMainType()
+	public function getType()
 	{
 		return $this->mainType;
 	}
@@ -90,11 +91,11 @@ class MediaRange implements MediaTypeInterface, StringRepresentation
 	 */
 	public static function compare(MediaTypeInterface $a, MediaTypeInterface $b)
 	{
-		if ($a->getMainType() == self::ANY)
+		if ($a->getType() == self::ANY)
 		{
-			return (($b->getMainType() == self::ANY) ? 0 : -1);
+			return (($b->getType() == self::ANY) ? 0 : -1);
 		}
-		elseif ($b->getMainType() == self::ANY)
+		elseif ($b->getType() == self::ANY)
 			return 1;
 
 		if ($a->getSubType() == self::ANY)

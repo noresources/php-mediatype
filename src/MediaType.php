@@ -12,14 +12,19 @@ namespace NoreSources\MediaType;
 
 use NoreSources\Container;
 use NoreSources\StringRepresentation;
+use NoreSources\Http\ParameterMap;
+use NoreSources\Http\ParameterMapProviderTrait;
 
 /**
  *
  * @see https://www.iana.org/assignments/media-types/media-types.xhtml
  *
  */
-class MediaType implements MediaTypeInterface, StringRepresentation
+class MediaType implements MediaTypeInterface
 {
+
+	use MediaTypeStructuredTextTrait;
+	use ParameterMapProviderTrait;
 
 	/**
 	 * Parameter name pattern.
@@ -30,14 +35,11 @@ class MediaType implements MediaTypeInterface, StringRepresentation
 	 */
 	const PARAMETER_NAME_PATTERN = '[A-Za-z0-9!#$%\'*+.^_`|~-]+';
 
-	use MediaTypeStructuredTextTrait;
-	use MediaTypeParameterMapTrait;
-
 	/**
 	 *
 	 * @return string
 	 */
-	public function getMainType()
+	public function getType()
 	{
 		return $this->mainType;
 	}
@@ -55,7 +57,6 @@ class MediaType implements MediaTypeInterface, StringRepresentation
 	{
 		$this->mainType = $type;
 		$this->subType = $subType;
-		$this->initializeParameterMap();
 	}
 
 	public function __toString()
@@ -67,7 +68,7 @@ class MediaType implements MediaTypeInterface, StringRepresentation
 	 * Parse a media type string
 	 *
 	 * @param string $mediaTypeString
-	 *        	Mediga type strin
+	 *        	Mediga type string
 	 * @throws MediaTypeException
 	 * @return \NoreSources\MediaType\MediaType
 	 */
@@ -108,6 +109,4 @@ class MediaType implements MediaTypeInterface, StringRepresentation
 	 * @var MediaSubType
 	 */
 	private $subType;
-
-	private static $extensions;
 }

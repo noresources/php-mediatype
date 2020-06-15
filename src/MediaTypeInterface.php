@@ -11,15 +11,17 @@
 namespace NoreSources\MediaType;
 
 use NoreSources\StringRepresentation;
+use NoreSources\ModifiableKeyValueParameterMapInterface;
+use NoreSources\Http\ParameterMapProviderInterface;
 
-interface MediaTypeInterface
+interface MediaTypeInterface extends ParameterMapProviderInterface, StringRepresentation
 {
 
 	/**
 	 *
 	 * @return string
 	 */
-	function getMainType();
+	function getType();
 
 	/**
 	 *
@@ -38,11 +40,4 @@ interface MediaTypeInterface
 	 * @return string|array|string|NULL
 	 */
 	function getStructuredSyntax($registeredOnly = false);
-
-	/**
-	 * Media Type parameters
-	 *
-	 * @return MediaTypeParameterMapInterface A reference to a MediaTypeParameterMap implementation
-	 */
-	function getParameters();
 }

@@ -25,7 +25,7 @@ trait MediaTypeStructuredTextTrait
 		if ($this->getSubType()->getFacetCount() == 1)
 		{
 			$facet = $this->getSubType()->getFacet(0);
-			if (\strtolower($this->getMainType()) == 'text')
+			if (\strtolower($this->getType()) == 'text')
 			{
 				if ($registeredOnly && !StructuredSyntaxSuffixRegistry::isRegistered($facet))
 					return null;
