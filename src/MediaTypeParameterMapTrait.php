@@ -13,11 +13,19 @@ namespace NoreSources\MediaType;
 trait MediaTypeParameterMapTrait
 {
 
+	/**
+	 *
+	 * @param array $parameters
+	 */
 	public function initializeParameterMap($parameters = array())
 	{
 		$this->parameterMap = new MediaTypeParameterMap($parameters);
 	}
 
+	/**
+	 *
+	 * @return \NoreSources\MediaType\MediaTypeParameterMapInterface
+	 */
 	public function getParameters()
 	{
 		return $this->parameterMap;

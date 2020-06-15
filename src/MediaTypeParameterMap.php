@@ -35,7 +35,7 @@ class MediaTypeParameterMap implements MediaTypeParameterMapInterface
 
 	public function offsetExists($name)
 	{
-		return $this->offsetExists(\strtolower($name));
+		return $this->parameterMap->offsetExists(\strtolower($name));
 	}
 
 	public function offsetSet($name, $value)
