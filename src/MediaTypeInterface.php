@@ -11,10 +11,25 @@
 namespace NoreSources\MediaType;
 
 use NoreSources\StringRepresentation;
-use NoreSources\ModifiableKeyValueParameterMapInterface;
 use NoreSources\Http\ParameterMapProviderInterface;
 
-interface MediaTypeInterface extends ParameterMapProviderInterface, StringRepresentation
+/**
+ * Media Type / Media Range interface
+ *
+ * <ul>
+ * <li>String representation must return the Media Type/Range without parameters</li>
+ * <li>Serialized form MUST return the media type / range followed by a semicolon-separated list of
+ * parameters</li>
+ *
+ * media-type = type "/" sub-type
+ *
+ * serialized = media-type 0*(";" parameter)
+ *
+ * parameter = token "=" ( token / quoted )
+ * </ul>
+ */
+interface MediaTypeInterface extends ParameterMapProviderInterface, StringRepresentation,
+	\Serializable
 {
 
 	/**

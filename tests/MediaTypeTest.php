@@ -10,13 +10,13 @@
  */
 namespace NoreSources;
 
-use NoreSources\MediaType\MediaType;
-use NoreSources\MediaType\MediaSubType;
-use NoreSources\MediaType\MediaTypeException;
+use NoreSources\Http\ParameterMap;
 use NoreSources\MediaType\MediaRange;
+use NoreSources\MediaType\MediaSubType;
+use NoreSources\MediaType\MediaType;
+use NoreSources\MediaType\MediaTypeException;
 use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaTypeInterface;
-use NoreSources\Http\ParameterMap;
 
 final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 {
@@ -271,6 +271,54 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$result = MediaRange::compare($a, $b);
 
 			$this->assertEquals($test[2], $result, $label . ' = ...');
+		}
+	}
+
+	public function testSerialize()
+	{
+		$tests = [
+			'basic' => [
+				'serialized' => 'text/plain',
+				'type' => 'text',
+				'subtype' => 'plain',
+				'parameters' => []
+			],
+			'with params' => [
+				'serialized' => 'text/javascript; charset=utf-8',
+				'type' => 'text',
+				'subtype' => 'javascript',
+				'parameters' => [
+					'charset' => 'utf-8'
+				]
+			],
+			'range with params' => [
+				'class' => MediaRange::class,
+				'serialized' => 'text/*; charset=utf-8; foo="bar baz"',
+				'type' => 'text',
+				'subtype' => '*',
+				'parameters' => [
+					'charset' => 'utf-8',
+					'foo' => 'bar baz'
+				]
+			]
+		];
+
+		foreach ($tests as $label => $test)
+		{
+			$className = Container::keyValue($test, 'class', MediaType::class);
+			$cls = new \ReflectionClass($className);
+			$mt = $cls->newInstanceArgs([
+				null,
+				null
+			]);
+			$mt->unserialize($test['serialized']);
+
+			$this->assertEquals($test['type'], $mt->getType(), 'Type');
+			$this->assertEquals($test['subtype'], \strval($mt->getSubType()), 'SubType');
+			$this->assertEquals($test['parameters'], $mt->getParameters()
+				->getArrayCopy(), 'Parameters');
+
+			$serialized = $mt->serialize();
 		}
 	}
 

@@ -11,14 +11,12 @@
 namespace NoreSources\MediaType;
 
 use NoreSources\Container;
-use NoreSources\StringRepresentation;
-use NoreSources\Http\ParameterMap;
-use NoreSources\Http\ParameterMapProviderTrait;
 
 class MediaRange implements MediaTypeInterface
 {
 	use MediaTypeStructuredTextTrait;
-	use ParameterMapProviderTrait;
+	use MediaTypeParameterMapTrait;
+	use MediaTypeSerializableTrait;
 
 	const ANY = '*';
 
