@@ -71,7 +71,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://okami/volume1/repository/git/ns-php-http-core.git",
-                "reference": "a4a3a2987f5353cdf65f9f86f6715cf5c8412247"
+                "reference": "35c3667ad6ff533610dfb7ed68afe68c3a4d400b"
             },
             "require": {
                 "noresources/ns-php-core": "~2.2-dev",
@@ -112,7 +112,7 @@
                 "RFC 7231",
                 "http"
             ],
-            "time": "2020-07-04T14:49:07+00:00"
+            "time": "2020-07-04T16:21:52+00:00"
         },
         {
             "name": "psr/container",
