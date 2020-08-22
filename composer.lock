@@ -4,21 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d93dbeb57f28b64a7b05c5c306677b5",
+    "content-hash": "2452d614aa8ee80c8aedb70a48977f0e",
     "packages": [
         {
             "name": "noresources/ns-php-core",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/noresources/ns-php-core.git",
-                "reference": "e16bd50d3e9de6341958fc232bf96a8d772ea11e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/noresources/ns-php-core/zipball/e16bd50d3e9de6341958fc232bf96a8d772ea11e",
-                "reference": "e16bd50d3e9de6341958fc232bf96a8d772ea11e",
-                "shasum": ""
+                "url": "ssh://okami/volume1/repository/git/ns-php-core.git",
+                "reference": "434503b18b35276c5a74991feb57259aa58a4937"
             },
             "require": {
                 "ext-json": "*",
@@ -27,11 +21,15 @@
                 "psr/log": "^1.1"
             },
             "require-dev": {
+                "nette/php-generator": "^3.4",
                 "phpunit/phpunit": "~7.0"
             },
             "suggest": {
                 "ext-yaml": "Needed to load DataTree content from YAML encoded file"
             },
+            "bin": [
+                "tools/new-type-file"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -67,27 +65,20 @@
                 "Utility"
             ],
             "support": {
-                "issues": "https://github.com/noresources/ns-php-core/issues",
-                "source": "https://github.com/noresources/ns-php-core/tree/v2.2.1"
+                "issues": "https://github.com/noresources/ns-php-core/issues"
             },
-            "time": "2020-07-26T18:29:47+00:00"
+            "time": "2020-08-22T12:35:29+00:00"
         },
         {
             "name": "noresources/ns-php-http-core",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/noresources/ns-php-http-core.git",
-                "reference": "b2cb4620808f43662bc4a72e92d95454fe7eb703"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/noresources/ns-php-http-core/zipball/b2cb4620808f43662bc4a72e92d95454fe7eb703",
-                "reference": "b2cb4620808f43662bc4a72e92d95454fe7eb703",
-                "shasum": ""
+                "url": "ssh://okami/volume1/repository/git/ns-php-http-core.git",
+                "reference": "fd18586a6c13f8365d37a8041fad0ca767f0bc1c"
             },
             "require": {
-                "noresources/ns-php-core": "~2.2",
+                "noresources/ns-php-core": "~2.2-dev",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -125,11 +116,7 @@
                 "RFC 7231",
                 "http"
             ],
-            "support": {
-                "source": "https://github.com/noresources/ns-php-http-core/tree/v1.0.1",
-                "issues": "https://github.com/noresources/ns-php-http-core/issues"
-            },
-            "time": "2020-08-18T18:27:54+00:00"
+            "time": "2020-08-18T17:58:00+00:00"
         },
         {
             "name": "psr/container",
@@ -490,12 +477,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "f3ab30788f7d3e90c065c70a1658a464b8beff91"
+                "reference": "13d9a6bb0b5bbb89d085c7d557c4b55499128eb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/f3ab30788f7d3e90c065c70a1658a464b8beff91",
-                "reference": "f3ab30788f7d3e90c065c70a1658a464b8beff91",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/13d9a6bb0b5bbb89d085c7d557c4b55499128eb9",
+                "reference": "13d9a6bb0b5bbb89d085c7d557c4b55499128eb9",
                 "shasum": ""
             },
             "require": {
@@ -534,7 +521,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-08-15T12:16:28+00:00"
+            "time": "2020-08-22T07:19:02+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
