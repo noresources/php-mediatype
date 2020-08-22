@@ -3,15 +3,10 @@
  * Copyright © 2012 - 2020 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  */
-
-/**
- *
- * @package Core
- */
 namespace NoreSources\MediaType;
 
-use NoreSources\Http\ParameterMapProviderTrait;
 use NoreSources\Http\ParameterMap;
+use NoreSources\Http\ParameterMapProviderTrait;
 
 trait MediaTypeParameterMapTrait
 {

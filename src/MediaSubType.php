@@ -3,17 +3,16 @@
  * Copyright © 2012 - 2020 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  */
-
-/**
- *
- * @package Core
- */
 namespace NoreSources\MediaType;
 
-use NoreSources\StringRepresentation;
+use NoreSources\ComparableInterface;
 use NoreSources\Container;
+use NoreSources\NotComparableException;
+use NoreSources\StringRepresentation;
+use NoreSources\TypeConversion;
+use NoreSources\TypeDescription;
 
-class MediaSubType implements StringRepresentation
+class MediaSubType implements StringRepresentation, ComparableInterface
 {
 
 	/**
@@ -76,8 +75,17 @@ class MediaSubType implements StringRepresentation
 		return null;
 	}
 
-	public function compare(MediaSubType $b)
+	public function compare($b)
 	{
+		if (!($b instanceof MediaSubType))
+		{
+			if (!TypeDescription::hasStringRepresentation($b))
+				throw new NotComparableException($this, $b);
+
+			$m = MediaRange::fromString(MediaRange::ANY . '/' . TypeConversion::toString($b));
+			$b = $m->getSubType();
+		}
+
 		$fca = $this->getFacetCount();
 		$fcb = $b->getFacetCount();
 		$fcm = min($fca, $fcb);

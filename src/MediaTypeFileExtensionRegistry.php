@@ -3,11 +3,6 @@
  * Copyright © 2012 - 2020 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  */
-
-/**
- *
- * @package Core
- */
 namespace NoreSources\MediaType;
 
 use NoreSources\Container;
@@ -26,7 +21,8 @@ class MediaTypeFileExtensionRegistry
 	/**
 	 *
 	 * @param string $extension
-	 * @return MediaType|false The media type commonly associated with the given file extension or false
+	 * @return MediaType|false The media type commonly associated with the given file extension or
+	 *         false
 	 *         if the extension is not recognized.
 	 */
 	public static function mediaTypeFromExtension($extension)
@@ -55,8 +51,7 @@ class MediaTypeFileExtensionRegistry
 			self::$typesMap = [];
 
 		if (!Container::keyExists(self::$typesMap, $mediaType->getType()))
-			self::$typesMap[$mediaType->getType()] = self::getData(
-				'types.' . $mediaType->getType());
+			self::$typesMap[$mediaType->getType()] = self::getData('types.' . $mediaType->getType());
 
 		return Container::keyValue(self::$typesMap[$mediaType->getType()], []);
 	}

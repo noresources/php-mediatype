@@ -3,13 +3,9 @@
  * Copyright © 2012 - 2020 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  */
-
-/**
- *
- * @package Core
- */
 namespace NoreSources\MediaType;
 
+use NoreSources\ComparableInterface;
 use NoreSources\StringRepresentation;
 use NoreSources\Http\ParameterMapProviderInterface;
 
@@ -29,7 +25,7 @@ use NoreSources\Http\ParameterMapProviderInterface;
  * </ul>
  */
 interface MediaTypeInterface extends ParameterMapProviderInterface, StringRepresentation,
-	\Serializable
+	\Serializable, ComparableInterface
 {
 
 	/**

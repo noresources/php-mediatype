@@ -268,7 +268,7 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$this->assertInstanceOf(MediaTypeInterface::class, $a, $label . ' left operand class');
 			$this->assertInstanceOf(MediaTypeInterface::class, $b, $label . ' right operand class');
 
-			$result = MediaRange::compare($a, $b);
+			$result = MediaRange::compareMediaRanges($a, $b);
 
 			$this->assertEquals($test[2], $result, $label . ' = ...');
 		}

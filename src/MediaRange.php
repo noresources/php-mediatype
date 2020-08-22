@@ -3,11 +3,6 @@
  * Copyright © 2012 - 2020 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  */
-
-/**
- *
- * @package Core
- */
 namespace NoreSources\MediaType;
 
 use NoreSources\Container;
@@ -17,6 +12,7 @@ class MediaRange implements MediaTypeInterface
 	use MediaTypeStructuredTextTrait;
 	use MediaTypeParameterMapTrait;
 	use MediaTypeSerializableTrait;
+	use MediaTypeCompareTrait;
 
 	const ANY = '*';
 
@@ -87,23 +83,9 @@ class MediaRange implements MediaTypeInterface
 	 * @param MediaTypeInterface $b
 	 * @return number -1 if $a < $b, 1 if $a > $b, 0 if equal or not comparable
 	 */
-	public static function compare(MediaTypeInterface $a, MediaTypeInterface $b)
+	public static function compareMediaRanges(MediaTypeInterface $a, MediaTypeInterface $b)
 	{
-		if ($a->getType() == self::ANY)
-		{
-			return (($b->getType() == self::ANY) ? 0 : -1);
-		}
-		elseif ($b->getType() == self::ANY)
-			return 1;
-
-		if ($a->getSubType() == self::ANY)
-		{
-			return (($b->getSubType() == self::ANY) ? 0 : -1);
-		}
-		elseif ($b->getSubType() == self::ANY)
-			return 1;
-
-		return $a->getSubType()->compare($b->getSubType());
+		return $a->compare($b);
 	}
 
 	/**

@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "ssh://okami/volume1/repository/git/ns-php-core.git",
-                "reference": "434503b18b35276c5a74991feb57259aa58a4937"
+                "reference": "b433a44e9d06536badfa8ccd47e8ec6520884892"
             },
             "require": {
                 "ext-json": "*",
@@ -67,7 +67,7 @@
             "support": {
                 "issues": "https://github.com/noresources/ns-php-core/issues"
             },
-            "time": "2020-08-22T12:35:29+00:00"
+            "time": "2020-08-22T15:21:30+00:00"
         },
         {
             "name": "noresources/ns-php-http-core",
@@ -75,10 +75,10 @@
             "source": {
                 "type": "git",
                 "url": "ssh://okami/volume1/repository/git/ns-php-http-core.git",
-                "reference": "fd18586a6c13f8365d37a8041fad0ca767f0bc1c"
+                "reference": "ada5ca328e7de8c304b4c9dcc9bd4d0899af932a"
             },
             "require": {
-                "noresources/ns-php-core": "~2.2-dev",
+                "noresources/ns-php-core": "~2.2",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -116,7 +116,7 @@
                 "RFC 7231",
                 "http"
             ],
-            "time": "2020-08-18T17:58:00+00:00"
+            "time": "2020-08-22T15:22:27+00:00"
         },
         {
             "name": "psr/container",
