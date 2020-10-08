@@ -44,6 +44,19 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				'subtype' => null,
 				'syntax' => null
 			],
+			'text/x-c++' => [
+				'valid' => true,
+				'class' => MediaType::class,
+				'type' => 'text',
+				'subtype' => [
+					'text' => 'x-c++',
+					'facets' => [
+						'x-c++'
+					],
+					'syntax' => null
+				],
+				'syntax' => 'x-c++'
+			],
 			'*/*' => [
 				'valid' => true,
 				'class' => MediaRange::class,
@@ -128,41 +141,60 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			}
 
 			$this->assertInstanceOf($parsed['class'], $mediaType, $text);
-			$this->assertEquals($parsed['type'], $mediaType->getType(), $text . ' name');
+			$this->assertEquals($parsed['type'], $mediaType->getType(),
+				$text . ' name');
 
 			if ($parsed['subtype'])
 			{
-				$this->assertInstanceOf(MediaSubType::class, $mediaType->getSubType(),
-					$text . ' subtype');
+				$this->assertInstanceOf(MediaSubType::class,
+					$mediaType->getSubType(), $text . ' subtype');
 
 				$subType = $mediaType->getSubType();
 
-				$this->assertCount(count($parsed['subtype']['facets']), $subType->getFacets(),
-					$text . ' subtype facets');
+				$this->assertCount(count($parsed['subtype']['facets']),
+					$subType->getFacets(), $text . ' subtype facets');
 
-				$this->assertEquals($parsed['subtype']['syntax'], $subType->getStructuredSyntax(),
+				$this->assertEquals($parsed['subtype']['syntax'],
+					$subType->getStructuredSyntax(),
 					$text . ' subtype syntax');
 
 				foreach ($parsed['subtype']['facets'] as $index => $facet)
 				{
-					$this->assertEquals($facet, $subType->getFacet($index),
+					$this->assertEquals($facet,
+						$subType->getFacet($index),
 						$text . ' subtype facet ' . $index);
 				}
 			}
 			else
-				$this->assertEquals(MediaRange::ANY, $mediaType->getSubType(), 'Subtype is a range');
+				$this->assertEquals(MediaRange::ANY,
+					$mediaType->getSubType(), 'Subtype is a range');
 
-			$this->assertEquals($parsed['syntax'], $mediaType->getStructuredSyntax(),
-				$text . ' syntax');
+			$this->assertEquals($parsed['syntax'],
+				$mediaType->getStructuredSyntax(), $text . ' syntax');
 
-			$this->assertEquals($text, strval($mediaType), $text . ' to string');
+			$this->assertEquals($text, strval($mediaType),
+				$text . ' to string');
 		}
 	}
 
 	public function testFromMedia()
 	{
 		$this->assertEquals('application/json',
-			strval(MediaTypeFactory::fromMedia(__DIR__ . '/data/a.json')));
+			strval(
+				MediaTypeFactory::fromMedia(__DIR__ . '/data/a.json')));
+
+		$this->assertEquals('text/x-c++',
+			strval(
+				MediaTypeFactory::fromMedia(__DIR__ . '/data/c++.js')),
+			'C++ code in a .js file');
+
+		$mode = MediaTypeFactory::FROM_ALL |
+			MediaTypeFactory::FROM_EXTENSION_FIRST;
+
+		$this->assertEquals('application/javascript',
+			strval(
+				MediaTypeFactory::fromMedia(__DIR__ . '/data/c++.js',
+					$mode)), 'C++ code in a .js file (extension first)');
 	}
 
 	public function testCompareSubTypes()
@@ -210,11 +242,13 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			}
 			catch (\Exception $e)
 			{
-				$this->assertEquals('No error', $e->getMessage(), 'MediaType creation');
+				$this->assertEquals('No error', $e->getMessage(),
+					'MediaType creation');
 				continue;
 			}
 
-			$this->assertEquals($test[2], $result, $test[0] . ' < ' . $test[1] . ' = ...');
+			$this->assertEquals($test[2], $result,
+				$test[0] . ' < ' . $test[1] . ' = ...');
 		}
 	}
 
@@ -265,8 +299,10 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 			$label = $test[0] . ' < ' . $test[1];
 
-			$this->assertInstanceOf(MediaTypeInterface::class, $a, $label . ' left operand class');
-			$this->assertInstanceOf(MediaTypeInterface::class, $b, $label . ' right operand class');
+			$this->assertInstanceOf(MediaTypeInterface::class, $a,
+				$label . ' left operand class');
+			$this->assertInstanceOf(MediaTypeInterface::class, $b,
+				$label . ' right operand class');
 
 			$result = MediaRange::compareMediaRanges($a, $b);
 
@@ -305,7 +341,8 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 		foreach ($tests as $label => $test)
 		{
-			$className = Container::keyValue($test, 'class', MediaType::class);
+			$className = Container::keyValue($test, 'class',
+				MediaType::class);
 			$cls = new \ReflectionClass($className);
 			$mt = $cls->newInstanceArgs([
 				null,
@@ -314,9 +351,11 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$mt->unserialize($test['serialized']);
 
 			$this->assertEquals($test['type'], $mt->getType(), 'Type');
-			$this->assertEquals($test['subtype'], \strval($mt->getSubType()), 'SubType');
-			$this->assertEquals($test['parameters'], $mt->getParameters()
-				->getArrayCopy(), 'Parameters');
+			$this->assertEquals($test['subtype'],
+				\strval($mt->getSubType()), 'SubType');
+			$this->assertEquals($test['parameters'],
+				$mt->getParameters()
+					->getArrayCopy(), 'Parameters');
 
 			$serialized = $mt->serialize();
 		}
@@ -332,8 +371,11 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		$p->offsetSet('Charset', 'utf-8');
 
 		$this->assertCount(1, $p, 'Parameter count');
-		$this->assertEquals('utf-8', $p['Charset'], 'Strict case getParameter');
-		$this->assertTrue($p->offsetExists('charset'), 'Case-insensitive offsetExists');
-		$this->assertEquals('utf-8', $p['charset'], 'Case-insensitive getParameter');
+		$this->assertEquals('utf-8', $p['Charset'],
+			'Strict case getParameter');
+		$this->assertTrue($p->offsetExists('charset'),
+			'Case-insensitive offsetExists');
+		$this->assertEquals('utf-8', $p['charset'],
+			'Case-insensitive getParameter');
 	}
 }

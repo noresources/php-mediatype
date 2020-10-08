@@ -21,15 +21,6 @@ class MediaType implements MediaTypeInterface
 	use MediaTypeCompareTrait;
 
 	/**
-	 * Parameter name pattern.
-	 *
-	 * @see https://raw.githubusercontent.com/httpwg/http-core/master/httpbis.abnf
-	 *
-	 * @var string
-	 */
-	const PARAMETER_NAME_PATTERN = '[A-Za-z0-9!#$%\'*+.^_`|~-]+';
-
-	/**
 	 *
 	 * @return string
 	 */
@@ -68,28 +59,37 @@ class MediaType implements MediaTypeInterface
 	 */
 	public static function fromString($mediaTypeString, $strict = true)
 	{
-		$pattern = self::STRING_PATTERN;
+		$pattern = RFC6838::MEDIA_TYPE_PATTERN;
 		if ($strict)
 			$pattern = '^' . $pattern . '$';
 		else
 			$pattern = '^[\x9\x20]*' . $pattern;
 
 		$matches = [];
-		if (!\preg_match(chr(1) . $pattern . chr(1) . 'i', $mediaTypeString, $matches))
-			throw new MediaTypeException($mediaTypeString, 'Not a valid media type string');
+		if (!\preg_match(chr(1) . $pattern . chr(1) . 'i',
+			$mediaTypeString, $matches))
+			throw new MediaTypeException($mediaTypeString,
+				'Not a valid media type string');
 
 		$subType = null;
 		if (Container::keyExists($matches, 2))
 		{
-			$facets = explode('.', $matches[2]);
-			$syntax = Container::keyValue($matches, 3, null);
-			$subType = new MediaSubType($facets, $syntax);
+			$facets = $matches[2];
+			$length = \strlen($facets);
+			$syntax = null;
+
+			$lastPlus = \strrpos($facets, '+');
+			if ($lastPlus !== false && $lastPlus < ($length - 1))
+			{
+				$syntax = \substr($facets, $lastPlus + 1);
+				$facets = \substr($facets, 0, $lastPlus);
+			}
+
+			$subType = new MediaSubType(\explode('.', $facets), $syntax);
 		}
 
 		return new MediaType($matches[1], $subType);
 	}
-
-	const STRING_PATTERN = '([a-z0-9](?:[a-z0-9!#$&^_-]{0,126}))/((?:[a-z0-9](?:[a-z0-9!#$&^_-]{0,126}))(?:\.(?:[a-z0-9](?:[a-z0-9!#$&^_-]{0,126})))*)(?:\+([a-z0-9](?:[a-z0-9!#$&^_-]{0,126})))*';
 
 	/**
 	 * Media main type

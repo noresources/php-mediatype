@@ -16,8 +16,6 @@ class MediaRange implements MediaTypeInterface
 
 	const ANY = '*';
 
-	const STRING_PATTERN = '(?:\*/\*)|(?:([a-z0-9](?:[a-z0-9!#$&^_-]{0,126}))/(?:(?:\*)|((?:[a-z0-9](?:[a-z0-9!#$&^_-]{0,126}))(?:\.(?:[a-z0-9](?:[a-z0-9!#$&^_-]{0,126})))*)(?:\+([a-z0-9](?:[a-z0-9!#$&^_-]{0,126})))*))';
-
 	public function __construct($type = self::ANY, $subType = self::ANY)
 	{
 		$this->mainType = $type;
@@ -56,25 +54,38 @@ class MediaRange implements MediaTypeInterface
 	 */
 	public static function fromString($mediaTypeString, $strict = true)
 	{
-		$pattern = self::STRING_PATTERN;
+		$pattern = RFC6838::MEDIA_RANGE_PATTERN;
 		if ($strict)
 			$pattern = '^' . $pattern . '$';
 		else
 			$pattern = '^[\x9\x20]*' . $pattern;
 
 		$matches = [];
-		if (!\preg_match(chr(1) . $pattern . chr(1) . 'i', $mediaTypeString, $matches))
-			throw new MediaTypeException($mediaTypeString, 'Not a valid media range string');
+		if (!\preg_match(chr(1) . $pattern . chr(1) . 'i',
+			$mediaTypeString, $matches))
+			throw new MediaTypeException($mediaTypeString,
+				'Not a valid media range string');
 
 		$subType = self::ANY;
-		if (Container::keyExists($matches, 2))
+		if (Container::keyExists($matches, 2) && $matches[2] != self::ANY)
 		{
-			$facets = explode('.', $matches[2]);
-			$syntax = Container::keyValue($matches, 3, null);
-			$subType = new MediaSubType($facets, $syntax);
+			$facets = $matches[2];
+
+			$length = \strlen($facets);
+			$syntax = null;
+
+			$lastPlus = \strrpos($facets, '+');
+			if ($lastPlus !== false && $lastPlus < ($length - 1))
+			{
+				$syntax = \substr($facets, $lastPlus + 1);
+				$facets = \substr($facets, 0, $lastPlus);
+			}
+
+			$subType = new MediaSubType(\explode('.', $facets), $syntax);
 		}
 
-		return new MediaRange(Container::keyValue($matches, 1, self::ANY), $subType);
+		return new MediaRange(
+			Container::keyValue($matches, 1, self::ANY), $subType);
 	}
 
 	/**
@@ -83,7 +94,8 @@ class MediaRange implements MediaTypeInterface
 	 * @param MediaTypeInterface $b
 	 * @return number -1 if $a < $b, 1 if $a > $b, 0 if equal or not comparable
 	 */
-	public static function compareMediaRanges(MediaTypeInterface $a, MediaTypeInterface $b)
+	public static function compareMediaRanges(MediaTypeInterface $a,
+		MediaTypeInterface $b)
 	{
 		return $a->compare($b);
 	}

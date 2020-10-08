@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2452d614aa8ee80c8aedb70a48977f0e",
+    "content-hash": "8c2bda34b1067d33b6877193d498933e",
     "packages": [
         {
             "name": "noresources/ns-php-core",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://okami/volume1/repository/git/ns-php-core.git",
-                "reference": "39f5f1974acb3e33d8657daa8c24842346e9cb2c"
+                "url": "https://github.com/noresources/ns-php-core.git",
+                "reference": "6428e73d892952acf43ed5e63cfdf1980f2795cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/noresources/ns-php-core/zipball/6428e73d892952acf43ed5e63cfdf1980f2795cd",
+                "reference": "6428e73d892952acf43ed5e63cfdf1980f2795cd",
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -42,11 +48,7 @@
                     "NoreSources\\Test\\": "tests/src/"
                 }
             },
-            "scripts": {
-                "tests": [
-                    "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -59,20 +61,23 @@
             ],
             "description": "Utility class library for PHP",
             "keywords": [
-                "Utility"
+                "utility"
             ],
-            "support": {
-                "issues": "https://github.com/noresources/ns-php-core/issues"
-            },
-            "time": "2020-08-30T16:58:42+00:00"
+            "time": "2020-10-08T22:06:51+00:00"
         },
         {
             "name": "noresources/ns-php-http-core",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "ssh://okami/volume1/repository/git/ns-php-http-core.git",
-                "reference": "45b0fea345e014db7ec8d7932f629891c314c9e5"
+                "url": "https://github.com/noresources/ns-php-http-core.git",
+                "reference": "bb0edfaf33ba29dd50f691d2c7db976ad7bf226b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/noresources/ns-php-http-core/zipball/bb0edfaf33ba29dd50f691d2c7db976ad7bf226b",
+                "reference": "bb0edfaf33ba29dd50f691d2c7db976ad7bf226b",
+                "shasum": ""
             },
             "require": {
                 "noresources/ns-php-core": "~2.2",
@@ -92,11 +97,7 @@
                     "NoreSources\\Http\\": "src/"
                 }
             },
-            "scripts": {
-                "tests": [
-                    "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -113,7 +114,7 @@
                 "RFC 7231",
                 "http"
             ],
-            "time": "2020-09-04T17:55:13+00:00"
+            "time": "2020-10-08T22:10:20+00:00"
         },
         {
             "name": "psr/container",
@@ -121,12 +122,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
-                "reference": "fc1bc363ecf887921e3897c7b1dad3587ae154eb"
+                "reference": "b1fbdff230c2fae8b3e600ead18e711563f05a04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/fc1bc363ecf887921e3897c7b1dad3587ae154eb",
-                "reference": "fc1bc363ecf887921e3897c7b1dad3587ae154eb",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/b1fbdff230c2fae8b3e600ead18e711563f05a04",
+                "reference": "b1fbdff230c2fae8b3e600ead18e711563f05a04",
                 "shasum": ""
             },
             "require": {
@@ -150,7 +151,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common Container Interface (PHP FIG PSR-11)",
@@ -162,7 +163,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2019-10-04T14:07:35+00:00"
+            "time": "2020-09-18T06:44:01+00:00"
         },
         {
             "name": "psr/log",
@@ -170,12 +171,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "dd738d0b4491f32725492cf345f6b501f5922fec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/dd738d0b4491f32725492cf345f6b501f5922fec",
+                "reference": "dd738d0b4491f32725492cf345f6b501f5922fec",
                 "shasum": ""
             },
             "require": {
@@ -199,7 +200,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -209,7 +210,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2020-03-23T09:12:05+00:00"
+            "time": "2020-09-18T06:44:51+00:00"
         }
     ],
     "packages-dev": [
@@ -275,12 +276,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "a3409d10079990eeb489c3fead0ac070b5b38895"
+                "reference": "00aba97fc36feabc8d94667eebd5d43959e60008"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/a3409d10079990eeb489c3fead0ac070b5b38895",
-                "reference": "a3409d10079990eeb489c3fead0ac070b5b38895",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/00aba97fc36feabc8d94667eebd5d43959e60008",
+                "reference": "00aba97fc36feabc8d94667eebd5d43959e60008",
                 "shasum": ""
             },
             "require": {
@@ -315,7 +316,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2020-08-28T16:31:07+00:00"
+            "time": "2020-10-01T09:35:15+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -568,28 +569,28 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "dev-master",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "c99da517f9e7b6e6c4067611d804808c34d8cec3"
+                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/c99da517f9e7b6e6c4067611d804808c34d8cec3",
-                "reference": "c99da517f9e7b6e6c4067611d804808c34d8cec3",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ce87516be71aae9b956f81906aaf0338e0d8a2d",
+                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.2",
-                "php": "^7.2",
+                "php": "^7.2 || ~8.0, <8.1",
                 "phpdocumentor/reflection-docblock": "^5.2",
                 "sebastian/comparator": "^3.0 || ^4.0",
                 "sebastian/recursion-context": "^3.0 || ^4.0"
             },
             "require-dev": {
                 "phpspec/phpspec": "^6.0",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.0 || ^9.0 <9.3"
             },
             "type": "library",
             "extra": {
@@ -627,7 +628,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-07-21T10:09:02+00:00"
+            "time": "2020-09-29T09:10:42+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1690,7 +1691,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">= 5.5"
+        "php": ">= 5.6"
     },
     "platform-dev": []
 }
