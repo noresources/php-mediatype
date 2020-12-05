@@ -179,14 +179,30 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 	public function testFromMedia()
 	{
-		$this->assertEquals('application/json',
-			strval(
-				MediaTypeFactory::fromMedia(__DIR__ . '/data/a.json')));
+		$tests = [
+			'Existing JSON file' => [
+				'path' => __DIR__ . '/data/a.json',
+				'type' => 'application/json'
+			],
+			'C++ source in a .js file' => [
+				'path' => __DIR__ . '/data/c++.js',
+				'type' => 'text/x-c++'
+			],
+			'Empty XML file' => [
+				'path' => __DIR__ . '/data/empty.xml',
+				'type' => 'application/xml'
+			]
+		];
 
-		$this->assertEquals('text/x-c++',
-			strval(
-				MediaTypeFactory::fromMedia(__DIR__ . '/data/c++.js')),
-			'C++ code in a .js file');
+		foreach ($tests as $label => $test)
+		{
+			$path = $test['path'];
+			$type = $test['type'];
+			$mediaType = MediaTypeFactory::fromMedia($path,
+				MediaTypeFactory::FROM_ALL);
+
+			$this->assertEquals($type, \strval($mediaType), $label);
+		}
 
 		$mode = MediaTypeFactory::FROM_ALL |
 			MediaTypeFactory::FROM_EXTENSION_FIRST;

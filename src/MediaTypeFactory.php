@@ -79,7 +79,9 @@ class MediaTypeFactory
 		$type = null;
 
 		if (($mode & self::FROM_EXTENSION) == self::FROM_EXTENSION &&
-			\is_file($media))
+			\is_file($media) ||
+			(\is_string($media) &&
+			\preg_match('/\.[a-zA-Z0-9_-]+$/', $media)))
 		{
 			$extensionType = MediaTypeFileExtensionRegistry::mediaTypeFromExtension(
 				pathinfo($media, PATHINFO_EXTENSION));
@@ -92,17 +94,26 @@ class MediaTypeFactory
 
 		if (($mode & self::FROM_CONTENT) == self::FROM_CONTENT)
 		{
-			if (\is_file($media) && \is_readable($media))
+			if (\is_file($media) && \is_readable($media) &&
+				\class_exists('\finfo'))
 			{
 				$finfo = new \finfo(FILEINFO_MIME_TYPE);
 				$contentType = $finfo->file($media);
 			}
-			else
+			elseif (\function_exists('\mime_content_type'))
+			{
 				$contentType = @mime_content_type($media);
+			}
 		}
 
+		$excludedContentType = [
+			'text/plain',
+			'inode/x-empty'
+		];
+
 		if ($extensionType &&
-			(!\is_string($contentType) || ($contentType == 'text/plain')))
+			(empty($contentType) ||
+			\in_array($contentType, $excludedContentType)))
 			return $extensionType;
 
 		if (\is_string($contentType))
