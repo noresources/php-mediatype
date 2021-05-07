@@ -106,14 +106,12 @@ class MediaTypeFactory
 			}
 		}
 
-		$excludedContentType = [
-			'text/plain',
-			'inode/x-empty'
-		];
+		$p = '^' . RFC6838::RESTRICTED_NAME_PATTERN . '/x-empty$';
 
 		if ($extensionType &&
 			(empty($contentType) ||
-			\in_array($contentType, $excludedContentType)))
+			(\strcasecmp('text/plain', $contentType) == 0) ||
+			preg_match(chr(1) . $p . chr(1) . 'i', $contentType)))
 			return $extensionType;
 
 		if (\is_string($contentType))

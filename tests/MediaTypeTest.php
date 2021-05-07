@@ -394,4 +394,78 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals('utf-8', $p['charset'],
 			'Case-insensitive getParameter');
 	}
+
+	public function testMatch()
+	{
+		$tests = [
+			'Basic 1' => [
+				'a' => 'text/plain',
+				'b' => 'text/plain'
+			],
+			'Basic 2' => [
+				'a' => 'text/plain',
+				'b' => 'text/empty',
+				'expected' => false
+			],
+			'Wildcard' => [
+				'a' => 'text/plain',
+				'b' => '*/*'
+			],
+			'Sub type wildcard' => [
+				'a' => 'text/plain',
+				'b' => 'text/*'
+			],
+			'Sub type wildcard 2' => [
+				'a' => 'image/png',
+				'b' => 'text/*',
+				'expected' => false
+			],
+			'Syntax' => [
+				'a' => 'application/foo+json',
+				'b' => 'application/foo'
+			],
+			'Syntax' => [
+				'a' => 'application/foo',
+				'b' => 'application/foo+json',
+				'expected' => false
+			],
+			'Less restrictive sub type' => [
+				'a' => 'text/a.b.c',
+				'b' => 'text/a.b',
+				'expected' => true
+			],
+			'More restrictive sub type' => [
+				'a' => 'text/a.b',
+				'b' => 'text/a.b.c',
+				'expected' => false
+			],
+			'Range 1' => [
+				'a' => 'foo/*',
+				'b' => '*/*'
+			],
+			'Range 2' => [
+				'a' => 'foo/*',
+				'b' => 'foo/*'
+			],
+			'Range 3' => [
+				'a' => '*/*',
+				'b' => '*/*'
+			],
+			'Range 4' => [
+				'a' => '*/*',
+				'b' => 'foo/*',
+				'expected' => false
+			]
+		];
+		foreach ($tests as $label => $test)
+		{
+			$a = MediaTypeFactory::fromString($test['a']);
+			$b = MediaTypeFactory::fromString($test['b']);
+			$expected = Container::keyValue($test, 'expected', true);
+
+			$actual = $a->match($b);
+			$this->assertEquals($expected, $actual,
+				$label . ' ' . \strval($a) . ' vs ' . \strval($b));
+		}
+	}
 }

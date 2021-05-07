@@ -24,9 +24,17 @@ use NoreSources\Http\ParameterMapProviderInterface;
  * parameter = token "=" ( token / quoted )
  * </ul>
  */
-interface MediaTypeInterface extends ParameterMapProviderInterface, StringRepresentation,
-	\Serializable, ComparableInterface
+interface MediaTypeInterface extends ParameterMapProviderInterface,
+	StringRepresentation, \Serializable, ComparableInterface
 {
+
+	/**
+	 * Check if the MediaType instance match the given MediaRange
+	 *
+	 * @param MediaTypeInterface|string $mediaRange
+	 * @return true if $mediaRange is identical or less restrictive than $this
+	 */
+	public function match($mediaRange);
 
 	/**
 	 *

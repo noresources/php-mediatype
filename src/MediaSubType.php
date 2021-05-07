@@ -32,7 +32,8 @@ class MediaSubType implements StringRepresentation, ComparableInterface
 	public function __toString()
 	{
 		$s = \implode('.', $this->facets);
-		if (\is_string($this->structuredSyntax) && \strlen($this->structuredSyntax))
+		if (\is_string($this->structuredSyntax) &&
+			\strlen($this->structuredSyntax))
 			$s .= '+' . $this->structuredSyntax;
 
 		return $s;
@@ -70,19 +71,23 @@ class MediaSubType implements StringRepresentation, ComparableInterface
 	 */
 	public function getStructuredSyntax()
 	{
-		if (\is_string($this->structuredSyntax) && \strlen($this->structuredSyntax))
+		if (!empty($this->structuredSyntax))
 			return strtolower($this->structuredSyntax);
 		return null;
 	}
 
 	public function compare($b)
 	{
+		if ($b instanceof MediaTypeInterface)
+			$b = $b->getSubType();
+
 		if (!($b instanceof MediaSubType))
 		{
 			if (!TypeDescription::hasStringRepresentation($b))
 				throw new NotComparableException($this, $b);
 
-			$m = MediaRange::fromString(MediaRange::ANY . '/' . TypeConversion::toString($b));
+			$m = MediaRange::fromString(
+				MediaRange::ANY . '/' . TypeConversion::toString($b));
 			$b = $m->getSubType();
 		}
 

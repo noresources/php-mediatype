@@ -6,6 +6,9 @@
 namespace NoreSources\MediaType;
 
 use NoreSources\Container;
+use NoreSources\NotComparableException;
+use NoreSources\TypeConversion;
+use NoreSources\TypeDescription;
 
 class MediaRange implements MediaTypeInterface
 {
@@ -45,6 +48,62 @@ class MediaRange implements MediaTypeInterface
 		return $this->mainType . '/' . strval($this->subType);
 	}
 
+	public function match($b)
+	{
+		/**
+		 *
+		 * @var MediaTypeInterface $a
+		 * @var MediaTypeInterface $b
+		 */
+		$a = $this;
+
+		if (!($b instanceof MediaTypeInterface))
+		{
+			if (!TypeDescription::hasStringRepresentation($b))
+				throw new NotComparableException($a, $b);
+
+			$b = MediaRange::fromString(TypeConversion::toString($b));
+		}
+
+		if ($b->getType() == MediaRange::ANY)
+			return true;
+
+		if ($a->getType() == MediaRange::ANY)
+			return false;
+
+		if (\strcasecmp($a->getType(), $b->getType()) != 0)
+			return false;
+
+		$ast = \strval(\implode('.', $a->getSubType()->getFacets()));
+		$bst = \strval(\implode('.', $b->getSubType()->getFacets()));
+
+		if ($bst == MediaRange::ANY)
+			return true;
+		if ($ast == MediaRange::ANY)
+			return false;
+
+		$stc = \strcasecmp($ast, $bst);
+
+		if ($a->getSubType()->compare($b->getSubType()) >= 0 &&
+			($a->getSubType()->getFacetCount() ==
+			$b->getSubType()->getFacetCount()) && ($stc != 0))
+			return false;
+
+		if ($a->getSubType()->getFacetCount() >
+			$b->getSubType()->getFacetCount())
+			$stc = 0;
+
+		$as = $a->getSubType()->getStructuredSyntax();
+		$bs = $b->getSubType()->getStructuredSyntax();
+
+		if (empty($as))
+			return (empty($bs) && ($stc == 0));
+		elseif (empty($bs))
+			return false;
+
+		return ($stc == 0) && (\strcasecmp($as, $bs) == 0);
+	}
+
 	/**
 	 *
 	 * @param string $mediaTypeString
@@ -66,7 +125,9 @@ class MediaRange implements MediaTypeInterface
 			throw new MediaTypeException($mediaTypeString,
 				'Not a valid media range string');
 
-		$subType = self::ANY;
+		$subType = new MediaSubType([
+			self::ANY
+		], null);
 		if (Container::keyExists($matches, 2) && $matches[2] != self::ANY)
 		{
 			$facets = $matches[2];

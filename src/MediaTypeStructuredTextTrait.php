@@ -14,7 +14,7 @@ trait MediaTypeStructuredTextTrait
 			return null;
 
 		$s = $this->getSubType()->getStructuredSyntax();
-		if ($s)
+		if (!empty($s))
 			return $s;
 
 		if ($this->getSubType()->getFacetCount() == 1)
@@ -22,10 +22,13 @@ trait MediaTypeStructuredTextTrait
 			$facet = $this->getSubType()->getFacet(0);
 			if (\strtolower($this->getType()) == 'text')
 			{
-				if ($registeredOnly && !StructuredSyntaxSuffixRegistry::isRegistered($facet))
+				if ($registeredOnly &&
+					!StructuredSyntaxSuffixRegistry::isRegistered(
+						$facet))
 					return null;
 
-				return $facet;
+				if ($facet != MediaRange::ANY)
+					return $facet;
 			}
 
 			/*
