@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2012 - 2020 by Renaud Guillard (dev@nore.fr)
+ * Copyright © 2012 - 2021 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  */
 
@@ -10,6 +10,7 @@
  */
 namespace NoreSources;
 
+use NoreSources\Container\Container;
 use NoreSources\Http\ParameterMap;
 use NoreSources\MediaType\MediaRange;
 use NoreSources\MediaType\MediaSubType;

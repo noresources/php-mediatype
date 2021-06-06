@@ -2,7 +2,7 @@ name: PHP Composer and PHPUnit tests
 
 on:
   push:
-    branches: [ master, test ]
+    branches: [ master, devel, test ]
   pull_request:
     branches: [ master ]
 

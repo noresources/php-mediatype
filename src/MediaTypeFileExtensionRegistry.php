@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright © 2012 - 2020 by Renaud Guillard (dev@nore.fr)
+ * Copyright © 2012 - 2021 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
  */
 namespace NoreSources\MediaType;
 
-use NoreSources\Container;
+use NoreSources\Container\Container;
 
 /**
  * Associate Media Types and their commonly used file extensions.
@@ -32,7 +32,8 @@ class MediaTypeFileExtensionRegistry
 			self::$extensionMap = self::getData('extensions');
 		}
 
-		$mediaType = Container::keyValue(self::$extensionMap, $extension, false);
+		$mediaType = Container::keyValue(self::$extensionMap, $extension,
+			false);
 		if ($mediaType)
 			return MediaType::fromString($mediaType, true);
 
@@ -51,16 +52,20 @@ class MediaTypeFileExtensionRegistry
 			self::$typesMap = [];
 
 		if (!Container::keyExists(self::$typesMap, $mediaType->getType()))
-			self::$typesMap[$mediaType->getType()] = self::getData('types.' . $mediaType->getType());
+			self::$typesMap[$mediaType->getType()] = self::getData(
+				'types.' . $mediaType->getType());
 
-		return Container::keyValue(self::$typesMap[$mediaType->getType()], []);
+		return Container::keyValue(
+			self::$typesMap[$mediaType->getType()], []);
 	}
 
 	private static function getData($suffix)
 	{
-		$filename = __DIR__ . '/' . basename(__FILE__, '.php') . '/' . $suffix . '.json';
+		$filename = __DIR__ . '/' . basename(__FILE__, '.php') . '/' .
+			$suffix . '.json';
 		if (!\file_exists($filename))
-			throw new \InvalidArgumentException($filename . ' not found');
+			throw new \InvalidArgumentException(
+				$filename . ' not found');
 
 		return \json_decode(\file_get_contents($filename), true);
 	}
