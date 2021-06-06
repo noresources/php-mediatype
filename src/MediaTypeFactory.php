@@ -27,19 +27,33 @@ class MediaTypeFactory
 	 * @throws MediaTypeException
 	 * @return \NoreSources\MediaType\MediaType \NoreSources\MediaType\MediaRange
 	 */
-	public static function fromString($mediaTypeString,
+	public static function createFromString($mediaTypeString,
 		$acceptRange = true)
 	{
 		try
 		{
-			return MediaType::fromString($mediaTypeString);
+			$mediaType = new MediaType('');
+			$mediaType->unserialize($mediaTypeString);
+			return $mediaType;
 		}
 		catch (MediaTypeException $e)
 		{
 			if (!$acceptRange)
 				throw $e;
-			return MediaRange::fromString($mediaTypeString);
+			$mediaRange = new MediaRange(MediaRange::ANY);
+			$mediaRange->unserialize($mediaTypeString);
+			return $mediaRange;
 		}
+	}
+
+	/**
+	 *
+	 * @deprecated Use createFromString()
+	 */
+	public static function fromString($mediaTypeString,
+		$acceptRange = true)
+	{
+		return self::createFromString($mediaTypeString, $acceptRange);
 	}
 
 	/**
@@ -74,7 +88,8 @@ class MediaTypeFactory
 	 *        	Media type guessing options
 	 * @return \NoreSources\MediaType\MediaType
 	 */
-	public static function fromMedia($media, $mode = self::FROM_ALL)
+	public static function createFromMedia($media,
+		$mode = self::FROM_ALL)
 	{
 		$contentType = null;
 		$extensionType = null;
@@ -117,9 +132,14 @@ class MediaTypeFactory
 			return $extensionType;
 
 		if (\is_string($contentType))
-			return MediaType::fromString($contentType);
+			return MediaType::createFromString($contentType);
 
 		throw new MediaTypeException(null,
 			'Unable to recognize media type');
+	}
+
+	public static function fromMedia($media, $mode = self::FROM_ALL)
+	{
+		return self::createFromMedia($media, $mode);
 	}
 }

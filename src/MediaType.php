@@ -9,6 +9,10 @@ namespace NoreSources\MediaType;
 
 use NoreSources\NotComparableException;
 use NoreSources\Container\Container;
+use NoreSources\MediaType\Traits\MediaTypeCompareTrait;
+use NoreSources\MediaType\Traits\MediaTypeParameterMapTrait;
+use NoreSources\MediaType\Traits\MediaTypeSerializableTrait;
+use NoreSources\MediaType\Traits\MediaTypeStructuredTextTrait;
 use NoreSources\Type\TypeConversion;
 use NoreSources\Type\TypeDescription;
 
@@ -54,6 +58,12 @@ class MediaType implements MediaTypeInterface
 		return strval($this->mainType) . '/' . strval($this->subType);
 	}
 
+	public function __clone()
+	{
+		$this->subType = clone $this->subType;
+		$this->setParameters($this->getParameters());
+	}
+
 	public function match($b)
 	{
 		/**
@@ -68,7 +78,8 @@ class MediaType implements MediaTypeInterface
 			if (!TypeDescription::hasStringRepresentation($b))
 				throw new NotComparableException($a, $b);
 
-			$b = MediaRange::fromString(TypeConversion::toString($b));
+			$b = MediaRange::createFromString(
+				TypeConversion::toString($b));
 		}
 
 		if ($b->getType() == MediaRange::ANY)
@@ -113,7 +124,8 @@ class MediaType implements MediaTypeInterface
 	 * @throws MediaTypeException
 	 * @return \NoreSources\MediaType\MediaType
 	 */
-	public static function fromString($mediaTypeString, $strict = true)
+	public static function createFromString($mediaTypeString,
+		$strict = true)
 	{
 		$pattern = RFC6838::MEDIA_TYPE_PATTERN;
 		if ($strict)
@@ -145,6 +157,15 @@ class MediaType implements MediaTypeInterface
 		}
 
 		return new MediaType($matches[1], $subType);
+	}
+
+	/**
+	 *
+	 * @deprecated Use createFromString ()
+	 */
+	public static function fromString($mediaTypeString, $strict = true)
+	{
+		return self::createFromString($mediaTypeString, $strict);
 	}
 
 	/**

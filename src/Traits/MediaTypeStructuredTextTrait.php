@@ -5,7 +5,11 @@
  *
  * @package MediaType
  */
-namespace NoreSources\MediaType;
+namespace NoreSources\MediaType\Traits;
+
+use NoreSources\MediaType\MediaRange;
+use NoreSources\MediaType\MediaSubType;
+use NoreSources\MediaType\StructuredSyntaxSuffixRegistry;
 
 trait MediaTypeStructuredTextTrait
 {

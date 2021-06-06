@@ -5,9 +5,11 @@
  *
  * @package MediaType
  */
-namespace NoreSources\MediaType;
+namespace NoreSources\MediaType\Traits;
 
 use NoreSources\NotComparableException;
+use NoreSources\MediaType\MediaRange;
+use NoreSources\MediaType\MediaTypeInterface;
 use NoreSources\Type\TypeConversion;
 use NoreSources\Type\TypeDescription;
 

@@ -5,7 +5,7 @@
  *
  * @package MediaType
  */
-namespace NoreSources\MediaType;
+namespace NoreSources\MediaType\Traits;
 
 use NoreSources\Http\ParameterMap;
 use NoreSources\Http\ParameterMapProviderTrait;

@@ -17,7 +17,7 @@ use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaTypeInterface;
 use NoreSources\MediaType\MediaTypeRegistry;
 
-final class MediaTypeTest extends \PHPUnit\Framework\TestCase
+class MediaTypeTest extends \PHPUnit\Framework\TestCase
 {
 
 	public function testParse()
@@ -121,6 +121,22 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 					'syntax' => 'json'
 				],
 				'syntax' => 'json'
+			],
+			'text/html; charset=utf-8' => [
+				'valid' => true,
+				'class' => MediaType::class,
+				'string' => 'text/html',
+				'type' => 'text',
+				'subtype' => [
+					'text' => 'html',
+					'facets' => [
+						'html'
+					]
+				],
+				'parameters' => [
+					'charset' => 'utf-8'
+				],
+				'syntax' => 'html'
 			]
 		];
 
@@ -129,7 +145,7 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$mediaType = null;
 			try
 			{
-				$mediaType = MediaTypeFactory::fromString($text,
+				$mediaType = MediaTypeFactory::createFromString($text,
 					$parsed['class'] == MediaRange::class);
 			}
 			catch (MediaTypeException $e)
@@ -143,6 +159,14 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$this->assertEquals($parsed['type'], $mediaType->getType(),
 				$text . ' name');
 
+			$this->assertEquals(
+				Container::keyValue($parsed, 'string', $text),
+				\strval($mediaType), $text . ' to string');
+
+			$this->assertEquals(
+				Container::keyValue($parsed, 'serialized', $text),
+				$mediaType->serialize(), $text . ' (re-)serialized');
+
 			if ($parsed['subtype'])
 			{
 				$this->assertInstanceOf(MediaSubType::class,
@@ -153,7 +177,8 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				$this->assertCount(count($parsed['subtype']['facets']),
 					$subType->getFacets(), $text . ' subtype facets');
 
-				$this->assertEquals($parsed['subtype']['syntax'],
+				$this->assertEquals(
+					Container::keyValue($parsed['subtype'], 'syntax'),
 					$subType->getStructuredSyntax(),
 					$text . ' subtype syntax');
 
@@ -168,11 +193,8 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				$this->assertEquals(MediaRange::ANY,
 					$mediaType->getSubType(), 'Subtype is a range');
 
-			$this->assertEquals($parsed['syntax'],
+			$this->assertEquals(Container::keyValue($parsed, 'syntax'),
 				$mediaType->getStructuredSyntax(), $text . ' syntax');
-
-			$this->assertEquals($text, strval($mediaType),
-				$text . ' to string');
 		}
 	}
 
@@ -197,7 +219,7 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		{
 			$path = $test['path'];
 			$type = $test['type'];
-			$mediaType = MediaTypeFactory::fromMedia($path,
+			$mediaType = MediaTypeFactory::createFromMedia($path,
 				MediaTypeFactory::FROM_ALL);
 
 			$this->assertEquals($type, \strval($mediaType), $label);
@@ -208,8 +230,9 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 		$this->assertEquals('application/javascript',
 			strval(
-				MediaTypeFactory::fromMedia(__DIR__ . '/data/c++.js',
-					$mode)), 'C++ code in a .js file (extension first)');
+				MediaTypeFactory::createFromMedia(
+					__DIR__ . '/data/c++.js', $mode)),
+			'C++ code in a .js file (extension first)');
 	}
 
 	public function testCompareSubTypes()
@@ -248,9 +271,11 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$b = null;
 			try
 			{
-				$a = MediaRange::fromString('whatever/' . $test[0]);
+				$a = MediaRange::createFromString(
+					'whatever/' . $test[0]);
 				$a = $a->getSubType();
-				$b = MediaRange::fromString('whatever/' . $test[1]);
+				$b = MediaRange::createFromString(
+					'whatever/' . $test[1]);
 				$b = $b->getSubType();
 
 				$result = $a->compare($b);
@@ -309,8 +334,8 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 		foreach ($tests as $test)
 		{
-			$a = MediaTypeFactory::fromString($test[0], true);
-			$b = MediaTypeFactory::fromString($test[1], true);
+			$a = MediaTypeFactory::createFromString($test[0], true);
+			$b = MediaTypeFactory::createFromString($test[1], true);
 
 			$label = $test[0] . ' < ' . $test[1];
 
@@ -378,7 +403,7 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 	public function testParameters()
 	{
-		$m = MediaType::fromString('text/plain');
+		$m = MediaType::createFromString('text/plain');
 		$p = $m->getParameters();
 
 		$this->assertInstanceOf(ParameterMap::class, $p);
@@ -458,8 +483,8 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		];
 		foreach ($tests as $label => $test)
 		{
-			$a = MediaTypeFactory::fromString($test['a']);
-			$b = MediaTypeFactory::fromString($test['b']);
+			$a = MediaTypeFactory::createFromString($test['a']);
+			$b = MediaTypeFactory::createFromString($test['b']);
 			$expected = Container::keyValue($test, 'expected', true);
 
 			$actual = $a->match($b);
@@ -483,7 +508,7 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				'registered');
 			try
 			{
-				$type = MediaTypeFactory::fromString($type);
+				$type = MediaTypeFactory::createFromString($type);
 			}
 			catch (\Exception $e)
 			{}
@@ -495,6 +520,24 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 					($registered ? 'not ' : '') . 'registered');
 			}
 		}
+	}
+
+	public function testClone()
+	{
+		$a = MediaType::createFromString('text/plain');
+		$sa = $a->serialize();
+
+		$b = clone $a;
+		$this->assertEquals($sa, $b->serialize(), 'Clone');
+
+		$b->getParameters()->offsetSet('charset', 'utf-8');
+		$sb = $b->serialize();
+
+		$this->assertEquals($sa, $a->serialize(),
+			'Clone modification does not affect original parameter map');
+		$a->getParameters()->offsetSet('foo', 'bar');
+		$this->assertEquals($sb, $b->serialize(),
+			'Source modification does not affect clone parameter map');
 	}
 }
 
