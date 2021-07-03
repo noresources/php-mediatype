@@ -117,6 +117,6 @@ class MediaTypeFactory
 		if (\is_string($contentType))
 			return MediaType::fromString($contentType);
 
-		throw new \Exception('Unable to recognize media type');
+		throw new MediaTypeException(null, 'Unable to recognize media type');
 	}
 }
