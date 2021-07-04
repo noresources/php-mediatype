@@ -2,6 +2,8 @@
 /**
  * Copyright © 2012 - 2021 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
+ *
+ * @package MediaType
  */
 namespace NoreSources\MediaType;
 
@@ -23,7 +25,7 @@ trait MediaTypeStructuredTextTrait
 			if (\strtolower($this->getType()) == 'text')
 			{
 				if ($registeredOnly &&
-					!StructuredSyntaxSuffixRegistry::isRegistered(
+					!StructuredSyntaxSuffixRegistry::getInstance()->isRegistered(
 						$facet))
 					return null;
 
@@ -34,7 +36,8 @@ trait MediaTypeStructuredTextTrait
 			/*
 			 * Other types such as application/json
 			 */
-			if (StructuredSyntaxSuffixRegistry::isRegistered($facet))
+			if (StructuredSyntaxSuffixRegistry::getInstance()->isRegistered(
+				$facet))
 				return $facet;
 		}
 

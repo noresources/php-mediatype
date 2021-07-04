@@ -2,11 +2,8 @@
 /**
  * Copyright © 2012 - 2021 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
- */
-
-/**
  *
- * @package Core
+ * @package MediaType
  */
 namespace NoreSources;
 
@@ -18,6 +15,7 @@ use NoreSources\MediaType\MediaType;
 use NoreSources\MediaType\MediaTypeException;
 use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaTypeInterface;
+use NoreSources\MediaType\MediaTypeRegistry;
 
 final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 {
@@ -469,4 +467,40 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				$label . ' ' . \strval($a) . ' vs ' . \strval($b));
 		}
 	}
+
+	public function testRegistry()
+	{
+		$registry = MediaTypeRegistry::getInstance();
+		foreach ([
+			'text/plain' => true,
+			'foo/bar' => false,
+			'application/json' => true
+		] as $type => $registered)
+		{
+			$asString = $registry->isRegistered($type);
+			$this->assertEquals($registered, $asString,
+				$type . ' (string) is ' . ($registered ? 'not ' : '') .
+				'registered');
+			try
+			{
+				$type = MediaTypeFactory::fromString($type);
+			}
+			catch (\Exception $e)
+			{}
+			if ($type instanceof MediaTypeInterface)
+			{
+				$asMediaType = $registry->isRegistered($type);
+				$this->assertEquals($registered, $asString,
+					\strval($type) . ' (MediaType) is ' .
+					($registered ? 'not ' : '') . 'registered');
+			}
+		}
+	}
 }
+
+
+
+
+
+
+

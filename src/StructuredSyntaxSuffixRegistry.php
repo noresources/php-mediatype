@@ -2,8 +2,12 @@
 /**
  * Copyright © 2012 - 2021 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
+ *
+ * @package MediaType
  */
 namespace NoreSources\MediaType;
+
+use NoreSources\SingletonTrait;
 
 /**
  * List of
@@ -14,6 +18,8 @@ namespace NoreSources\MediaType;
 class StructuredSyntaxSuffixRegistry
 {
 
+	use SingletonTrait;
+
 	/**
 	 * Indicates if the given string is a registered structured syntax suffix
 	 *
@@ -21,24 +27,23 @@ class StructuredSyntaxSuffixRegistry
 	 *        	Structured syntax suffix. Optioaly prefixed with '+'
 	 * @return boolean true if the given string is a registered structured syntax suffix
 	 */
-	public static function isRegistered($suffix)
+	public function isRegistered($suffix)
 	{
 		self::initialize();
 		if (\substr($suffix, 0, 1) == '+')
 			$suffix = \substr($suffix, 1);
 
-		return \array_key_exists($suffix, self::$suffixes);
+		return \array_key_exists($suffix, $this->suffixes);
 	}
 
 	/**
 	 * Initialize the suffixes table
 	 */
-	private static function initialize()
+	private function initialize()
 	{
-		if (!\is_array(self::$suffixes))
+		if (!\is_array($this->suffixes))
 		{
-			self::$suffixes = [ /*
-			                      Auto-generated code --<<sufixes>>--*/
+			$this->suffixes = [ /* Auto-generated code --<<sufixes>>--*/
 				'ber' => 'Basic Encoding Rules (BER) message transfer syntax',
 				'cbor' => 'Concise Binary Object Representation (CBOR)',
 				'cbor-seq' => 'CBOR Sequence',
@@ -52,12 +57,11 @@ class StructuredSyntaxSuffixRegistry
 				'tlv' => 'Type Length Value',
 				'wbxml' => 'WAP Binary XML (WBXML) document format',
 				'xml' => 'Extensible Markup Language (XML)',
-				'zip' => 'ZIP file storage and transfer format'
-				/*--<</sufixes>>--
-			 */
+				'zip' => 'ZIP file storage and transfer format',
+				'zstd' => 'Zstandard' /*--<</sufixes>>-- */
 			];
 		}
 	}
 
-	private static $suffixes;
+	private $suffixes;
 }

@@ -2,6 +2,8 @@
 /**
  * Copyright © 2012 - 2021 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
+ *
+ * @package MediaType
  */
 namespace NoreSources\MediaType;
 
@@ -83,7 +85,7 @@ class MediaTypeFactory
 			(\is_string($media) &&
 			\preg_match('/\.[a-zA-Z0-9_-]+$/', $media)))
 		{
-			$extensionType = MediaTypeFileExtensionRegistry::mediaTypeFromExtension(
+			$extensionType = MediaTypeFileExtensionRegistry::getInstance()->mediaTypeFromExtension(
 				pathinfo($media, PATHINFO_EXTENSION));
 
 			if ($extensionType instanceof MediaTypeInterface)
@@ -117,6 +119,7 @@ class MediaTypeFactory
 		if (\is_string($contentType))
 			return MediaType::fromString($contentType);
 
-		throw new MediaTypeException(null, 'Unable to recognize media type');
+		throw new MediaTypeException(null,
+			'Unable to recognize media type');
 	}
 }

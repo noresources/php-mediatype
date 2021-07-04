@@ -2,6 +2,8 @@
 /**
  * Copyright © 2012 - 2021 by Renaud Guillard (dev@nore.fr)
  * Distributed under the terms of the MIT License, see LICENSE
+ *
+ * @package MediaType
  */
 namespace NoreSources\MediaType;
 
@@ -18,7 +20,9 @@ trait MediaTypeSerializableTrait
 	{
 		$s = \strval($this);
 		if ($this->getParameters()->count())
-			$s .= '; ' . ParameterMapSerializer::serializeParameters($this->getParameters());
+			$s .= '; ' .
+				ParameterMapSerializer::serializeParameters(
+					$this->getParameters());
 		return $s;
 	}
 
@@ -30,7 +34,8 @@ trait MediaTypeSerializableTrait
 	public function unserialize($serialized)
 	{
 		$p = \strpos($serialized, ';');
-		$mts = \trim(($p === false) ? $serialized : \substr($serialized, 0, $p));
+		$mts = \trim(
+			($p === false) ? $serialized : \substr($serialized, 0, $p));
 		$mt = static::fromString($mts);
 
 		$this->mainType = $mt->getType();

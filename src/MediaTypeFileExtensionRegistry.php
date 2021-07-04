@@ -5,6 +5,7 @@
  */
 namespace NoreSources\MediaType;
 
+use NoreSources\SingletonTrait;
 use NoreSources\Container\Container;
 
 /**
@@ -18,6 +19,8 @@ use NoreSources\Container\Container;
 class MediaTypeFileExtensionRegistry
 {
 
+	use SingletonTrait;
+
 	/**
 	 *
 	 * @param string $extension
@@ -25,14 +28,14 @@ class MediaTypeFileExtensionRegistry
 	 *         false
 	 *         if the extension is not recognized.
 	 */
-	public static function mediaTypeFromExtension($extension)
+	public function mediaTypeFromExtension($extension)
 	{
-		if (!\is_array(self::$extensionMap))
+		if (!isset($this->extensionMap))
 		{
-			self::$extensionMap = self::getData('extensions');
+			$this->extensionMap = self::getData('extensions');
 		}
 
-		$mediaType = Container::keyValue(self::$extensionMap, $extension,
+		$mediaType = Container::keyValue($this->extensionMap, $extension,
 			false);
 		if ($mediaType)
 			return MediaType::fromString($mediaType, true);
@@ -48,18 +51,18 @@ class MediaTypeFileExtensionRegistry
 	 */
 	public static function getMediaTypeExtensions(MediaType $mediaType)
 	{
-		if (!\is_array(self::$typesMap))
-			self::$typesMap = [];
+		if (!isset($this->typesMap))
+			$this->typesMap = [];
 
-		if (!Container::keyExists(self::$typesMap, $mediaType->getType()))
-			self::$typesMap[$mediaType->getType()] = self::getData(
+		if (!Container::keyExists($this->typesMap, $mediaType->getType()))
+			$this->typesMap[$mediaType->getType()] = self::getData(
 				'types.' . $mediaType->getType());
 
 		return Container::keyValue(
-			self::$typesMap[$mediaType->getType()], []);
+			$this->typesMap[$mediaType->getType()], []);
 	}
 
-	private static function getData($suffix)
+	private function getData($suffix)
 	{
 		$filename = __DIR__ . '/' . basename(__FILE__, '.php') . '/' .
 			$suffix . '.json';
@@ -70,7 +73,7 @@ class MediaTypeFileExtensionRegistry
 		return \json_decode(\file_get_contents($filename), true);
 	}
 
-	private static $typesMap;
+	private $typesMap;
 
-	private static $extensionMap;
+	private $extensionMap;
 }

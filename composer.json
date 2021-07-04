@@ -33,6 +33,7 @@
 		"tests": "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
 	},
 	"require-dev": {
+		"ext-dom": "*",
 		"phpunit/phpunit": "< 7.0"
 	}, 
 	"extra": {
