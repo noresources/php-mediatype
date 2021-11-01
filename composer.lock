@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db3aff0ce5171866d814d46a9573b6c3",
+    "content-hash": "2de3562584a546d2a6c592b6e929fa56",
     "packages": [
         {
             "name": "noresources/ns-php-core",
-            "version": "v2.4.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noresources/ns-php-core.git",
-                "reference": "656f4f010d40a516d9dff74863f6835bf7728f01"
+                "reference": "d512865a4664b89f1f098b48254d8ee92f4b007d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noresources/ns-php-core/zipball/656f4f010d40a516d9dff74863f6835bf7728f01",
-                "reference": "656f4f010d40a516d9dff74863f6835bf7728f01",
+                "url": "https://api.github.com/repos/noresources/ns-php-core/zipball/d512865a4664b89f1f098b48254d8ee92f4b007d",
+                "reference": "d512865a4664b89f1f098b48254d8ee92f4b007d",
                 "shasum": ""
             },
             "require": {
@@ -35,13 +35,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-1.0.x": "1.0.x-dev",
-                    "dev-1.1.x": "1.1.x-dev",
-                    "dev-2.0.x": "2.0.x-dev",
-                    "dev-2.1.x": "2.1.x-dev",
-                    "dev-2.2.x": "2.2.x-dev",
-                    "dev-master": "2.4.x-dev",
-                    "dev-devel": "2.5.x-dev"
+                    "dev-master": "2.5.x-dev",
+                    "dev-devel": "2.6.x-dev"
                 }
             },
             "autoload": {
@@ -67,26 +62,26 @@
             ],
             "support": {
                 "issues": "https://github.com/noresources/ns-php-core/issues",
-                "source": "https://github.com/noresources/ns-php-core/tree/v2.4.0"
+                "source": "https://github.com/noresources/ns-php-core/tree/v2.5.0"
             },
-            "time": "2021-09-05T18:54:54+00:00"
+            "time": "2021-11-01T15:43:08+00:00"
         },
         {
             "name": "noresources/ns-php-http-core",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/noresources/ns-php-http-core.git",
-                "reference": "4c76faee7e6d67326b8e506740bf6717cd2ff283"
+                "reference": "ed24214273220e278d3428941dae049455402ca4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/noresources/ns-php-http-core/zipball/4c76faee7e6d67326b8e506740bf6717cd2ff283",
-                "reference": "4c76faee7e6d67326b8e506740bf6717cd2ff283",
+                "url": "https://api.github.com/repos/noresources/ns-php-http-core/zipball/ed24214273220e278d3428941dae049455402ca4",
+                "reference": "ed24214273220e278d3428941dae049455402ca4",
                 "shasum": ""
             },
             "require": {
-                "noresources/ns-php-core": "~2.4.0",
+                "noresources/ns-php-core": "^2.4",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -124,9 +119,9 @@
             ],
             "support": {
                 "issues": "https://github.com/noresources/ns-php-http-core/issues",
-                "source": "https://github.com/noresources/ns-php-http-core/tree/v1.2.0"
+                "source": "https://github.com/noresources/ns-php-http-core/tree/v1.2.1"
             },
-            "time": "2021-09-05T18:57:15+00:00"
+            "time": "2021-11-01T15:57:20+00:00"
         },
         {
             "name": "psr/container",
@@ -1498,7 +1493,6 @@
                 "issues": "https://github.com/sebastianbergmann/resource-operations/issues",
                 "source": "https://github.com/sebastianbergmann/resource-operations/tree/master"
             },
-            "abandoned": true,
             "time": "2015-07-28T20:34:47+00:00"
         },
         {
