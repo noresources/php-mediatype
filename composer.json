@@ -8,11 +8,11 @@
 	], 
 	"license": "MIT", 
 	"authors": [
-			{
+		{
 			"name": "Renaud Guillard", 
 			"email": "dev@nore.fr", 
 			"role": "lead"
-			}
+		}
 	], 
 	"support": {
 		"issues": "https://github.com/noresources/ns-php-mediatype/issues"
@@ -21,28 +21,23 @@
 		"psr-4": {
 			"NoreSources\\MediaType\\": "src/"
 		}
-	},
+	}, 
 	"require": {
 		"php": ">= 5.6", 
-		"psr/container": "^1.0",
+		"psr/container": "^1.0", 
 		"noresources/ns-php-http-core": "^1.2"
 	}, 
 	"scripts": {
 		"tests": "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
-	},
+	}, 
 	"require-dev": {
-		"ext-dom": "*",
-		"phpunit/phpunit": "< 7.0"
+		"ext-dom": "*", 
+		"phpunit/phpunit": ">= 5.0"
 	}, 
 	"extra": {
 		"branch-alias": {
-			"dev-master": "1.4.x-dev",
+			"dev-master": "1.4.x-dev", 
 			"dev-devel": "1.5.x-dev"
-		}
-	}, 
-	"config": {
-		"platform": {
-			"php": "5.6.40"
 		}
 	}
 }
