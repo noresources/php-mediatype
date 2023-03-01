@@ -36,7 +36,7 @@ trait MediaTypeSerializableTrait
 		$p = \strpos($serialized, ';');
 		$mts = \trim(
 			($p === false) ? $serialized : \substr($serialized, 0, $p));
-		$mt = static::fromString($mts);
+		$mt = static::createFromString($mts);
 
 		$this->mainType = $mt->getType();
 		$this->subType = $mt->getSubType();

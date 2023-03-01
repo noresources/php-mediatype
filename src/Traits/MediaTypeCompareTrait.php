@@ -25,7 +25,7 @@ trait MediaTypeCompareTrait
 			if (!TypeDescription::hasStringRepresentation($b))
 				throw new NotComparableException($a, $b);
 
-			$b = MediaRange::fromString(TypeConversion::toString($b));
+			$b = MediaRange::createFromString(TypeConversion::toString($b));
 		}
 
 		if ($a->getType() == MediaRange::ANY)

@@ -38,7 +38,7 @@ class MediaTypeFileExtensionRegistry
 		$mediaType = Container::keyValue($this->extensionMap, $extension,
 			false);
 		if ($mediaType)
-			return MediaType::fromString($mediaType, true);
+			return MediaType::createFromString($mediaType, true);
 
 		return $mediaType;
 	}

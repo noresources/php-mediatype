@@ -91,7 +91,7 @@ class MediaSubType implements StringRepresentation, ComparableInterface
 			if (!TypeDescription::hasStringRepresentation($b))
 				throw new NotComparableException($this, $b);
 
-			$m = MediaRange::fromString(
+			$m = MediaRange::createFromString(
 				MediaRange::ANY . '/' . TypeConversion::toString($b));
 			$b = $m->getSubType();
 		}
