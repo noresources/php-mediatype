@@ -28,7 +28,7 @@
 		"noresources/ns-php-http-core": "^1.2"
 	}, 
 	"scripts": {
-		"tests": "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
+		"test": "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
 	}, 
 	"require-dev": {
 		"ext-dom": "*", 
