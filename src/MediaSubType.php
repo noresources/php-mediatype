@@ -81,38 +81,50 @@ class MediaSubType implements StringRepresentation, ComparableInterface
 		return null;
 	}
 
+	/**
+	 * Compare sub type precision with another
+	 *
+	 * A sub type {a} is more precise than another sub type {b} if
+	 * - {a} has at least one facet and {b} is empty
+	 * - All facets of {b} are identical to the first facets of {a} and {a} has more facets than {b}
+	 * -
+	 * A NotComparableException is thrown if a facet of {a}
+	 * does not match the facet of {b} at the same position.
+	 *
+	 * @param MediaSubType|MediaTypeInterface|string $b
+	 *        	Media sub type to compare with
+	 * @throws NotComparableException
+	 * @return 0 if sub types are identical,
+	 *         < 0 if $this is less precise than $b,
+	 *         and > 0 if $this is more precise than $b
+	 */
 	public function compare($b)
 	{
+		$a = $this;
 		if ($b instanceof MediaTypeInterface)
 			$b = $b->getSubType();
 
 		if (!($b instanceof MediaSubType))
 		{
 			if (!TypeDescription::hasStringRepresentation($b))
-				throw new NotComparableException($this, $b);
+				throw new NotComparableException($a, $b);
 
 			$m = MediaRange::createFromString(
 				MediaRange::ANY . '/' . TypeConversion::toString($b));
 			$b = $m->getSubType();
 		}
 
-		$fca = $this->getFacetCount();
+		$fca = $a->getFacetCount();
 		$fcb = $b->getFacetCount();
 		$fcm = min($fca, $fcb);
-		$fcM = max($fca, $fcb);
-		$i = 0;
-		for (; $i < $fcm; $i++)
+		for ($i = 0; $i < $fcm; $i++)
 		{
-			$fa = $this->getFacet($i);
+
+			$fa = $a->getFacet($i);
 			$fb = $b->getFacet($i);
 
-			if ($fb != $fb)
-			{
-				if ($i == ($fcM - 1))
-					return \strcmp($fa, $fb);
-
-				return 0;
-			}
+			if (\strcasecmp($fa, $fb) !== 0)
+				throw new NotComparableException($fa, $fb);
 		}
 
 		return ($fca > $fcb) ? 1 : (($fca < $fcb) ? -1 : 0);

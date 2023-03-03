@@ -10,6 +10,7 @@ namespace NoreSources\MediaType;
 use NoreSources\NotComparableException;
 use NoreSources\Container\Container;
 use NoreSources\MediaType\Traits\MediaTypeCompareTrait;
+use NoreSources\MediaType\Traits\MediaTypeMatchingTrait;
 use NoreSources\MediaType\Traits\MediaTypeParameterMapTrait;
 use NoreSources\MediaType\Traits\MediaTypeSerializableTrait;
 use NoreSources\MediaType\Traits\MediaTypeStructuredTextTrait;
@@ -28,6 +29,7 @@ class MediaType implements MediaTypeInterface
 	use MediaTypeParameterMapTrait;
 	use MediaTypeSerializableTrait;
 	use MediaTypeCompareTrait;
+	use MediaTypeMatchingTrait;
 
 	/**
 	 *
@@ -94,26 +96,21 @@ class MediaType implements MediaTypeInterface
 		if ($bst == MediaRange::ANY)
 			return true;
 
-		$stc = \strcasecmp($ast, $bst);
-
-		if ($a->getSubType()->compare($b->getSubType()) >= 0 &&
-			($a->getSubType()->getFacetCount() ==
-			$b->getSubType()->getFacetCount()) && ($stc != 0))
+		$c = 0;
+		try
+		{
+			$c = $a->getSubType()->compare($b);
+		}
+		catch (NotComparableException $e)
+		{
 			return false;
+		}
 
-		if ($a->getSubType()->getFacetCount() >
-			$b->getSubType()->getFacetCount())
-			$stc = 0;
-
-		$as = $a->getSubType()->getStructuredSyntax();
-		$bs = $b->getSubType()->getStructuredSyntax();
-
-		if (empty($as))
-			return (empty($bs) && ($stc == 0));
-		elseif (empty($bs))
+		if ($c < 0)
 			return false;
-
-		return ($stc == 0) && (\strcasecmp($as, $bs) == 0);
+		return self::matchStructuredSyntax(
+			$a->getSubType()->getStructuredSyntax(),
+			$b->getSubType()->getStructuredSyntax());
 	}
 
 	/**

@@ -16,6 +16,7 @@ use NoreSources\MediaType\MediaTypeException;
 use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaTypeInterface;
 use NoreSources\MediaType\MediaTypeRegistry;
+use NoreSources\Type\TypeDescription;
 
 class MediaTypeTest extends \PHPUnit\Framework\TestCase
 {
@@ -251,7 +252,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			'not comparable' => [
 				'html',
 				'json',
-				0
+				NotComparableException::class
 			],
 			'more precise' => [
 				'vnd.ns.php',
@@ -265,10 +266,14 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			]
 		];
 
-		foreach ($tests as $test)
+		foreach ($tests as $label => $test)
 		{
 			$a = null;
 			$b = null;
+			$actual = null;
+			$expected = $test[2];
+			$label = $test[0] . ' < ' . $test[1] . ' = ' . $expected .
+				' (' . $label . ')';
 			try
 			{
 				$a = MediaRange::createFromString(
@@ -278,17 +283,14 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 					'whatever/' . $test[1]);
 				$b = $b->getSubType();
 
-				$result = $a->compare($b);
+				$actual = $a->compare($b);
 			}
 			catch (\Exception $e)
 			{
-				$this->assertEquals('No error', $e->getMessage(),
-					'MediaType creation');
-				continue;
+				$actual = TypeDescription::getName($e);
 			}
 
-			$this->assertEquals($test[2], $result,
-				$test[0] . ' < ' . $test[1] . ' = ...');
+			$this->assertEquals($test[2], $actual, $label);
 		}
 	}
 
@@ -313,7 +315,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			'not comparable' => [
 				'text/html',
 				'font/ttf',
-				0
+				NotComparableException::class
 			],
 			'type more precise than any' => [
 				'text/*',
@@ -329,6 +331,21 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				'application/vnd.ns.php',
 				'application/vnd.ns',
 				1
+			],
+			'media type  not comparable' => [
+				'text/plain',
+				'image/png',
+				NotComparableException::class
+			],
+			'media range  not comparable' => [
+				'text/*',
+				'image/*',
+				NotComparableException::class
+			],
+			'sub type not comparable' => [
+				'image/jpg',
+				'image/png',
+				NotComparableException::class
 			]
 		];
 
@@ -336,6 +353,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		{
 			$a = MediaTypeFactory::createFromString($test[0], true);
 			$b = MediaTypeFactory::createFromString($test[1], true);
+			$expected = $test[2];
 
 			$label = $test[0] . ' < ' . $test[1];
 
@@ -344,9 +362,34 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$this->assertInstanceOf(MediaTypeInterface::class, $b,
 				$label . ' right operand class');
 
-			$result = MediaRange::compareMediaRanges($a, $b);
+			$actual = null;
+			try
+			{
+				$actual = MediaRange::compareMediaRanges($a, $b);
+			}
+			catch (\Exception $e)
+			{
+				$actual = TypeDescription::getName($e);
+			}
 
-			$this->assertEquals($test[2], $result, $label . ' = ...');
+			$this->assertEquals($expected, $actual,
+				$label . ' = ' . $expected);
+
+			if (!\is_integer($expected))
+				continue;
+			$expected = -$expected;
+			$label = $test[1] . ' < ' . $test[0];
+			try
+			{
+				$actual = MediaRange::compareMediaRanges($b, $a);
+			}
+			catch (\Exception $e)
+			{
+				$actual = TypeDescription::getName($e);
+			}
+
+			$this->assertEquals($expected, $actual,
+				$label . ' = ' . $expected);
 		}
 	}
 
@@ -422,11 +465,11 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 	public function testMatch()
 	{
 		$tests = [
-			'Basic 1' => [
+			'Identical' => [
 				'a' => 'text/plain',
 				'b' => 'text/plain'
 			],
-			'Basic 2' => [
+			'Different' => [
 				'a' => 'text/plain',
 				'b' => 'text/empty',
 				'expected' => false
@@ -444,14 +487,30 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				'b' => 'text/*',
 				'expected' => false
 			],
-			'Syntax' => [
-				'a' => 'application/foo+json',
-				'b' => 'application/foo'
+			'More precise subtype' => [
+				'a' => 'text/csv',
+				'b' => 'text/csv.with.semicolon',
+				'expected' => false
 			],
-			'Syntax' => [
+			'Less precise subtype' => [
+				'a' => 'text/csv.with.semicolon',
+				'b' => 'text/csv',
+				'expected' => true
+			],
+			'Identical with syntax' => [
+				'a' => 'application/foo+json',
+				'b' => 'application/foo+json',
+				'expected' => true
+			],
+			'Without syntax' => [
 				'a' => 'application/foo',
 				'b' => 'application/foo+json',
 				'expected' => false
+			],
+			'With syntax' => [
+				'a' => 'application/foo+json',
+				'b' => 'application/foo',
+				'expected' => true
 			],
 			'Less restrictive sub type' => [
 				'a' => 'text/a.b.c',

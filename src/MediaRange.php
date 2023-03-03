@@ -10,6 +10,7 @@ namespace NoreSources\MediaType;
 use NoreSources\NotComparableException;
 use NoreSources\Container\Container;
 use NoreSources\MediaType\Traits\MediaTypeCompareTrait;
+use NoreSources\MediaType\Traits\MediaTypeMatchingTrait;
 use NoreSources\MediaType\Traits\MediaTypeParameterMapTrait;
 use NoreSources\MediaType\Traits\MediaTypeSerializableTrait;
 use NoreSources\MediaType\Traits\MediaTypeStructuredTextTrait;
@@ -22,6 +23,7 @@ class MediaRange implements MediaTypeInterface
 	use MediaTypeParameterMapTrait;
 	use MediaTypeSerializableTrait;
 	use MediaTypeCompareTrait;
+	use MediaTypeMatchingTrait;
 
 	const ANY = '*';
 
@@ -74,7 +76,8 @@ class MediaRange implements MediaTypeInterface
 			if (!TypeDescription::hasStringRepresentation($b))
 				throw new NotComparableException($a, $b);
 
-			$b = MediaRange::createFromString(TypeConversion::toString($b));
+			$b = MediaRange::createFromString(
+				TypeConversion::toString($b));
 		}
 
 		if ($b->getType() == MediaRange::ANY)
@@ -83,7 +86,7 @@ class MediaRange implements MediaTypeInterface
 		if ($a->getType() == MediaRange::ANY)
 			return false;
 
-		if (\strcasecmp($a->getType(), $b->getType()) != 0)
+		if (\strcasecmp($a->getType(), $b->getType()) !== 0)
 			return false;
 
 		$ast = \strval(\implode('.', $a->getSubType()->getFacets()));
@@ -94,26 +97,19 @@ class MediaRange implements MediaTypeInterface
 		if ($ast == MediaRange::ANY)
 			return false;
 
-		$stc = \strcasecmp($ast, $bst);
-
-		if ($a->getSubType()->compare($b->getSubType()) >= 0 &&
-			($a->getSubType()->getFacetCount() ==
-			$b->getSubType()->getFacetCount()) && ($stc != 0))
+		$c = 0;
+		try
+		{
+			$c = $a->getSubType()->compare($b);
+		}
+		catch (NotComparableException $e)
+		{
 			return false;
+		}
 
-		if ($a->getSubType()->getFacetCount() >
-			$b->getSubType()->getFacetCount())
-			$stc = 0;
-
-		$as = $a->getSubType()->getStructuredSyntax();
-		$bs = $b->getSubType()->getStructuredSyntax();
-
-		if (empty($as))
-			return (empty($bs) && ($stc == 0));
-		elseif (empty($bs))
-			return false;
-
-		return ($stc == 0) && (\strcasecmp($as, $bs) == 0);
+		return self::matchStructuredSyntax(
+			$a->getSubType()->getStructuredSyntax(),
+			$b->getSubType()->getStructuredSyntax());
 	}
 
 	/**
@@ -172,6 +168,7 @@ class MediaRange implements MediaTypeInterface
 	}
 
 	/**
+	 * Compare media range precision
 	 *
 	 * @param MediaTypeInterface $a
 	 * @param MediaTypeInterface $b
