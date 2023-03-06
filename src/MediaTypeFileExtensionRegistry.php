@@ -28,19 +28,37 @@ class MediaTypeFileExtensionRegistry
 	 *         false
 	 *         if the extension is not recognized.
 	 */
-	public function mediaTypeFromExtension($extension)
+	public function getExtensionMediaType($extension)
 	{
 		if (!isset($this->extensionMap))
-		{
 			$this->extensionMap = self::getData('extensions');
-		}
 
 		$mediaType = Container::keyValue($this->extensionMap, $extension,
 			false);
-		if ($mediaType)
-			return MediaType::createFromString($mediaType, true);
+
+		if (!$mediaType)
+			return false;
+
+		if (!($mediaType instanceof MediaTypeInterface))
+		{
+			$mediaType = MediaType::createFromString($mediaType, true);
+			$this->extensionMap[$extension] = $mediaType;
+		}
 
 		return $mediaType;
+	}
+
+	/**
+	 *
+	 * @deprecated Use getExtensionMediaType()
+	 *
+	 * @param string $extension
+	 *        	Extension
+	 * @return \NoreSources\MediaType\MediaType|\NoreSources\MediaType\false
+	 */
+	public function mediaTypeFromExtension($extension)
+	{
+		return $this->getExtensionMediaType($extension);
 	}
 
 	/**
@@ -49,17 +67,19 @@ class MediaTypeFileExtensionRegistry
 	 * @param MediaType $mediaType
 	 * @return string[] List of extensions
 	 */
-	public static function getMediaTypeExtensions(MediaType $mediaType)
+	public function getMediaTypeExtensions(MediaType $mediaType)
 	{
 		if (!isset($this->typesMap))
 			$this->typesMap = [];
 
-		if (!Container::keyExists($this->typesMap, $mediaType->getType()))
-			$this->typesMap[$mediaType->getType()] = self::getData(
-				'types.' . $mediaType->getType());
+		$mainType = $mediaType->getType();
 
-		return Container::keyValue(
-			$this->typesMap[$mediaType->getType()], []);
+		if (!Container::keyExists($this->typesMap, $mainType))
+			$this->typesMap[$mainType] = self::getData(
+				'types.' . $mainType);
+
+		return Container::keyValue($this->typesMap[$mainType],
+			\strval($mediaType->getSubType()), []);
 	}
 
 	private function getData($suffix)
