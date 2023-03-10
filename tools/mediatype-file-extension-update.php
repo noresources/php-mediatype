@@ -59,7 +59,7 @@ foreach ($lines as $index => $line)
 		continue;
 	}
 
-	$mediaType = MediaType::fromString($match[1]);
+	$mediaType = MediaType::createFromString($match[1]);
 	$extensions = \preg_split('/\s+/', $match[4]);
 
 	echo (sprintf('%-32.32s %s', \strval($mediaType),
