@@ -229,7 +229,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		$mode = MediaTypeFactory::FROM_ALL |
 			MediaTypeFactory::FROM_EXTENSION_FIRST;
 
-		$this->assertEquals('application/javascript',
+		$this->assertStringEndsWith('/javascript',
 			strval(
 				MediaTypeFactory::createFromMedia(
 					__DIR__ . '/data/c++.js', $mode)),

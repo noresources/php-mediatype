@@ -4,12 +4,12 @@
 <registry xmlns="http://www.iana.org/assignments" id="media-types">
   <title>Media Types</title>
   <category>Multipurpose Internet Mail Extensions (MIME) and Media Types</category>
-  <updated>2021-06-24</updated>
+  <updated>2023-03-06</updated>
   
   
  
-  <registration_rule>Expert Review for Vendor and Personal Trees.</registration_rule>
-  <expert>Ned Freed, Alexey Melnikov, Murray Kucherawy (backup)</expert>
+  <registration_rule>Expert Review for Vendor and Personal Trees</registration_rule>
+  <expert>Alexey Melnikov, Darrel Miller, Murray Kucherawy (backup)</expert>
   <xref type="rfc" data="rfc6838"/>
   <xref type="rfc" data="rfc4855"/>
   <note>Per Section 3.1 of <xref type="rfc" data="rfc6838"/>, Standards Tree requests made through IETF
@@ -28,14 +28,16 @@ Real-time Transport Protocol (RTP) can be found in <xref type="rfc" data="rfc485
 The following is the list of Directories of Content Types and Subtypes. If you wish to 
 register a Media Type with the IANA, please see the following for the online application:
 
-<xref type="uri" data="http://www.iana.org/form/media-types">Application for registration of Media Types</xref>
+<xref type="uri" data="https://www.iana.org/form/media-types">Application for registration of Media Types</xref>
 
 Other Media Type Parameters: <xref type="registry" data="media-types-parameters"/>
 Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters"/>
 Provisional Standard Media Type Registry: <xref type="registry" data="provisional-standard-media-types"/>
 </note>
-<note>Future media types are prohibited from registering any parameter named "q".
-  
+<note>Per Section 12.5.1 of <xref type="rfc" data="rfc9110"/>, use of the "q" parameter name to control 
+content negotiation would interfere with any media type parameter having the same name. 
+Hence, the media type registry disallows parameters named "q".
+
 </note>
   
   
@@ -77,6 +79,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Thomas_Thomsen"/>
       <file type="template">application/A2L</file>
     </record>
+    <record date="2021-07-27">
+      <name>ace+cbor</name>
+      <xref type="rfc" data="rfc9200"/>
+      <file type="template">application/ace+cbor</file>
+    </record>
+    <record date="2022-03-31">
+      <name>ace+json</name>
+      <xref type="draft" data="RFC-ietf-ace-mqtt-tls-profile-17"/>
+      <file type="template">application/ace+json</file>
+    </record>
     <record>
       <name>activemessage</name>
       <xref type="person" data="Ehud_Shapiro"/>
@@ -87,6 +99,26 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="W3C"/>
       <xref type="person" data="Benjamin_Goering"/>
       <file type="template">application/activity+json</file>
+    </record>
+    <record date="2022-03-23">
+      <name>aif+cbor</name>
+      <xref type="rfc" data="rfc9237"/>
+      <file type="template">application/aif+cbor</file>
+    </record>
+    <record date="2022-03-23">
+      <name>aif+json</name>
+      <xref type="rfc" data="rfc9237"/>
+      <file type="template">application/aif+json</file>
+    </record>
+    <record date="2022-02-28">
+      <name>alto-cdni+json</name>
+      <xref type="rfc" data="rfc9241"/>
+      <file type="template">application/alto-cdni+json</file>
+    </record>
+    <record date="2022-02-28">
+      <name>alto-cdnifilter+json</name>
+      <xref type="rfc" data="rfc9241"/>
+      <file type="template">application/alto-cdnifilter+json</file>
     </record>
     <record date="2014-03-18">
       <name>alto-costmap+json</name>
@@ -138,6 +170,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc7285"/>
       <file type="template">application/alto-networkmap+json</file>
     </record>
+    <record date="2022-02-28">
+      <name>alto-propmap+json</name>
+      <xref type="rfc" data="rfc9240"/>
+      <file type="template">application/alto-propmap+json</file>
+    </record>
+    <record date="2022-02-28">
+      <name>alto-propmapparams+json</name>
+      <xref type="rfc" data="rfc9240"/>
+      <file type="template">application/alto-propmapparams+json</file>
+    </record>
     <record date="2020-03-26">
       <name>alto-updatestreamcontrol+json</name>
       <xref type="rfc" data="rfc8895"/>
@@ -163,6 +205,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>applefile</name>
       <xref type="person" data="Patrik_Faltstrom"/>
       <file type="template">application/applefile</file>
+    </record>
+    <record date="2021-09-03">
+      <name>at+jwt</name>
+      <xref type="rfc" data="rfc9068"/>
+      <file type="template">application/at+jwt</file>
     </record>
     <record date="2014-08-26">
       <name>ATF</name>
@@ -238,6 +285,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc4745"/>
       <file type="template">application/auth-policy+xml</file>
     </record>
+    <record date="2022-07-26">
+      <name>automationml-aml+xml</name>
+      <xref type="person" data="AutomationML_e.V."/>
+      <file type="template">application/automationml-aml+xml</file>
+    </record>
+    <record date="2022-07-20">
+      <name>automationml-amlx+zip</name>
+      <xref type="person" data="AutomationML_e.V."/>
+      <file type="template">application/automationml-amlx+zip</file>
+    </record>
     <record>
       <name>bacnet-xdd+zip</name>
       <xref type="person" data="ASHRAE"/>
@@ -304,6 +361,12 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc4267"/>
       <file type="template">application/ccxml+xml</file>
     </record>
+    <record date="2021-12-15" updated="2022-04-13">
+      <name>cda+xml</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Marc_Duteau"/>
+      <file type="template">application/cda+xml</file>
+    </record>
     <record date="2014-11-11">
       <name>CDFX+XML</name>
       <xref type="person" data="ASAM"/>
@@ -361,6 +424,12 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc6230"/>
       <file type="template">application/cfw</file>
     </record>
+    <record date="2022-01-13">
+      <name>city+json</name>
+      <xref type="person" data="OGC"/>
+      <xref type="person" data="Scott_Simmons"/>
+      <file type="template">application/city+json</file>
+    </record>
     <record date="2020-10-02">
       <name>clr</name>
       <xref type="person" data="IMS_Global"/>
@@ -402,6 +471,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="David_Glazer"/>
       <file type="template">application/commonground</file>
     </record>
+    <record date="2022-07-12">
+      <name>concise-problem-details+cbor</name>
+      <xref type="rfc" data="rfc9290">RFC9290, Section 6.3</xref>
+      <file type="template">application/concise-problem-details+cbor</file>
+    </record>
     <record>
       <name>conference-info+xml</name>
       <xref type="rfc" data="rfc4575"/>
@@ -414,18 +488,23 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record date="2017-01-11">
       <name>cose</name>
-      <xref type="draft" data="RFC-ietf-cose-rfc8152bis-struct-15"/>
+      <xref type="rfc" data="rfc9052"/>
       <file type="template">application/cose</file>
     </record>
     <record date="2017-01-11">
       <name>cose-key</name>
-      <xref type="draft" data="RFC-ietf-cose-rfc8152bis-struct-15"/>
+      <xref type="rfc" data="rfc9052"/>
       <file type="template">application/cose-key</file>
     </record>
     <record date="2017-01-11">
       <name>cose-key-set</name>
-      <xref type="draft" data="RFC-ietf-cose-rfc8152bis-struct-15"/>
+      <xref type="rfc" data="rfc9052"/>
       <file type="template">application/cose-key-set</file>
+    </record>
+    <record date="2022-10-27">
+      <name>cose-x509</name>
+      <xref type="rfc" data="rfc9360"/>
+      <file type="template">application/cose-x509</file>
     </record>
     <record>
       <name>csrattrs</name>
@@ -448,6 +527,18 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Ivan_Herman"/>
       <file type="template">application/csvm+json</file>
     </record>
+    <record date="2022-05-09">
+      <name>cwl</name>
+      <xref type="person" data="CWL_Project"/>
+      <xref type="person" data="Michael_R._Crusoe"/>
+      <file type="template">application/cwl</file>
+    </record>
+    <record date="2022-05-09">
+      <name>cwl+json</name>
+      <xref type="person" data="CWL_Project"/>
+      <xref type="person" data="Michael_R._Crusoe"/>
+      <file type="template">application/cwl+json</file>
+    </record>
     <record date="2018-03-22">
       <name>cwt</name>
       <xref type="rfc" data="rfc8392"/>
@@ -460,9 +551,14 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record>
       <name>dash+xml</name>
-      <xref type="person" data="Thomas_Stockhammer"/>
       <xref type="person" data="ISO-IEC_JTC1"/>
+      <xref type="person" data="Thomas_Stockhammer"/>
       <file type="template">application/dash+xml</file>
+    </record>
+    <record date="2021-11-09">
+      <name>dash-patch+xml</name>
+      <xref type="person" data="ISO-IEC_JTC1"/>
+      <file type="template">application/dash-patch+xml</file>
     </record>
     <record>
       <name>dashdelta</name>
@@ -500,18 +596,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc3240"/>
       <file type="template">application/dicom</file>
     </record>
-    <record date="2016-09-19">
+    <record date="2016-09-19" updated="2021-08-27">
       <name>dicom+json</name>
-      <xref type="person" data="DICOM_Standards_Committee"/>
+      <xref type="person" data="DICOM_Standard_Committee"/>
       <xref type="person" data="David_Clunie"/>
-      <xref type="person" data="James_F_Philbin"/>
       <file type="template">application/dicom+json</file>
     </record>
-    <record date="2016-09-26">
+    <record date="2016-09-26" updated="2021-08-27">
       <name>dicom+xml</name>
-      <xref type="person" data="DICOM_Standards_Committee"/>
+      <xref type="person" data="DICOM_Standard_Committee"/>
       <xref type="person" data="David_Clunie"/>
-      <xref type="person" data="James_F_Philbin"/>
       <file type="template">application/dicom+xml</file>
     </record>
     <record date="2014-12-04">
@@ -543,7 +637,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record date="2020-01-16" updated="2021-06-11">
       <name>dots+cbor</name>
-      <xref type="draft" data="RFC-ietf-dots-rfc8782-bis-08"/>
+      <xref type="rfc" data="rfc9132"/>
       <file type="template">application/dots+cbor</file>
     </record>
     <record>
@@ -566,9 +660,10 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc3029"/>
       <file type="template">application/dvcs</file>
     </record>
-    <record>
-      <name>ecmascript</name>
+    <record updated="2022-03-08">
+      <name>ecmascript (OBSOLETED in favor of text/javascript)</name>
       <xref type="rfc" data="rfc4329"/>
+      <xref type="rfc" data="rfc9239"/>
       <file type="template">application/ecmascript</file>
     </record>
     <record>
@@ -629,6 +724,12 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc8147"/>
       <file type="template">application/EmergencyCallData.eCall.MSD</file>
     </record>
+    <record date="2022-10-10">
+      <name>EmergencyCallData.LegacyESN+json</name>
+      <xref type="person" data="NENA"/>
+      <xref type="person" data="Randall_Gellens"/>
+      <file type="template">application/EmergencyCallData.LegacyESN+json</file>
+    </record>
     <record date="2015-12-10">
       <name>EmergencyCallData.ProviderInfo+xml</name>
       <xref type="rfc" data="rfc7852"/>
@@ -644,9 +745,10 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc7852"/>
       <file type="template">application/EmergencyCallData.SubscriberInfo+xml</file>
     </record>
-    <record date="2017-02-28">
+    <record date="2017-02-28" updated="2022-05-25">
       <name>EmergencyCallData.VEDS+xml</name>
       <xref type="rfc" data="rfc8148"/>
+      <xref type="rfc-errata" data="6500"/>
       <file type="template">application/EmergencyCallData.VEDS+xml</file>
     </record>
     <record>
@@ -672,10 +774,10 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc5730"/>
       <file type="template">application/epp+xml</file>
     </record>
-    <record>
+    <record updated="2022-08-16">
       <name>epub+zip</name>
-      <xref type="person" data="International_Digital_Publishing_Forum"/>
-      <xref type="person" data="William_McCoy"/>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="EPUB_3_WG"/>
       <file type="template">application/epub+zip</file>
     </record>
     <record>
@@ -696,8 +798,14 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record date="2018-12-21">
       <name>expect-ct-report+json</name>
-      <xref type="draft" data="RFC-ietf-httpbis-expect-ct-08"/>
+      <xref type="rfc" data="rfc9163"/>
       <file type="template">application/expect-ct-report+json</file>
+    </record>
+    <record date="2021-08-06">
+      <name>express</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Dana_Tripp"/>
+      <file type="template">application/express</file>
     </record>
     <record>
       <name>fastinfoset</name>
@@ -710,6 +818,12 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="ITU-T_ASN.1_Rapporteur"/>
       <xref type="person" data="ISO-IEC_JTC1_SC6_ASN.1_Rapporteur"/>
       <file type="template">application/fastsoap</file>
+    </record>
+    <record date="2022-04-05">
+      <name>fdf</name>
+      <xref type="person" data="ISO-TC_171-SC_2"/>
+      <xref type="person" data="Betsy_Fanning"/>
+      <file type="template">application/fdf</file>
     </record>
     <record>
       <name>fdt+xml</name>
@@ -810,9 +924,15 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc5985"/>
       <file type="template">application/held+xml</file>
     </record>
-    <record>
+    <record date="2021-12-15" updated="2022-04-13">
+      <name>hl7v2+xml</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Marc_Duteau"/>
+      <file type="template">application/hl7v2+xml</file>
+    </record>
+    <record updated="2021-10-06">
       <name>http</name>
-      <xref type="rfc" data="rfc7230"/>
+      <xref type="rfc" data="rfc9112"/>
       <file type="template">application/http</file>
     </record>
     <record>
@@ -901,9 +1021,10 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="ITS-IG-W3C"/>
       <file type="template">application/its+xml</file>
     </record>
-    <record>
-      <name>javascript</name>
+    <record updated="2022-03-08">
+      <name>javascript (OBSOLETED in favor of text/javascript)</name>
       <xref type="rfc" data="rfc4329"/>
+      <xref type="rfc" data="rfc9239"/>
       <file type="template">application/javascript</file>
     </record>
     <record date="2017-06-27">
@@ -929,7 +1050,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record updated="2020-11-25">
       <name>jscalendar+json</name>
-      <xref type="draft" data="RFC-ietf-calext-jscalendar-32"/>
+      <xref type="rfc" data="rfc8984"/>
       <file type="template">application/jscalendar+json</file>
     </record>
     <record updated="2017-07-21">
@@ -988,10 +1109,25 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc6690"/>
       <file type="template">application/link-format</file>
     </record>
+    <record date="2022-05-11">
+      <name>linkset</name>
+      <xref type="rfc" data="rfc9264"/>
+      <file type="template">application/linkset</file>
+    </record>
+    <record date="2022-05-11">
+      <name>linkset+json</name>
+      <xref type="rfc" data="rfc9264"/>
+      <file type="template">application/linkset+json</file>
+    </record>
     <record date="2014-02-03">
       <name>load-control+xml</name>
       <xref type="rfc" data="rfc7200"/>
       <file type="template">application/load-control+xml</file>
+    </record>
+    <record date="2022-10-07">
+      <name>logout+jwt</name>
+      <xref type="person" data="OpenID_Foundation_Artifact_Binding_WG"/>
+      <file type="template">application/logout+jwt</file>
     </record>
     <record>
       <name>lost+xml</name>
@@ -1179,7 +1315,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record date="2021-06-01">
       <name>missing-blocks+cbor-seq</name>
-      <xref type="draft" data="RFC-ietf-core-new-block-14"/>
+      <xref type="rfc" data="rfc9177"/>
       <file type="template">application/missing-blocks+cbor-seq</file>
     </record>
     <record date="2019-03-07">
@@ -1333,8 +1469,13 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record date="2021-04-21">
       <name>oauth-authz-req+jwt</name>
-      <xref type="draft" data="RFC-ietf-oauth-jwsreq-34"/>
+      <xref type="rfc" data="rfc9101"/>
       <file type="template">application/oauth-authz-req+jwt</file>
+    </record>
+    <record date="2022-02-18">
+      <name>oblivious-dns-message</name>
+      <xref type="rfc" data="rfc9230"/>
+      <file type="template">application/oblivious-dns-message</file>
     </record>
     <record>
       <name>ocsp-request</name>
@@ -1369,9 +1510,10 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Thomas_Thomsen"/>
       <file type="template">application/ODX</file>
     </record>
-    <record>
+    <record date="2022-08-16">
       <name>oebps-package+xml</name>
-      <xref type="rfc" data="rfc4839"/>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="EPUB_3_WG"/>
       <file type="template">application/oebps-package+xml</file>
     </record>
     <record>
@@ -1394,6 +1536,18 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>oxps</name>
       <xref type="person" data="Ecma_International_Helpdesk"/>
       <file type="template">application/oxps</file>
+    </record>
+    <record date="2021-08-05">
+      <name>p21</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Dana_Tripp"/>
+      <file type="template">application/p21</file>
+    </record>
+    <record date="2021-07-20">
+      <name>p21+zip</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Dana_Tripp"/>
+      <file type="template">application/p21+zip</file>
     </record>
     <record>
       <name>p2p-overlay+xml</name>
@@ -1644,10 +1798,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="uri" data="http://www.jtc1sc34.org/repository/0661.pdf"/>
       <file type="template">application/relax-ng-compact-syntax</file>
     </record>
-    <record>
-      <name>remote-printing</name>
+    <record updated="2022-12-15">
+      <name>remote-printing (OBSOLETE)</name>
       <xref type="rfc" data="rfc1486"/>
       <xref type="person" data="Marshall_Rose"/>
+      <xref type="uri" data="https://datatracker.ietf.org/doc/status-change-int-tlds-to-historic">status-change-int-tlds-to-historic</xref>
       <file type="template">application/remote-printing</file>
     </record>
     <record>
@@ -1684,6 +1839,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>rls-services+xml</name>
       <xref type="rfc" data="rfc4826"/>
       <file type="template">application/rls-services+xml</file>
+    </record>
+    <record date="2022-09-20">
+      <name>rpki-checklist</name>
+      <xref type="rfc" data="rfc9323"/>
+      <file type="template">application/rpki-checklist</file>
     </record>
     <record>
       <name>rpki-ghostbusters</name>
@@ -1853,13 +2013,13 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     <record>
       <name>sep-exi</name>
       <xref type="person" data="Robby_Simpson"/>
-      <xref type="person" data="ZigBee"/>
+      <xref type="person" data="Connectivity_Standards_Alliance"/>
       <file type="template">application/sep-exi</file>
     </record>
     <record>
       <name>sep+xml</name>
       <xref type="person" data="Robby_Simpson"/>
-      <xref type="person" data="ZigBee"/>
+      <xref type="person" data="Connectivity_Standards_Alliance"/>
       <file type="template">application/sep+xml</file>
     </record>
     <record>
@@ -1935,7 +2095,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/slate</file>
     </record>
     <record>
-      <name>smil - OBSOLETED in favor of application/smil+xml</name>
+      <name>smil (OBSOLETED in favor of application/smil+xml)</name>
       <xref type="rfc" data="rfc4536"/>
       <file type="template">application/smil</file>
     </record>
@@ -1965,6 +2125,12 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="W3C"/>
       <xref type="uri" data="http://www.w3.org/TR/2007/CR-rdf-sparql-query-20070614/#mediaType"/>
       <file type="template">application/sparql-query</file>
+    </record>
+    <record date="2021-11-03">
+      <name>spdx+json</name>
+      <xref type="person" data="Linux_Foundation"/>
+      <xref type="person" data="Rose_Judge"/>
+      <file type="template">application/spdx+json</file>
     </record>
     <record>
       <name>sparql-results+xml</name>
@@ -2007,7 +2173,12 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="OASIS"/>
       <xref type="person" data="Chet_Ensign"/>
       <file type="template">application/stix+json</file>
-    </record> 
+    </record>
+    <record date="2022-08-01">
+      <name>swid+cbor</name>
+      <xref type="draft" data="RFC-ietf-sacm-coswid-24"/>
+      <file type="template">application/swid+cbor</file>
+    </record>
     <record date="2019-09-03">
       <name>swid+xml</name>
       <xref type="person" data="ISO-IEC_JTC1"/>
@@ -2123,10 +2294,21 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="rfc" data="rfc8460"/>
       <file type="template">application/tlsrpt+json</file>
     </record>
+    <record date="2022-08-22">
+      <name>tm+json</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="Sebastian_Kaebisch"/>
+      <file type="template">application/tm+json</file>
+    </record>
     <record date="2017-12-15">
       <name>tnauthlist</name>
       <xref type="rfc" data="rfc8226"/>
       <file type="template">application/tnauthlist</file>
+    </record>
+    <record date="2021-09-07">
+      <name>token-introspection+jwt</name>
+      <xref type="draft" data="RFC-oauth-jwt-introspection-response-12"/>
+      <file type="template">application/token-introspection+jwt</file>
     </record>
     <record date="2018-07-05">
       <name>trickle-ice-sdpfrag</name>
@@ -2261,10 +2443,20 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Frederic_Firmin"/>
       <file type="template">application/vnd.3gpp.mcdata-info+xml</file>
     </record>
+    <record date="2022-03-30">
+      <name>vnd.3gpp.mcdata-msgstore-ctrl-request+xml</name>
+      <xref type="person" data="Kiran_Kapale"/>
+      <file type="template">application/vnd.3gpp.mcdata-msgstore-ctrl-request+xml</file>
+    </record>
     <record date="2018-06-19">
       <name>vnd.3gpp.mcdata-payload</name>
       <xref type="person" data="Frederic_Firmin"/>
       <file type="template">application/vnd.3gpp.mcdata-payload</file>
+    </record>
+    <record date="2022-03-30">
+      <name>vnd.3gpp.mcdata-regroup+xml</name>
+      <xref type="person" data="Kiran_Kapale"/>
+      <file type="template">application/vnd.3gpp.mcdata-regroup+xml</file>
     </record>
     <record date="2018-11-14">
       <name>vnd.3gpp.mcdata-service-config+xml</name>
@@ -2342,7 +2534,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.3gpp.mcvideo-affiliation-command+xml</file>
     </record>
     <record date="2018-11-28" updated="2019-08-19">
-      <name>vnd.3gpp.mcvideo-affiliation-info+xml - OBSOLETED in favor of application/vnd.3gpp.mcvideo-info+xml</name>
+      <name>vnd.3gpp.mcvideo-affiliation-info+xml (OBSOLETED in favor of application/vnd.3gpp.mcvideo-info+xml)</name>
       <xref type="person" data="Frederic_Firmin"/>
       <file type="template">application/vnd.3gpp.mcvideo-affiliation-info+xml</file>
     </record>
@@ -2413,10 +2605,25 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="John_M_Meredith"/>
       <file type="template">application/vnd.3gpp.pic-bw-var</file>
     </record>
+    <record date="2022-09-05">
+      <name>vnd.3gpp-prose-pc3a+xml</name>
+      <xref type="person" data="Haorui_Yang"/>
+      <file type="template">application/vnd.3gpp-prose-pc3a+xml</file>
+    </record>
+    <record date="2022-09-05">
+      <name>vnd.3gpp-prose-pc3ach+xml</name>
+      <xref type="person" data="Haorui_Yang"/>
+      <file type="template">application/vnd.3gpp-prose-pc3ach+xml</file>
+    </record>
     <record date="2015-09-11">
       <name>vnd.3gpp-prose-pc3ch+xml</name>
       <xref type="person" data="Frederic_Firmin"/>
       <file type="template">application/vnd.3gpp-prose-pc3ch+xml</file>
+    </record>
+    <record date="2022-09-05">
+      <name>vnd.3gpp-prose-pc8+xml</name>
+      <xref type="person" data="Haorui_Yang"/>
+      <file type="template">application/vnd.3gpp-prose-pc8+xml</file>
     </record>
     <record date="2015-09-01">
       <name>vnd.3gpp-prose+xml</name>
@@ -2428,6 +2635,18 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="_3GPP"/>
       <xref type="person" data="Yang_Yong"/>
       <file type="template">application/vnd.3gpp.s1ap</file>
+    </record>
+    <record date="2023-02-13">
+      <name>vnd.3gpp.seal-info+xml</name>
+      <xref type="person" data="_3GPP"/>
+      <xref type="person" data="Christian_Herrero-Veron"/>
+      <file type="template">application/vnd.3gpp.seal-info+xml</file>
+    </record>
+    <record date="2023-02-13">
+      <name>vnd.3gpp.seal-location-info+xml</name>
+      <xref type="person" data="_3GPP"/>
+      <xref type="person" data="Christian_Herrero-Veron"/>
+      <file type="template">application/vnd.3gpp.seal-location-info+xml</file>
     </record>
     <record>
       <name>vnd.3gpp.sms</name>
@@ -2459,14 +2678,20 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Frederic_Firmin"/>
       <file type="template">application/vnd.3gpp.ussd+xml</file>
     </record>
+    <record date="2023-02-13">
+      <name>vnd.3gpp.vae-info+xml</name>
+      <xref type="person" data="_3GPP"/>
+      <xref type="person" data="Christian_Herrero-Veron"/>
+      <file type="template">application/vnd.3gpp.vae-info+xml</file>
+    </record>
     <record date="2017-09-22">
       <name>vnd.3gpp-v2x-local-service-information</name>
       <xref type="person" data="Frederic_Firmin"/>
       <file type="template">application/vnd.3gpp-v2x-local-service-information</file>
     </record>
-    <record>
+    <record updated="2021-09-21">
       <name>vnd.3gpp2.bcmcsinfo+xml</name>
-      <xref type="person" data="Andy_Dryden"/>
+      <xref type="person" data="AC_Mahendran"/>
       <file type="template">application/vnd.3gpp2.bcmcsinfo+xml</file>
     </record>
     <record>
@@ -2499,6 +2724,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Steve_Leow"/>
       <file type="template">application/vnd.accpac.simply.imp</file>
     </record>
+    <record date="2023-03-02">
+      <name>vnd.acm.addressxfer+json</name>
+      <xref type="person" data="Sridhar_Ramakrishnan"/>
+      <file type="template">application/vnd.acm.addressxfer+json</file>
+    </record>
     <record>
       <name>vnd.acucobol</name>
       <xref type="person" data="Dovid_Lubin"/>
@@ -2521,7 +2751,6 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
     </record>
     <record>
       <name>vnd.adobe.fxp</name>
-      <xref type="person" data="Robert_Brambley"/>
       <xref type="person" data="Steven_Heintz"/>
       <file type="template">application/vnd.adobe.fxp</file>
     </record>
@@ -2534,11 +2763,6 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.adobe.xdp+xml</name>
       <xref type="person" data="John_Brinkman"/>
       <file type="template">application/vnd.adobe.xdp+xml</file>
-    </record>
-    <record>
-      <name>vnd.adobe.xfdf</name>
-      <xref type="person" data="Roberto_Perelman"/>
-      <file type="template">application/vnd.adobe.xfdf</file>
     </record>
     <record>
       <name>vnd.aether.imp</name>
@@ -2609,6 +2833,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.afpc.modca-pagesegment</name>
       <xref type="person" data="Jörg_Palmer"/>
       <file type="template">application/vnd.afpc.modca-pagesegment</file>
+    </record>
+    <record date="2021-10-05">
+      <name>vnd.age</name>
+      <xref type="person" data="Filippo_Valsorda"/>
+      <file type="template">application/vnd.age</file>
     </record>
     <record>
       <name>vnd.ah-barcode</name>
@@ -2702,6 +2931,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Roger_Meier"/>
       <file type="template">application/vnd.apache.thrift.json</file>
     </record>
+    <record date="2022-09-05">
+      <name>vnd.apexlang</name>
+      <xref type="person" data="Fawad_Shaikh"/>
+      <file type="template">application/vnd.apexlang</file>
+    </record>
     <record>
       <name>vnd.api+json</name>
       <xref type="person" data="Steve_Klabnik"/>
@@ -2743,7 +2977,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.apple.pages</file>
     </record>
     <record>
-      <name>vnd.arastra.swi - OBSOLETED in favor of application/vnd.aristanetworks.swi</name>
+      <name>vnd.arastra.swi (OBSOLETED in favor of application/vnd.aristanetworks.swi)</name>
       <xref type="person" data="Bill_Fenner"/>
       <file type="template">application/vnd.arastra.swi</file>
     </record>
@@ -2821,6 +3055,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.bekitzur-stech+json</name>
       <xref type="person" data="Jegulsky"/>
       <file type="template">application/vnd.bekitzur-stech+json</file>
+    </record>
+    <record date="2022-05-04">
+      <name>vnd.belightsoft.lhzd+zip</name>
+      <xref type="person" data="Dmytro_Yunchyk"/>
+      <file type="template">application/vnd.belightsoft.lhzd+zip</file>
+    </record>
+    <record date="2022-06-27">
+      <name>vnd.belightsoft.lhzl+zip</name>
+      <xref type="person" data="Dmytro_Yunchyk"/>
+      <file type="template">application/vnd.belightsoft.lhzl+zip</file>
     </record>
     <record date="2017-04-07">
       <name>vnd.bint.med-content</name>
@@ -2968,6 +3212,21 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.cluetrust.cartomobile-config-pkg</name>
       <xref type="person" data="Gaige_Paulsen"/>
       <file type="template">application/vnd.cluetrust.cartomobile-config-pkg</file>
+    </record>
+    <record date="2022-09-01">
+      <name>vnd.cncf.helm.chart.content.v1.tar+gzip</name>
+      <xref type="person" data="Andrew_Block"/>
+      <file type="template">application/vnd.cncf.helm.chart.content.v1.tar+gzip</file>
+    </record>
+    <record date="2022-10-04">
+      <name>vnd.cncf.helm.chart.provenance.v1.prov</name>
+      <xref type="person" data="Andrew_Block"/>
+      <file type="template">application/vnd.cncf.helm.chart.provenance.v1.prov</file>
+    </record>
+    <record date="2023-02-27">
+      <name>vnd.cncf.helm.config.v1+json</name>
+      <xref type="person" data="Andrew_Block"/>
+      <file type="template">application/vnd.cncf.helm.config.v1+json</file>
     </record>
     <record date="2014-11-21">
       <name>vnd.coffeescript</name>
@@ -3189,6 +3448,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="James_Fields"/>
       <file type="template">application/vnd.data-vision.rdz</file>
     </record>
+    <record date="2022-07-20">
+      <name>vnd.datalog</name>
+      <xref type="person" data="Simon_Johnston"/>
+      <file type="template">application/vnd.datalog</file>
+    </record>
     <record date="2017-05-01">
       <name>vnd.datapackage+json</name>
       <xref type="person" data="Paul_Walsh"/>
@@ -3204,9 +3468,9 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Mi_Tar"/>
       <file type="template">application/vnd.dbf</file>
     </record>
-    <record date="2014-05-20">
+    <record date="2014-05-20" updated="2022-01-07">
       <name>vnd.debian.binary-package</name>
-      <xref type="person" data="Charles_Plessy"/>
+      <xref type="person" data="Debian_Policy_mailing_list"/>
       <file type="template">application/vnd.debian.binary-package</file>
     </record>
     <record>
@@ -3438,6 +3702,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Gert_Buettgenbach"/>
       <file type="template">application/vnd.ecdis-update</file>
     </record>
+    <record date="2022-01-26">
+      <name>vnd.eclipse.ditto+json</name>
+      <xref type="person" data="Eclipse_Ditto_developers"/>
+      <file type="template">application/vnd.eclipse.ditto+json</file>
+    </record>
     <record>
       <name>vnd.ecowin.chart</name>
       <xref type="person" data="Thomas_Olsson"/>
@@ -3479,6 +3748,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="UEFI_Forum"/>
       <xref type="person" data="Fu_Siyuan"/>
       <file type="template">application/vnd.efi.iso</file>
+    </record>
+    <record date="2023-02-08">
+      <name>vnd.eln+zip</name>
+      <xref type="person" data="Nicolas_CARPI"/>
+      <file type="template">application/vnd.eln+zip</file>
     </record>
     <record>
       <name>vnd.emclient.accessrequest+xml</name>
@@ -3652,6 +3926,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Shicheng_Hu"/>
       <file type="template">application/vnd.etsi.tsl.der</file>
     </record>
+    <record date="2022-01-03">
+      <name>vnd.eu.kasparian.car+json</name>
+      <xref type="person" data="Hervé_Kasparian"/>
+      <file type="template">application/vnd.eu.kasparian.car+json</file>
+    </record>
+    <record>
+      <name>vnd.eudora.data</name>
+      <xref type="person" data="Pete_Resnick"/>
+      <file type="template">application/vnd.eudora.data</file>
+    </record>
     <record date="2017-07-18">
       <name>vnd.evolv.ecig.profile</name>
       <xref type="person" data="James_Bellinger"/>
@@ -3666,11 +3950,6 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.evolv.ecig.theme</name>
       <xref type="person" data="James_Bellinger"/>
       <file type="template">application/vnd.evolv.ecig.theme</file>
-    </record>
-    <record>
-      <name>vnd.eudora.data</name>
-      <xref type="person" data="Pete_Resnick"/>
-      <file type="template">application/vnd.eudora.data</file>
     </record>
     <record date="2018-10-18">
       <name>vnd.exstream-empower+zip</name>
@@ -3702,10 +3981,10 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Thomas_Huth"/>
       <file type="template">application/vnd.fastcopy-disk-image</file>
     </record>
-    <record>
-      <name>vnd.fdf</name>
-      <xref type="person" data="Steve_Zilles"/>
-      <file type="template">application/vnd.fdf</file>
+    <record date="2021-12-07">
+      <name>vnd.familysearch.gedcom+zip</name>
+      <xref type="person" data="Gordon_Clarke"/>
+      <file type="template">application/vnd.familysearch.gedcom+zip</file>
     </record>
     <record>
       <name>vnd.fdsn.mseed</name>
@@ -3763,13 +4042,13 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.framemaker</file>
     </record>
     <record updated="2020-05-04">
-      <name>vnd.frogans.fnc - OBSOLETE</name>
+      <name>vnd.frogans.fnc (OBSOLETE)</name>
       <xref type="person" data="OP3FT"/>
       <xref type="person" data="Alexis_Tamas"/>
       <file type="template">application/vnd.frogans.fnc</file>
     </record>
     <record updated="2020-05-04">
-      <name>vnd.frogans.ltf - OBSOLETE</name>
+      <name>vnd.frogans.ltf (OBSOLETE)</name>
       <xref type="person" data="OP3FT"/>
       <xref type="person" data="Alexis_Tamas"/>
       <file type="template">application/vnd.frogans.ltf</file>
@@ -3884,10 +4163,50 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Torben_Frey"/>
       <file type="template">application/vnd.genomatix.tuxedo</file>
     </record>
+    <record date="2022-04-05">
+      <name>vnd.genozip</name>
+      <xref type="person" data="Divon_Lan"/>
+      <file type="template">application/vnd.genozip</file>
+    </record>
     <record date="2019-11-26">
       <name>vnd.gentics.grd+json</name>
       <xref type="person" data="Philipp_Gortan"/>
       <file type="template">application/vnd.gentics.grd+json</file>
+    </record>
+    <record date="2022-10-21">
+      <name>vnd.gentoo.catmetadata+xml</name>
+      <xref type="person" data="Michał_Górny"/>
+      <file type="template">application/vnd.gentoo.catmetadata+xml</file>
+    </record>
+    <record date="2022-11-07">
+      <name>vnd.gentoo.ebuild</name>
+      <xref type="person" data="Michał_Górny"/>
+      <file type="template">application/vnd.gentoo.ebuild</file>
+    </record>
+    <record date="2022-11-07">
+      <name>vnd.gentoo.eclass</name>
+      <xref type="person" data="Michał_Górny"/>
+      <file type="template">application/vnd.gentoo.eclass</file>
+    </record>
+    <record date="2022-11-30">
+      <name>vnd.gentoo.gpkg</name>
+      <xref type="person" data="Michał_Górny"/>
+      <file type="template">application/vnd.gentoo.gpkg</file>
+    </record>
+    <record date="2022-10-04">
+      <name>vnd.gentoo.manifest</name>
+      <xref type="person" data="Michał_Górny"/>
+      <file type="template">application/vnd.gentoo.manifest</file>
+    </record>
+    <record date="2022-10-21">
+      <name>vnd.gentoo.xpak</name>
+      <xref type="person" data="Gentoo_Portage_Project"/>
+      <file type="template">application/vnd.gentoo.xpak</file>
+    </record>
+    <record date="2022-11-28">
+      <name>vnd.gentoo.pkgmetadata+xml</name>
+      <xref type="person" data="Michał_Górny"/>
+      <file type="template">application/vnd.gentoo.pkgmetadata+xml</file>
     </record>
     <record date="2014-05-20">
       <name>vnd.geo+json (OBSOLETED by <xref type="rfc" data="rfc7946"/> in favor of application/geo+json)</name>
@@ -3895,7 +4214,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.geo+json</file>
     </record>
     <record>
-      <name>vnd.geocube+xml - OBSOLETED by request</name>
+      <name>vnd.geocube+xml (OBSOLETED by request)</name>
       <xref type="person" data="Francois_Pirsch"/>
       <file type="template">application/vnd.geocube+xml</file>
     </record>
@@ -3958,6 +4277,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Christian_V._Sciberras"/>
       <file type="template">application/vnd.gmx</file>
     </record>
+    <record date="2022-02-28">
+      <name>vnd.gnu.taler.exchange+json</name>
+      <xref type="person" data="Christian_Grothoff"/>
+      <file type="template">application/vnd.gnu.taler.exchange+json</file>
+    </record>
+    <record date="2022-02-28">
+      <name>vnd.gnu.taler.merchant+json</name>
+      <xref type="person" data="Christian_Grothoff"/>
+      <file type="template">application/vnd.gnu.taler.merchant+json</file>
+    </record>
     <record>
       <name>vnd.google-earth.kml+xml</name>
       <xref type="person" data="Michael_Ashbridge"/>
@@ -3985,6 +4314,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Peter_Biro"/>
       <xref type="person" data="Stefan_Szilva"/>
       <file type="template">application/vnd.gov.sk.xmldatacontainer+xml</file>
+    </record>
+    <record date="2023-02-09">
+      <name>vnd.gpxsee.map+xml</name>
+      <xref type="person" data="Martin_Tůma"/>
+      <file type="template">application/vnd.gpxsee.map+xml</file>
     </record>
     <record>
       <name>vnd.grafeq</name>
@@ -4106,6 +4440,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Bob_Pentecost"/>
       <file type="template">application/vnd.hp-PCLXL</file>
     </record>
+    <record date="2023-02-13">
+      <name>vnd.hsl</name>
+      <xref type="person" data="Heungsub_Lee"/>
+      <file type="template">application/vnd.hsl</file>
+    </record>
     <record>
       <name>vnd.httphone</name>
       <xref type="person" data="Franck_Lefevre"/>
@@ -4137,7 +4476,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.hzn-3d-crossword</file>
     </record>
     <record updated="2018-04-10">
-      <name>vnd.ibm.afplinedata - OBSOLETED in favor of vnd.afpc.afplinedata</name>
+      <name>vnd.ibm.afplinedata (OBSOLETED in favor of vnd.afpc.afplinedata)</name>
       <xref type="person" data="Roger_Buis"/>
       <file type="template">application/vnd.ibm.afplinedata</file>
     </record>
@@ -4152,7 +4491,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.ibm.MiniPay</file>
     </record>
     <record updated="2018-05-01">
-      <name>vnd.ibm.modcap - OBSOLETED in favor of application/vnd.afpc.modca</name>
+      <name>vnd.ibm.modcap (OBSOLETED in favor of application/vnd.afpc.modca)</name>
       <xref type="person" data="Reinhard_Hohensee"/>
       <file type="template">application/vnd.ibm.modcap</file>
     </record>
@@ -4262,7 +4601,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.infotech.project+xml</file>
     </record>
     <record>
-      <name>vnd.informix-visionary - OBSOLETED in favor of application/vnd.visionary</name>
+      <name>vnd.informix-visionary (OBSOLETED in favor of application/vnd.visionary)</name>
       <xref type="person" data="Christopher_Gales"/>
       <file type="template">application/vnd.informix-visionary</file>
     </record>
@@ -4305,6 +4644,26 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.intu.qfx</name>
       <xref type="person" data="Greg_Scratchley"/>
       <file type="template">application/vnd.intu.qfx</file>
+    </record>
+    <record date="2022-04-01">
+      <name>vnd.ipld.car</name>
+      <xref type="person" data="Marcin_Rataj"/>
+      <file type="template">application/vnd.ipld.car</file>
+    </record>
+    <record date="2022-10-19">
+      <name>vnd.ipld.dag-cbor</name>
+      <xref type="person" data="Marcin_Rataj"/>
+      <file type="template">application/vnd.ipld.dag-cbor</file>
+    </record>
+    <record date="2022-10-19">
+      <name>vnd.ipld.dag-json</name>
+      <xref type="person" data="Marcin_Rataj"/>
+      <file type="template">application/vnd.ipld.dag-json</file>
+    </record>
+    <record date="2022-04-01">
+      <name>vnd.ipld.raw</name>
+      <xref type="person" data="Marcin_Rataj"/>
+      <file type="template">application/vnd.ipld.raw</file>
     </record>
     <record>
       <name>vnd.iptc.g2.catalogitem+xml</name>
@@ -4623,6 +4982,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Jorn_Wildt"/>
       <file type="template">application/vnd.mason+json</file>
     </record>
+    <record date="2022-02-01">
+      <name>vnd.maxar.archive.3tz+zip</name>
+      <xref type="person" data="Erik_Dahlström"/>
+      <file type="template">application/vnd.maxar.archive.3tz+zip</file>
+    </record>
     <record date="2014-07-25">
       <name>vnd.maxmind.maxmind-db</name>
       <xref type="person" data="William_Stevenson"/>
@@ -4633,6 +4997,16 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Tadashi_Gotoh"/>
       <file type="template">application/vnd.mcd</file>
     </record>
+    <record date="2023-03-06">
+      <name>vnd.mdl</name>
+      <xref type="person" data="Lutz_Kettner"/>
+      <file type="template">application/vnd.mdl</file>
+    </record>
+    <record date="2023-03-02">
+      <name>vnd.mdl-mbsdf</name>
+      <xref type="person" data="Lutz_Kettner"/>
+      <file type="template">application/vnd.mdl-mbsdf</file>
+    </record>
     <record>
       <name>vnd.medcalcdata</name>
       <xref type="person" data="Frank_Schoonjans"/>
@@ -4642,6 +5016,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.mediastation.cdkey</name>
       <xref type="person" data="Henry_Flurry"/>
       <file type="template">application/vnd.mediastation.cdkey</file>
+    </record>
+    <record date="2023-01-02">
+      <name>vnd.medicalholodeck.recordxr</name>
+      <xref type="person" data="Dominique_Sandoz"/>
+      <file type="template">application/vnd.medicalholodeck.recordxr</file>
     </record>
     <record>
       <name>vnd.meridian-slingshot</name>
@@ -4737,6 +5116,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.Mobius.TXF</name>
       <xref type="person" data="Allen_K._Kabayama"/>
       <file type="template">application/vnd.Mobius.TXF</file>
+    </record>
+    <record date="2023-02-22">
+      <name>vnd.modl</name>
+      <xref type="person" data="Elliott_Brown"/>
+      <file type="template">application/vnd.modl</file>
     </record>
     <record>
       <name>vnd.mophun.application</name>
@@ -5033,6 +5417,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Franck_Lefevre"/>
       <file type="template">application/vnd.mynfc</file>
     </record>
+    <record date="2021-09-27">
+      <name>vnd.nacamar.ybrid+json</name>
+      <xref type="person" data="Sebastian_A._Weiss"/>
+      <file type="template">application/vnd.nacamar.ybrid+json</file>
+    </record>
     <record>
       <name>vnd.ncd.control</name>
       <xref type="person" data="Lauri_Tarkkala"/>
@@ -5159,7 +5548,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.nokia.n-gage.data</file>
     </record>
     <record>
-      <name>vnd.nokia.n-gage.symbian.install - OBSOLETE; no replacement given</name>
+      <name>vnd.nokia.n-gage.symbian.install (OBSOLETE; no replacement given)</name>
       <xref type="person" data="Nokia"/>
       <file type="template">application/vnd.nokia.n-gage.symbian.install</file>
     </record>
@@ -5223,105 +5612,117 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="NTT-local"/>
       <file type="template">application/vnd.ntt-local.sip-ta_tcp_stream</file>
     </record>
-    <record>
+    <record date="2022-06-01" updated="2022-06-07">
+      <name>vnd.oasis.opendocument.base</name>
+      <xref type="person" data="OASIS_TC_Admin"/>
+      <xref type="person" data="OASIS"/>
+      <file type="template">application/vnd.oasis.opendocument.base</file>
+    </record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.chart</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.chart</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.chart-template</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.chart-template</file>
     </record>
-    <record>
-      <name>vnd.oasis.opendocument.database</name>
-      <xref type="person" data="Svante_Schubert"/>
+    <record updated="2022-06-07">
+      <name>vnd.oasis.opendocument.database (OBSOLETED in favor of application/vnd.oasis.opendocument.base)</name>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.database</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.formula</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.formula</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.formula-template</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.formula-template</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.graphics</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.graphics</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.graphics-template</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.graphics-template</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.image</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.image</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.image-template</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.image-template</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.presentation</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.presentation</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.presentation-template</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.presentation-template</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.spreadsheet</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.spreadsheet</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.spreadsheet-template</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.spreadsheet-template</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.text</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.text</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.text-master</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.text-master</file>
     </record>
-    <record>
+    <record updated="2023-02-27">
+      <name>vnd.oasis.opendocument.text-master-template</name>
+      <xref type="person" data="OASIS_TC_Admin"/>
+      <xref type="person" data="OASIS"/>
+      <file type="template">application/vnd.oasis.opendocument.text-master-template</file>
+    </record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.text-template</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.text-template</file>
     </record>
-    <record>
+    <record updated="2022-06-07">
       <name>vnd.oasis.opendocument.text-web</name>
-      <xref type="person" data="Svante_Schubert"/>
+      <xref type="person" data="OASIS_TC_Admin"/>
       <xref type="person" data="OASIS"/>
       <file type="template">application/vnd.oasis.opendocument.text-web</file>
     </record>
@@ -5675,6 +6076,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.onepagertatx</name>
       <xref type="person" data="Nathan_Black"/>
       <file type="template">application/vnd.onepagertatx</file>
+    </record>
+    <record date="2022-03-28">
+      <name>vnd.onvif.metadata</name>
+      <xref type="person" data="Hans_Busch"/>
+      <file type="template">application/vnd.onvif.metadata</file>
     </record>
     <record date="2015-08-28">
       <name>vnd.openblox.game-binary</name>
@@ -6608,6 +7014,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Michael_Boyle"/>
       <file type="template">application/vnd.smart.teacher</file>
     </record>
+    <record date="2023-02-13">
+      <name>vnd.smintio.portals.archive</name>
+      <xref type="person" data="Reinhard_Holzner"/>
+      <file type="template">application/vnd.smintio.portals.archive</file>
+    </record>
     <record date="2020-04-06">
       <name>vnd.snesdev-page-table</name>
       <xref type="person" data="Connor_Horman"/>
@@ -6695,10 +7106,20 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Glenn_Widener"/>
       <file type="template">application/vnd.swiftview-ics</file>
     </record>
+    <record date="2022-09-08">
+      <name>vnd.sybyl.mol2</name>
+      <xref type="person" data="Finn_Rayk_Gärtner"/>
+      <file type="template">application/vnd.sybyl.mol2</file>
+    </record>
     <record date="2020-09-02">
       <name>vnd.sycle+xml</name>
       <xref type="person" data="Johann_Terblanche"/>
       <file type="template">application/vnd.sycle+xml</file>
+    </record>
+    <record date="2021-11-15">
+      <name>vnd.syft+json</name>
+      <xref type="person" data="Dan_Luhring"/>
+      <file type="template">application/vnd.syft+json</file>
     </record>
     <record>
       <name>vnd.syncml.dm.notification</name>
@@ -7004,6 +7425,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Peter_Stark"/>
       <file type="template">application/vnd.wap.wmlscriptc</file>
     </record>
+    <record date="2022-09-01">
+      <name>vnd.wasmflow.wafl</name>
+      <xref type="person" data="Fawad_Shaikh"/>
+      <file type="template">application/vnd.wasmflow.wafl</file>
+    </record>
     <record>
       <name>vnd.webturbo</name>
       <xref type="person" data="Yaser_Rehem"/>
@@ -7055,6 +7481,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>vnd.wolfram.player</name>
       <xref type="person" data="Wolfram"/>
       <file type="template">application/vnd.wolfram.player</file>
+    </record>
+    <record date="2023-01-04">
+      <name>vnd.wordlift</name>
+      <xref type="person" data="David_Riccitelli"/>
+      <file type="template">application/vnd.wordlift</file>
     </record>
     <record>
       <name>vnd.wordperfect</name>
@@ -7202,7 +7633,7 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <file type="template">application/vnd.yellowriver-custom-menu</file>
     </record>
     <record date="2017-12-15" updated="2019-05-24">
-      <name>vnd.youtube.yt - OBSOLETED in favor of video/vnd.youtube.yt</name>
+      <name>vnd.youtube.yt (OBSOLETED in favor of video/vnd.youtube.yt)</name>
       <xref type="person" data="Laura_Wood"/>
       <file type="template">application/vnd.youtube.yt</file>
     </record>
@@ -7365,6 +7796,12 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="XENC_Working_Group"/>
       <file type="template">application/xenc+xml</file>
     </record>
+    <record date="2022-04-29">
+      <name>xfdf</name>
+      <xref type="person" data="ISO-TC_171-SC_2"/>
+      <xref type="person" data="Betsy_Fanning"/>
+      <file type="template">application/xfdf</file>
+    </record>
     <record updated="2014-10-23">
       <name>xhtml+xml</name>
       <xref type="person" data="W3C"/>
@@ -7422,6 +7859,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <name>yang</name>
       <xref type="rfc" data="rfc6020"/>
       <file type="template">application/yang</file>
+    </record>
+    <record date="2022-04-13">
+      <name>yang-data+cbor</name>
+      <xref type="rfc" data="rfc9254"/>
+      <file type="template">application/yang-data+cbor</file>
     </record>
     <record>
       <name>yang-data+json</name>
@@ -7933,10 +8375,11 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Linus_Walleij"/>
       <file type="template">audio/prs.sid</file>
     </record>
-    <record>
+    <record updated="2021-08-23">
       <name>QCELP</name>
       <xref type="rfc" data="rfc3555"/>
       <xref type="rfc" data="rfc3625"/>
+      <file type="template">audio/QCELP</file>
     </record>
     <record>
       <name>raptorfec</name>
@@ -7996,10 +8439,10 @@ Provisional Standard Media Type Registry: <xref type="registry" data="provisiona
       <xref type="person" data="Piotr_Majdak"/>
       <file type="template">audio/sofa</file>
     </record>
-    <record>
+    <record updated="2022-10-04">
       <name>sp-midi</name>
-      <xref type="person" data="Timo_Kosonen"/>
-      <xref type="person" data="Tom_White"/>
+      <xref type="person" data="Athan_Billias"/>
+      <xref type="person" data="MIDI_Association"/>
       <file type="template">audio/sp-midi</file>
     </record>
     <record>
@@ -8346,6 +8789,12 @@ by the IANA.</note>
       <xref type="person" data="Howard_Lukk"/>
       <file type="template">image/aces</file>
     </record>
+    <record date="2022-11-21">
+      <name>apng</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="W3C_PNG_Working_Group"/>
+      <file type="template">image/apng</file>
+    </record>
     <record date="2018-07-30">
       <name>avci</name>
       <xref type="person" data="ISO-IEC_JTC1"/>
@@ -8376,9 +8825,15 @@ by the IANA.</note>
     </record>
     <record date="2016-07-01">
       <name>dicom-rle</name>
-      <xref type="person" data="DICOM_Standards_Committee"/>
+      <xref type="person" data="DICOM_Standard_Committee"/>
       <xref type="person" data="David_Clunie"/>
       <file type="template">image/dicom-rle</file>
+    </record>
+    <record date="2022-07-13">
+      <name>dpx</name>
+      <xref type="person" data="SMPTE"/>
+      <xref type="person" data="SMPTE_Director_of_Standards_Development"/>
+      <file type="template">image/dpx</file>
     </record>
     <record date="2016-05-16">
       <name>emf</name>
@@ -8447,7 +8902,7 @@ by the IANA.</note>
     </record>
     <record date="2016-07-01">
       <name>jls</name>
-      <xref type="person" data="DICOM_Standards_Committee"/>
+      <xref type="person" data="DICOM_Standard_Committee"/>
       <xref type="person" data="David_Clunie"/>
       <file type="template">image/jls</file>
     </record>
@@ -8538,9 +8993,10 @@ by the IANA.</note>
       <xref type="person" data="Ilya_Ferber"/>
       <file type="template">image/naplps</file>
     </record>
-    <record>
+    <record updated="2021-12-07">
       <name>png</name>
-      <xref type="person" data="Glenn_Randers-Pehrson"/>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="PNG_Working_Group"/>
       <file type="template">image/png</file>
     </record>
     <record>
@@ -8732,6 +9188,11 @@ by the IANA.</note>
       <xref type="person" data="Chris_Charabaruk"/>
       <file type="template">image/vnd.zbrush.pcx</file>
     </record>
+    <record date="2023-01-18">
+      <name>webp</name>
+      <xref type="draft" data="RFC-zern-webp-12"/>
+      <file type="template">image/webp</file>
+    </record>
     <record date="2016-05-16">
       <name>wmf</name>
       <xref type="rfc" data="rfc7903"/>
@@ -8753,6 +9214,11 @@ by the IANA.</note>
   <registry id="message">
     <title>message</title>
     <hide/>
+    <record date="2022-07-14">
+      <name>bhttp</name>
+      <xref type="rfc" data="rfc9292"/>
+      <file type="template">message/bhttp</file>
+    </record>
     <record>
       <name>CPIM</name>
       <xref type="rfc" data="rfc3862"/>
@@ -8803,9 +9269,9 @@ by the IANA.</note>
       <xref type="rfc" data="rfc6533"/>
       <file type="template">message/global-headers</file>
     </record>
-    <record>
+    <record updated="2021-10-06">
       <name>http</name>
-      <xref type="rfc" data="rfc7230"/>
+      <xref type="rfc" data="rfc9112"/>
       <file type="template">message/http</file>
     </record>
     <record>
@@ -8814,7 +9280,7 @@ by the IANA.</note>
       <file type="template">message/imdn+xml</file>
     </record>
     <record>
-      <name>news - OBSOLETED by RFC5537</name>
+      <name>news (OBSOLETED by <xref type="rfc" data="rfc5537"/>)</name>
       <xref type="rfc" data="rfc5537"/>
       <xref type="person" data="Henry_Spencer"/>
       <file type="template">message/news</file>
@@ -8829,9 +9295,10 @@ by the IANA.</note>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
     </record>
-    <record>
-      <name>s-http</name>
+    <record updated="2021-12-23">
+      <name>s-http (OBSOLETE)</name>
       <xref type="rfc" data="rfc2660"/>
+      <xref type="uri" data="https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic">status-change-http-experiments-to-historic</xref>
       <file type="template">message/s-http</file>
     </record>
     <record>
@@ -8850,7 +9317,7 @@ by the IANA.</note>
       <file type="template">message/tracking-status</file>
     </record>
     <record>
-      <name>vnd.si.simp - OBSOLETED by request</name>
+      <name>vnd.si.simp (OBSOLETED by request)</name>
       <xref type="person" data="Nicholas_Parks_Young"/>
       <file type="template">message/vnd.si.simp</file>
     </record>
@@ -8894,6 +9361,12 @@ by the IANA.</note>
       <xref type="person" data="Uli_Klumpp"/>
       <file type="template">model/gltf+json</file>
     </record>
+    <record date="2023-01-24">
+      <name>JT</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Michael_Zink"/>
+      <file type="template">model/JT</file>
+    </record>
     <record>
       <name>iges</name>
       <xref type="person" data="Curtis_Parks"/>
@@ -8903,23 +9376,67 @@ by the IANA.</note>
       <name>mesh</name>
       <xref type="rfc" data="rfc2077"/>
     </record>
-    <record date="2020-02-13">
+    <record date="2020-02-13" updated="2022-09-20">
       <name>mtl</name>
-      <xref type="person" data="DICOM_Standards_Committee"/>
-      <xref type="person" data="Luiza_Kowalczyk"/>
+      <xref type="person" data="DICOM_Standard_Committee"/>
+      <xref type="person" data="DICOM_WG_17"/>
+      <xref type="person" data="Carolyn_Hull"/>
       <file type="template">model/mtl</file>
     </record>
-    <record date="2020-02-13">
+    <record date="2020-02-13" updated="2022-09-20">
       <name>obj</name>
-      <xref type="person" data="DICOM_Standards_Committee"/>
-      <xref type="person" data="Luiza_Kowalczyk"/>
+      <xref type="person" data="DICOM_Standard_Committee"/>
+      <xref type="person" data="DICOM_WG_17"/>
+      <xref type="person" data="Carolyn_Hull"/>
       <file type="template">model/obj</file>
     </record>
-    <record date="2018-03-06">
+    <record date="2022-03-08">
+      <name>prc</name>
+      <xref type="person" data="ISO-TC_171-SC_2"/>
+      <xref type="person" data="Betsy_Fanning"/>
+      <file type="template">model/prc</file>
+    </record>
+    <record date="2021-08-05">
+      <name>step</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Dana_Tripp"/>
+      <file type="template">model/step</file>
+    </record>
+    <record date="2021-08-10">
+      <name>step+xml</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Dana_Tripp"/>
+      <file type="template">model/step+xml</file>
+    </record>
+    <record date="2021-07-07">
+      <name>step+zip</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Dana_Tripp"/>
+      <file type="template">model/step+zip</file>
+    </record>
+    <record date="2021-07-20">
+      <name>step-xml+zip</name>
+      <xref type="person" data="ISO-TC_184-SC_4"/>
+      <xref type="person" data="Dana_Tripp"/>
+      <file type="template">model/step-xml+zip</file>
+    </record>
+    <record date="2018-03-06" updated="2022-09-20">
       <name>stl</name>
-      <xref type="person" data="DICOM_Standards_Committee"/>
-      <xref type="person" data="Lisa_Spellman"/>
+      <xref type="person" data="DICOM_Standard_Committee"/>
+      <xref type="person" data="DICOM_WG_17"/>
+      <xref type="person" data="Carolyn_Hull"/>
       <file type="template">model/stl</file>
+    </record>
+    <record date="2022-02-25">
+      <name>u3d</name>
+      <xref type="person" data="PDF_Association"/>
+      <xref type="person" data="Peter_Wyatt"/>
+      <file type="template">model/u3d</file>
+    </record>
+    <record date="2022-12-22">
+      <name>vnd.cld</name>
+      <xref type="person" data="Robert_Monaghan"/>
+      <file type="template">model/vnd.cld</file>
     </record>
     <record>
       <name>vnd.collada+xml</name>
@@ -8992,6 +9509,11 @@ by the IANA.</note>
       <xref type="person" data="Igor_Afanasyev"/>
       <file type="template">model/vnd.sap.vds</file>
     </record>
+    <record date="2022-09-19">
+      <name>vnd.usda</name>
+      <xref type="person" data="Sebastian_Grassia"/>
+      <file type="template">model/vnd.usda</file>
+    </record>
     <record date="2018-06-01">
       <name>vnd.usdz+zip</name>
       <xref type="person" data="Sebastian_Grassia"/>
@@ -9044,9 +9566,9 @@ by the IANA.</note>
       <xref type="person" data="Patrik_Faltstrom"/>
       <file type="template">multipart/appledouble</file>
     </record>
-    <record>
+    <record updated="2021-10-01">
       <name>byteranges</name>
-      <xref type="rfc" data="rfc7233"/>
+      <xref type="rfc" data="rfc9110"/>
       <file type="template">multipart/byteranges</file>
     </record>
     <record>
@@ -9187,9 +9709,9 @@ by the IANA.</note>
       <xref type="rfc" data="rfc4027"/>
       <file type="template">text/dns</file>
     </record>
-    <record>
-      <name>ecmascript - OBSOLETED in favor of application/ecmascript</name>
-      <xref type="rfc" data="rfc4329"/>
+    <record updated="2022-03-08">
+      <name>ecmascript (OBSOLETED in favor of text/javascript)</name>
+      <xref type="rfc" data="rfc9239"/>
       <file type="template">text/ecmascript</file>
     </record>
     <record>
@@ -9232,15 +9754,21 @@ by the IANA.</note>
       <xref type="rfc" data="rfc6787"/>
       <file type="template">text/grammar-ref-list</file>
     </record>
+    <record date="2022-07-22">
+      <name>hl7v2</name>
+      <xref type="person" data="HL7"/>
+      <xref type="person" data="Marc_Duteau"/>
+      <file type="template">text/hl7v2</file>
+    </record>
     <record>
       <name>html</name>
       <xref type="person" data="W3C"/>
       <xref type="person" data="Robin_Berjon"/>
       <file type="template">text/html</file>
     </record>
-    <record>
-      <name>javascript - OBSOLETED in favor of application/javascript</name>
-      <xref type="rfc" data="rfc4329"/>
+    <record updated="2022-03-08">
+      <name>javascript</name>
+      <xref type="rfc" data="rfc9239"/>
       <file type="template">text/javascript</file>
     </record>
     <record>
@@ -9446,6 +9974,16 @@ by the IANA.</note>
       <xref type="person" data="Stefan_Eilemann"/>
       <file type="template">text/vnd.esmertec.theme-descriptor</file>
     </record>
+    <record date="2022-08-03">
+      <name>vnd.exchangeable</name>
+      <xref type="person" data="Martin_Cizek"/>
+      <file type="template">text/vnd.exchangeable</file>
+    </record>
+    <record date="2021-10-27" updated="2021-12-07">
+      <name>vnd.familysearch.gedcom</name>
+      <xref type="person" data="Gordon_Clarke"/>
+      <file type="template">text/vnd.familysearch.gedcom</file>
+    </record>
     <record date="2019-09-25">
       <name>vnd.ficlab.flt</name>
       <xref type="person" data="Steve_Gilberd"/>
@@ -9532,7 +10070,7 @@ by the IANA.</note>
       <file type="template">text/vnd.senx.warpscript</file>
     </record>
     <record>
-      <name>vnd.si.uricatalogue - OBSOLETED by request</name>
+      <name>vnd.si.uricatalogue (OBSOLETED by request)</name>
       <xref type="person" data="Nicholas_Parks_Young"/>
       <file type="template">text/vnd.si.uricatalogue</file>
     </record>
@@ -9576,6 +10114,12 @@ by the IANA.</note>
       <xref type="person" data="W3C"/>
       <xref type="person" data="Silvia_Pfeiffer"/>
       <file type="template">text/vtt</file>
+    </record>
+    <record date="2023-01-12">
+      <name>wgsl</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="David_Neto"/>
+      <file type="template">text/wgsl</file>
     </record>
     <record>
       <name>xml</name>
@@ -9652,7 +10196,7 @@ by the IANA.</note>
     </record>
     <record date="2021-03-10">
       <name>FFV1</name>
-      <xref type="draft" data="RFC-ietf-cellar-ffv1-20"/>
+      <xref type="rfc" data="rfc9043"/>
       <file type="template">video/FFV1</file>
     </record>
     <record date="2019-05-23">
@@ -9700,6 +10244,11 @@ by the IANA.</note>
       <xref type="rfc" data="rfc7798"/>
       <file type="template">video/H265</file>
     </record>
+    <record date="2022-09-30">
+      <name>H266</name>
+      <xref type="rfc" data="rfc9328"/>
+      <file type="template">video/H266</file>
+    </record>
     <record date="2014-01-29">
       <name>iso.segment</name>
       <xref type="person" data="David_Singer"/>
@@ -9716,6 +10265,11 @@ by the IANA.</note>
       <xref type="rfc" data="rfc5371"/>
       <xref type="rfc" data="rfc5372"/>
       <file type="template">video/jpeg2000</file>
+    </record>
+    <record date="2021-07-28">
+      <name>jxsv</name>
+      <xref type="rfc" data="rfc9134"/>
+      <file type="template">video/jxsv</file>
     </record>
     <record>
       <name>mj2</name>
@@ -10183,6 +10737,11 @@ by the IANA.</note>
       <uri>mailto:jwhitaker&amp;atsc.org</uri>
       <updated>2020-03-18</updated>
     </person>
+    <person id="AutomationML_e.V.">
+      <name>AutomationML e.V.</name>
+      <uri>mailto:office&amp;automationml.org</uri>
+      <updated>2022-07-26</updated>
+    </person>
     <person id="Steve_Aubrey">
       <name>Steve Aubrey</name>
       <uri>mailto:steve_aubrey&amp;hp.com</uri>
@@ -10293,6 +10852,11 @@ by the IANA.</note>
       <uri>mailto:installer-mime&amp;group.apple.com</uri>
       <updated>2005-11-20</updated>
     </person>
+    <person id="Athan_Billias">
+      <name>Athan Billias</name>
+      <uri>mailto:info&amp;midi.org</uri>
+      <updated>2022-10-04</updated>
+    </person>
     <person id="Jason_Birch">
       <name>Jason Birch</name>
       <uri>mailto:jason.birch&amp;osgeo.org</uri>
@@ -10317,6 +10881,11 @@ by the IANA.</note>
       <name>Bryan Blank</name>
       <uri>mailto:ntbchair&amp;nga.mil</uri>
       <updated>2019-08-21</updated>
+    </person>
+    <person id="Andrew_Block">
+      <name>Andrew Block</name>
+      <uri>mailto:andy.block&amp;gmail.com</uri>
+      <updated>2023-02-27</updated>
     </person>
     <person id="Kevin_Blumberg">
       <name>Kevin Blumberg</name>
@@ -10362,11 +10931,6 @@ by the IANA.</note>
       <name>Craig Bradney</name>
       <uri>mailto:cbradney&amp;zip.com.au</uri>
       <updated>2006-06-20</updated>
-    </person>
-    <person id="Robert_Brambley">
-      <name>Robert Brambley</name>
-      <uri>mailto:brambley&amp;adobe.com</uri>
-      <updated>2010-01-13</updated>
     </person>
     <person id="Guenther_Brammer">
       <name>Günther Brammer</name>
@@ -10423,6 +10987,11 @@ by the IANA.</note>
       <uri>mailto:khmer-project&amp;idyll.org</uri>
       <updated>2015-10-05</updated>
     </person>
+    <person id="Elliott_Brown">
+      <name>Elliott Brown</name>
+      <uri>mailto:elliott.brown&amp;num.uk</uri>
+      <updated>2023-02-22</updated>
+    </person>
     <person id="Craig_Bruce">
       <name>Craig Bruce</name>
       <uri>mailto:craig&amp;eyesopen.com</uri>
@@ -10453,6 +11022,11 @@ by the IANA.</note>
       <uri>mailto:marcus.bueschleb&amp;googlemail.com</uri>
       <updated>2016-08-12</updated>
     </person>
+    <person id="Hans_Busch">
+      <name>Hans Busch</name>
+      <uri>mailto:hans.busch&amp;de.bosch.com</uri>
+      <updated>2022-03-28</updated>
+    </person>
     <person id="Simon_Butcher">
       <name>Simon Butcher</name>
       <uri>mailto:simon&amp;alien.net.au</uri>
@@ -10476,11 +11050,16 @@ by the IANA.</note>
     <person id="Mark_Callow">
       <name>Mark Callow</name>
       <uri>mailto:khronos&amp;callow.im</uri>
-      <updated>2020-08-11</updated>
+      <updated>2022-12-26</updated>
     </person>
     <person id="Larry_Campbell">
       <name>Larry Campbell</name>
       <uri>mailto:campbell&amp;redsox.bsw.com</uri>
+    </person>
+    <person id="Nicolas_CARPI">
+      <name>Nicolas CARPI</name>
+      <uri>mailto:nico-iana&amp;deltablot.email</uri>
+      <updated>2023-02-08</updated>
     </person>
     <person id="CDISC">
       <name>CDISC</name>
@@ -10516,10 +11095,20 @@ by the IANA.</note>
       <uri>mailto:shayc&amp;everad.com</uri>
       <updated>2000-05-20</updated>
     </person>
+    <person id="Martin_Cizek">
+      <name>Martin Cizek</name>
+      <uri>mailto:martin.cizek&amp;cuzk.cz</uri>
+      <updated>2022-08-03</updated>
+    </person>
     <person id="John_Clark">
       <name>John Clark</name>
       <uri>mailto:jclark&amp;dbvision.net</uri>
       <updated>2002-06-20</updated>
+    </person>
+    <person id="Gordon_Clarke">
+      <name>Gordon Clarke</name>
+      <uri>mailto:gedcom&amp;familysearch.org</uri>
+      <updated>2021-12-07</updated>
     </person>
     <person id="Gary_Clueit">
       <name>Gary Clueit</name>
@@ -10551,6 +11140,11 @@ by the IANA.</note>
       <uri>mailto:mconley&amp;wi-fi.org</uri>
       <updated>2013-09-06</updated>
     </person>
+    <person id="Connectivity_Standards_Alliance">
+      <name>Connectivity Standards Alliance</name>
+      <uri>https://csa-iot.org</uri>
+      <updated>2023-01-24</updated>
+    </person>
     <person id="Victor_Costan">
       <name>Victor Costan</name>
       <uri>mailto:pwnall&amp;chromium.org</uri>
@@ -10574,15 +11168,30 @@ by the IANA.</note>
     <person id="Terry_Crowley">
       <name>Terry Crowley</name>
     </person>
+    <person id="Michael_R._Crusoe">
+      <name>Michael R. Crusoe</name>
+      <uri>mailto:mrc&amp;commonwl.org</uri>
+      <updated>2022-05-09</updated>
+    </person>
     <person id="Frank_Cusack">
       <name>Frank Cusack</name>
       <uri>mailto:frank&amp;tri-dsystems.com</uri>
       <updated>2007-07-05</updated>
     </person>
+    <person id="CWL_Project">
+      <name>CWL Project</name>
+      <uri>mailto:commonworkflowlanguage&amp;sfconservancy.org</uri>
+      <updated>2022-05-09</updated>
+    </person>
     <person id="Claire_DEsclercs">
       <name>Claire D'Esclercs</name>
       <uri>mailto:contact&amp;oipf.tv</uri>
       <updated>2011-02-25</updated>
+    </person>
+    <person id="Erik_Dahlström">
+      <name>Erik Dahlström</name>
+      <uri>mailto:erik.dahlstrom&amp;maxar.com</uri>
+      <updated>2022-02-01</updated>
     </person>
     <person id="Priya_Dandawate">
       <name>Priya Dandawate</name>
@@ -10608,6 +11217,11 @@ by the IANA.</note>
       <name>Serge De Jaham</name>
       <uri>mailto:sdejaham&amp;aeta-audio.com</uri>
       <updated>2006-03-27</updated>
+    </person>
+    <person id="Debian_Policy_mailing_list">
+      <name>Debian Policy mailing list</name>
+      <uri>mailto:debian-policy&amp;lists.debian.org</uri>
+      <updated>2014-05-20</updated>
     </person>
     <person id="Sebastiaan_Deckers">
       <name>Sebastiaan Deckers</name>
@@ -10644,10 +11258,15 @@ by the IANA.</note>
       <uri>mailto:stevedia&amp;microsoft.com</uri>
       <updated>2008-06-03</updated>
     </person>
-    <person id="DICOM_Standards_Committee">
-      <name>DICOM Standards Committee</name>
-      <uri>mailto:dicom&amp;medicalimaging.org</uri>
-      <updated>2020-02-13</updated>
+    <person id="DICOM_Standard_Committee">
+      <name>DICOM Standard Committee</name>
+      <uri>mailto:dicom&amp;dicomstandard.org</uri>
+      <updated>2022-09-16</updated>
+    </person>
+    <person id="DICOM_WG_17">
+      <name>DICOM Working Group 17 Chairs</name>
+      <uri>mailto:wg17chairs&amp;dicomstandard.org</uri>
+      <updated>2022-09-20</updated>
     </person>
     <person id="Dirk_DiGiorgio-Haag">
       <name>Dirk DiGiorgio-Haag</name>
@@ -10689,11 +11308,6 @@ by the IANA.</note>
       <uri>mailto:iain&amp;easykaraoke.com</uri>
       <updated>2010-11-16</updated>
     </person>
-    <person id="Andy_Dryden">
-      <name>Andy Dryden</name>
-      <uri>mailto:adryden&amp;tiaonline.org</uri>
-      <updated>2006-03-20</updated>
-    </person>
     <person id="Alex_Dubov">
       <name>Alex Dubov</name>
       <uri>mailto:adubov&amp;ea.com</uri>
@@ -10719,6 +11333,11 @@ by the IANA.</note>
       <uri>mailto:kris.durski&amp;verumsecuritas.com</uri>
       <updated>2018-04-23</updated>
     </person>
+    <person id="Marc_Duteau">
+      <name>Marc Duteau</name>
+      <uri>mailto:marc&amp;hl7.org</uri>
+      <updated>2022-07-07</updated>
+    </person>
     <person id="Patrick_Dwyer">
       <name>Patrick Dwyer</name>
       <uri>mailto:patrick.dwyer&amp;owasp.org</uri>
@@ -10731,8 +11350,13 @@ by the IANA.</note>
     </person>
     <person id="Donald_E._Eastlake_3rd">
       <name>Donald E. Eastlake 3rd</name>
-      <uri>mailto:Donald.Eastlake&amp;motorola.com</uri>
-      <updated>2000-05-20</updated>
+      <uri>mailto:d3e3e3&amp;gmail.com</uri>
+      <updated>2021-07-06</updated>
+    </person>
+    <person id="Eclipse_Ditto_developers">
+      <name>Eclipse Ditto developers</name>
+      <uri>mailto:ditto-dev&amp;eclipse.org</uri>
+      <updated>2022-01-26</updated>
     </person>
     <person id="Ecma_International_Helpdesk">
       <name>Ecma International Helpdesk</name>
@@ -10789,6 +11413,11 @@ by the IANA.</note>
       <uri>mailto:chet.ensign&amp;oasis-open.org</uri>
       <updated>2020-04-23</updated>
     </person>
+    <person id="EPUB_3_WG">
+      <name>EPUB 3 Working Group</name>
+      <uri>mailto:public-epub-wg&amp;w3.org</uri>
+      <updated>2022-08-16</updated>
+    </person>
     <person id="Per_Ersson">
       <name>Per Ersson</name>
       <uri>mailto:per&amp;ipunplugged.com</uri>
@@ -10820,6 +11449,11 @@ by the IANA.</note>
     <person id="Patrik_Faltstrom">
       <name>Patrik Faltstrom</name>
       <uri>mailto:paf&amp;nada.kth.se</uri>
+    </person>
+    <person id="Betsy_Fanning">
+      <name>Betsy Fanning</name>
+      <uri>mailto:betsy.fanning&amp;pdfa.org</uri>
+      <updated>2022-04-29</updated>
     </person>
     <person id="Michael_C._Fanning">
       <name>Michael C. Fanning</name>
@@ -10991,6 +11625,21 @@ by the IANA.</note>
       <uri>mailto:cliff&amp;solenttec.net</uri>
       <updated>2006-04-25</updated>
     </person>
+    <person id="Finn_Rayk_Gärtner">
+      <name>Finn Rayk Gärtner</name>
+      <uri>mailto:finngaertner&amp;protonmail.com</uri>
+      <updated>2022-08-09</updated>
+    </person>
+    <person id="Randall_Gellens">
+      <name>Randall Gellens</name>
+      <uri>mailto:rg+nena.mime&amp;randy.pensive.org</uri>
+      <updated>2022-10-10</updated>
+    </person>
+    <person id="Gentoo_Portage_Project">
+      <name>Portage Project</name>
+      <uri>mailto:dev-portage&amp;gentoo.org</uri>
+      <updated>2022-11-28</updated>
+    </person>
     <person id="GeoGebra">
       <name>GeoGebra</name>
       <uri>mailto:office&amp;geogebra.org</uri>
@@ -11041,6 +11690,11 @@ by the IANA.</note>
       <uri>mailto:ytb-external&amp;google.com</uri>
       <updated>2019-06-07</updated>
     </person>
+    <person id="Michał_Górny">
+      <name>Michał Górny</name>
+      <uri>mailto:mgorny&amp;gentoo.org</uri>
+      <updated>2022-11-30</updated>
+    </person>
     <person id="Mikhail_Gorshenev">
       <name>Mikhail Gorshenev</name>
       <uri>mailto:Mikhail.Gorshenev&amp;sun.com</uri>
@@ -11069,7 +11723,7 @@ by the IANA.</note>
     <person id="Sebastian_Grassia">
       <name>Sebastian Grassia</name>
       <uri>mailto:usd-iana&amp;pixar.com</uri>
-      <updated>2018-06-01</updated>
+      <updated>2022-09-19</updated>
     </person>
     <person id="Phil_Green">
       <name>Phil Green</name>
@@ -11095,6 +11749,11 @@ by the IANA.</note>
       <name>Rene Grothmann</name>
       <uri>mailto:rene.grothmann&amp;ku-eichstaett.de</uri>
       <updated>2009-02-24</updated>
+    </person>
+    <person id="Christian_Grothoff">
+      <name>Christian Grothoff</name>
+      <uri>mailto:grothoff&amp;gnu.org</uri>
+      <updated>2022-02-28</updated>
     </person>
     <person id="Yu_Gu">
       <name>Yu Gu</name>
@@ -11246,6 +11905,11 @@ by the IANA.</note>
       <uri>mailto:uwe&amp;hermann-uwe.de</uri>
       <updated>2017-06-06</updated>
     </person>
+    <person id="Christian_Herrero-Veron">
+      <name>Christian Herrero-Veron</name>
+      <uri>mailto:christian.herrero&amp;huawei.com</uri>
+      <updated>2023-02-13</updated>
+    </person>
     <person id="Amir_Herzberg">
       <name>Amir Herzberg</name>
       <uri>mailto:amirh&amp;haifa.vnet.ibm.com</uri>
@@ -11273,8 +11937,8 @@ by the IANA.</note>
     </person>
     <person id="Hans-Dieter_A._Hiep">
       <name>Hans-Dieter A. Hiep</name>
-      <uri>mailto:info&amp;aexiz.com</uri>
-      <updated>2016-04-04</updated>
+      <uri>mailto:hdh&amp;cwi.nl</uri>
+      <updated>2022-11-10</updated>
     </person>
     <person id="Ben_Hinman">
       <name>Ben Hinman</name>
@@ -11320,6 +11984,11 @@ by the IANA.</note>
       <uri>mailto:holstege&amp;firstfloor.com</uri>
       <updated>1998-05-19</updated>
     </person>
+    <person id="Reinhard_Holzner">
+      <name>Reinhard Holzner</name>
+      <uri>mailto:reinhard&amp;smint.io</uri>
+      <updated>2023-02-13</updated>
+    </person>
     <person id="Connor_Horman">
       <name>Connor Horman</name>
       <uri>mailto:chorman64&amp;gmail.com</uri>
@@ -11344,6 +12013,11 @@ by the IANA.</note>
       <name>Ni Hui</name>
       <uri>mailto:nihuini&amp;tencent.com</uri>
       <updated>2014-09-10</updated>
+    </person>
+    <person id="Carolyn_Hull">
+      <name>Carolyn Hull</name>
+      <uri>mailto:dicom&amp;dicomstandard.org</uri>
+      <updated>2022-09-16</updated>
     </person>
     <person id="Sam_Hume">
       <name>Sam Hume</name>
@@ -11388,6 +12062,16 @@ by the IANA.</note>
       <uri>mailto:kazuya.iimura.pa&amp;fujifilm.com</uri>
       <updated>2021-04-20</updated>
     </person>
+    <person id="Kiran_Kapale">
+      <name>Kiran Kapale</name>
+      <uri>mailto:kiran.kapale&amp;samsung.com</uri>
+      <updated>2022-03-30</updated>
+    </person>
+    <person id="IEEE-ISTO-PWG-PPP">
+      <name>ISTO-PWG Internet Printing Protocol Workgroup</name>
+      <uri>mailto:ipp&amp;pwg.org</uri>
+      <updated>2017-05-01</updated>
+    </person>
     <person id="IMS_Global">
       <name>IMS Global Learning Consortium Inc.</name>
       <uri>https://www.imsglobal.org</uri>
@@ -11407,10 +12091,13 @@ by the IANA.</note>
       <uri>mailto:secretariat&amp;jtc1sc06.org</uri>
       <updated>2005-10-31</updated>
     </person>
-    <person id="IEEE-ISTO-PWG-PPP">
-      <name>ISTO-PWG Internet Printing Protocol Workgroup</name>
-      <uri>mailto:ipp&amp;pwg.org</uri>
-      <updated>2017-05-01</updated>
+    <person id="ISO-TC_171-SC_2">
+      <name>ISO/TC 171/SC 2 - Document file formats, EDMS systems and authenticity of information</name>
+      <uri>https://www.iso.org</uri>
+    </person>
+    <person id="ISO-TC_184-SC_4">
+      <name>ISO/TC 184/SC 4 - Industrial Data</name>
+      <uri>https://www.iso.org</uri>
     </person>
     <person id="ITS-IG-W3C">
       <name>Internationalization Tag Set Interest Group (W3C)</name>
@@ -11450,11 +12137,6 @@ by the IANA.</note>
       <uri>mailto:mail&amp;tobyinkster.co.uk</uri>
       <updated>2010-10-19</updated>
     </person>
-    <person id="International_Digital_Publishing_Forum">
-      <name>International Digital Publishing Forum</name>
-      <uri>http://www.idpf.org</uri>
-      <updated>2014-11-06</updated>
-    </person>
     <person id="Keitaro_Ishida">
       <name>Keitaro Ishida</name>
       <uri>mailto:keitaro.ishida.yu&amp;fujifilm.com</uri>
@@ -11490,6 +12172,11 @@ by the IANA.</note>
       <uri>mailto:ken&amp;kenjij.com</uri>
       <updated>2010-07-23</updated>
     </person>
+    <person id="Simon_Johnston">
+      <name>Simon Johnston</name>
+      <uri>mailto:johnstonskj&amp;gmail.com</uri>
+      <updated>2022-07-20</updated>
+    </person>
     <person id="Randy_Jones">
       <name>Randy Jones</name>
       <uri>mailto:randy_jones&amp;archipelago.com</uri>
@@ -11518,7 +12205,7 @@ by the IANA.</note>
     <person id="Rose_Judge">
       <name>Rose Judge</name>
       <uri>mailto:rjudge&amp;vmware.com</uri>
-      <updated>2020-05-04</updated>
+      <updated>2021-11-03</updated>
     </person>
     <person id="Steve_Judkins">
       <name>Steve Judkins</name>
@@ -11540,6 +12227,11 @@ by the IANA.</note>
       <uri>mailto:akabayam&amp;mobius.com</uri>
       <updated>1999-06-19</updated>
     </person>
+    <person id="Sebastian_Kaebisch">
+      <name>Sebastian Kaebisch</name>
+      <uri>mailto:sebastian.kaebisch&amp;siemens.com</uri>
+      <updated>2022-08-22</updated>
+    </person>
     <person id="Greg_Kaiser">
       <name>Greg Kaiser</name>
       <uri>mailto:android-iana-mime-registration&amp;google.com</uri>
@@ -11549,6 +12241,11 @@ by the IANA.</note>
       <name>Petteri Kangaslampi</name>
       <uri>mailto:petteri.kangaslampi&amp;nokia.com</uri>
       <updated>2001-03-20</updated>
+    </person>
+    <person id="Hervé_Kasparian">
+      <name>Hervé Kasparian</name>
+      <uri>mailto:herve&amp;kasparian.eu</uri>
+      <updated>2022-01-03</updated>
     </person>
     <person id="Steve_Katz">
       <name>Steve Katz</name>
@@ -11589,6 +12286,11 @@ by the IANA.</note>
       <name>Keith Kester</name>
       <uri>mailto:kkester&amp;digitalriver.com</uri>
       <updated>2015-09-11</updated>
+    </person>
+    <person id="Lutz_Kettner">
+      <name>Lutz Kettner</name>
+      <uri>mailto:lkettner&amp;nvidia.com</uri>
+      <updated>2023-03-06</updated>
     </person>
     <person id="Khronos">
       <name>The Khronos Group</name>
@@ -11669,11 +12371,6 @@ by the IANA.</note>
       <uri>mailto:w3c&amp;kovatsch.net</uri>
       <updated>2020-02-12</updated>
     </person>
-    <person id="Luiza_Kowalczyk">
-      <name>Luiza Kowalczyk</name>
-      <uri>mailto:LKowalczyk&amp;dicomstandard.org</uri>
-      <updated>2020-02-13</updated>
-    </person>
     <person id="Yves_Kreis">
       <name>Yves Kreis</name>
       <uri>mailto:yves&amp;geogebra.org</uri>
@@ -11744,6 +12441,11 @@ by the IANA.</note>
       <uri>mailto:martin.lambert&amp;sealedmedia.com</uri>
       <updated>2006-03-27</updated>
     </person>
+    <person id="Divon_Lan">
+      <name>Divon Lan</name>
+      <uri>mailto:divon&amp;genozip.com</uri>
+      <updated>2022-04-05</updated>
+    </person>
     <person id="Bruno_Landais">
       <name>Bruno Landais</name>
       <uri>mailto:bruno.landais&amp;nokia.com</uri>
@@ -11791,8 +12493,8 @@ by the IANA.</note>
     </person>
     <person id="Heungsub_Lee">
       <name>Heungsub Lee</name>
-      <uri>mailto:sub&amp;subl.ee</uri>
-      <updated>2018-07-03</updated>
+      <uri>mailto:heungsub&amp;subl.ee</uri>
+      <updated>2023-02-13</updated>
     </person>
     <person id="Franck_Lefevre">
       <name>Franck Lefevre</name>
@@ -11842,7 +12544,7 @@ by the IANA.</note>
     <person id="Linux_Foundation">
       <name>Linux Foundation</name>
       <uri>mailto:kstewart&amp;linuxfoundation.org</uri>
-      <updated>2020-05-04</updated>
+      <updated>2021-11-03</updated>
     </person>
     <person id="Slawomir_Lisznianski">
       <name>Slawomir Lisznianski</name>
@@ -11868,6 +12570,11 @@ by the IANA.</note>
       <name>Matthias Ludwig</name>
       <uri>mailto:mludwig&amp;quobject.com</uri>
       <updated>2011-03-08</updated>
+    </person>
+    <person id="Dan_Luhring">
+      <name>Dan Luhring</name>
+      <uri>mailto:dan.luhring&amp;anchore.com</uri>
+      <updated>2021-11-15</updated>
     </person>
     <person id="Howard_Lukk">
       <name>Howard Lukk</name>
@@ -11964,11 +12671,6 @@ by the IANA.</note>
       <uri>mailto:b_mccolgan&amp;hotmail.com</uri>
       <updated>2011-05-04</updated>
     </person>
-    <person id="William_McCoy">
-      <name>William McCoy</name>
-      <uri>mailto:bmccoy&amp;idpf.org</uri>
-      <updated>2014-11-06</updated>
-    </person>
     <person id="Braden_N_McDaniel">
       <name>Braden N. McDaniel</name>
       <uri>mailto:braden&amp;endoframe.com</uri>
@@ -12028,6 +12730,11 @@ by the IANA.</note>
       <uri>mailto:john.meredith&amp;etsi.org</uri>
       <updated>2009-10-13</updated>
     </person>
+    <person id="MIDI_Association">
+      <name>MIDI Manufacturers Association (d/b/a The MIDI Association)</name>
+      <uri>mailto:info&amp;midi.org</uri>
+      <updated>2022-10-04</updated>
+    </person>
     <person id="Andy_Miller">
       <name>Andy Miller</name>
       <uri>mailto:amiller&amp;imsglobal.org</uri>
@@ -12062,6 +12769,11 @@ by the IANA.</note>
       <name>Andreas Molzer</name>
       <uri>mailto:andreas.molzer&amp;nebumind.com</uri>
       <updated>2021-03-17</updated>
+    </person>
+    <person id="Robert_Monaghan">
+      <name>Robert Monaghan</name>
+      <uri>mailto:cld&amp;illuscio.com</uri>
+      <updated>2022-12-22</updated>
     </person>
     <person id="Brent_Moore">
       <name>Brent Moore</name>
@@ -12168,6 +12880,16 @@ by the IANA.</note>
       <uri>mailto:jann&amp;microsoft.com</uri>
       <updated>2000-05-20</updated>
     </person>
+    <person id="NENA">
+      <name>National Emergency Number Association (NENA)</name>
+      <uri>https://www.nena.org</uri>
+      <updated>2022-10-10</updated>
+    </person>
+    <person id="David_Neto">
+      <name>David Neto</name>
+      <uri>mailto:dneto&amp;google.com</uri>
+      <updated>2023-01-12</updated>
+    </person>
     <person id="Max_Neuendorf">
       <name>Max Neuendorf</name>
       <uri>mailto:max.neuendorf&amp;iis.fraunhofer.de</uri>
@@ -12214,11 +12936,17 @@ by the IANA.</note>
     </person>
     <person id="OASIS">
       <name>OASIS</name>
-      <uri>http://www.oasis-open.org</uri>
+      <uri>https://www.oasis-open.org</uri>
+      <uri>mailto:tc-admin&amp;oasis-open.org</uri>
     </person>
     <person id="OASIS_Security_Services_Technical_Committee_SSTC">
       <name>OASIS Security Services Technical Committee (SSTC), see registration template for e-mail</name>
       <updated>2004-12</updated>
+    </person>
+    <person id="OASIS_TC_Admin">
+      <name>OASIS TC Admin</name>
+      <uri>mailto:project-admin&amp;oasis-open.org</uri>
+      <updated>2022-06-07</updated>
     </person>
     <person id="OGC">
       <name>Open Geospatial Consortium (OGC)</name>
@@ -12293,6 +13021,11 @@ by the IANA.</note>
       <name>OPC Foundation</name>
       <uri>mailto:sysadmin&amp;opcfoundation.org</uri>
       <updated>2020-09-01</updated>
+    </person>
+    <person id="OpenID_Foundation_Artifact_Binding_WG">
+      <name>OpenID Foundation Artifact Binding Working Group</name>
+      <uri>mailto:openid-specs-ab&amp;lists.openid.net</uri>
+      <updated>2022-10-07</updated>
     </person> 
     <person id="Open_Mobile_Naming_Authority">
       <name>Open Mobile Naming Authority (OMNA)</name>
@@ -12410,6 +13143,11 @@ by the IANA.</note>
       <uri/>
       <updated>2020-09-17</updated>
     </person>
+    <person id="PDF_Association">
+      <name>PDF Association</name>
+      <uri>mailto:info&amp;pdfa.org</uri>
+      <updated>2022-02-25</updated>
+    </person>
     <person id="Gavin_Peacock">
       <name>Gavin Peacock</name>
       <uri>mailto:gpeacock&amp;palm.com</uri>
@@ -12424,11 +13162,6 @@ by the IANA.</note>
       <name>Bob Pentecost</name>
       <uri>mailto:bpenteco&amp;boi.hp.com</uri>
       <updated>1997-03-19</updated>
-    </person>
-    <person id="Roberto_Perelman">
-      <name>Roberto Perelman</name>
-      <uri>mailto:rperelma&amp;adobe.com</uri>
-      <updated>2000-11-20</updated>
     </person>
     <person id="Petr_Peterka">
       <name>Petr Peterka</name>
@@ -12450,11 +13183,6 @@ by the IANA.</note>
       <uri>mailto:silviapfeiffer1&amp;gmail.com</uri>
       <updated>2019-10-14</updated>
     </person>
-    <person id="James_F_Philbin">
-      <name>James F Philbin</name>
-      <uri>mailto:jfphilbin&amp;gmail.com</uri>
-      <updated>2016-09-26</updated>
-    </person>
     <person id="Peeter_Piegaze">
       <name>Peeter Piegaze</name>
       <uri>mailto:ppiegaze at adobe.com</uri>
@@ -12474,6 +13202,11 @@ by the IANA.</note>
       <name>Charles Plessy</name>
       <uri>mailto:plessy&amp;debian.org</uri>
       <updated>2014-05-20</updated>
+    </person>
+    <person id="PNG_Working_Group">
+      <name>PNG Working Group</name>
+      <uri>mailto:public-png&amp;w3.org</uri>
+      <updated>2021-12-07</updated>
     </person>
     <person id="Clemens_Portele">
       <name>Clemens Portele</name>
@@ -12530,20 +13263,25 @@ by the IANA.</note>
       <uri>mailto:prajkoti&amp;qca.qualcomm.com</uri>
       <updated>2012-06-05</updated>
     </person>
+    <person id="Sridhar_Ramakrishnan">
+      <name>Sridhar Ramakrishnan</name>
+      <uri>mailto:evalsinca&amp;hotmail.com</uri>
+      <updated>2023-03-02</updated>
+    </person>
     <person id="Ben_Ramsey">
       <name>Ben Ramsey</name>
       <uri>mailto:ben&amp;shootproof.com</uri>
       <updated>2018-04-06</updated>
     </person>
-    <person id="Glenn_Randers-Pehrson">
-      <name>Glenn Randers-Pehrson</name>
-      <uri>mailto:glennrp&amp;gmail.com</uri>
-      <updated>2015-05-06</updated>
-    </person>
     <person id="Bindu_Rama_Rao">
       <name>Bindu Rama Rao</name>
       <uri>mailto:brao&amp;bitfone.com</uri>
       <updated>2006-09-14</updated>
+    </person>
+    <person id="Marcin_Rataj">
+      <name>Marcin Rataj</name>
+      <uri>mailto:lidel&amp;protocol.ai</uri>
+      <updated>2022-10-19</updated>
     </person>
     <person id="Uwe_Rauschenbach">
       <name>Uwe Rauschenbach</name>
@@ -12594,6 +13332,11 @@ by the IANA.</note>
       <name>Bryn Rhodes</name>
       <uri>mailto:bryn&amp;dynamiccontentgroup.com</uri>
       <updated>2020-12-08</updated>
+    </person>
+    <person id="David_Riccitelli">
+      <name>David Riccitelli</name>
+      <uri>mailto:david&amp;wordlift.io</uri>
+      <updated>2023-01-04</updated>
     </person>
     <person id="Steve_Rice">
       <name>Steve Rice</name>
@@ -12680,6 +13423,11 @@ by the IANA.</note>
       <uri>mailto:sandholm&amp;google.com</uri>
       <updated>2011-12-14</updated>
     </person>
+    <person id="Dominique_Sandoz">
+      <name>Dominique Sandoz</name>
+      <uri>mailto:dominique&amp;medicalholodeck.com</uri>
+      <updated>2023-01-02</updated>
+    </person>
     <person id="Gary_Sands">
       <name>Gary Sands</name>
       <uri>mailto:gsands&amp;tycoint.com</uri>
@@ -12740,11 +13488,6 @@ by the IANA.</note>
       <uri>mailto:aschoedl&amp;think-cell.com</uri>
       <updated>2018-04-16</updated>
     </person>
-    <person id="Svante_Schubert">
-      <name>Svante Schubert</name>
-      <uri>mailto:Svante.Schubert&amp;sun.com</uri>
-      <updated>2009-01-16</updated>
-    </person>
     <person id="Heinz-Peter_Schütz">
       <name>Heinz-Peter Schütz</name>
       <uri>mailto:heinz.schuetz&amp;bint.ch</uri>
@@ -12790,6 +13533,11 @@ by the IANA.</note>
       <uri>mailto:doug.serres&amp;hummingbird.com</uri>
       <updated>2014-05-01</updated>
     </person>
+    <person id="Fawad_Shaikh">
+      <name>Fawad Shaikh</name>
+      <uri>mailto:fawad&amp;candle.dev</uri>
+      <updated>2022-09-05</updated>
+    </person>
     <person id="Rafie_Shamsaasef">
       <name>Rafie Shamsaasef</name>
       <uri>mailto:rafie&amp;motorola.com</uri>
@@ -12831,7 +13579,7 @@ by the IANA.</note>
     <person id="Scott_Simmons">
       <name>Scott Simmons</name>
       <uri>mailto:ssimmons&amp;opengeospatial.org</uri>
-      <updated>2018-08-10</updated>
+      <updated>2022-01-13</updated>
     </person>
     <person id="Ben_Simon">
       <name>Ben Simon</name>
@@ -12911,7 +13659,11 @@ by the IANA.</note>
     <person id="SMPTE">
       <name>Society of Motion Picture and Television Engineers (SMPTE)</name>
       <uri>http://www.smpte.org</uri>
-      <updated>2017-12-08</updated>
+    </person>
+    <person id="SMPTE_Director_of_Standards_Development">
+      <name>Director of Standards Development</name>
+      <uri>mailto:standards-support&amp;smpte.org</uri>
+      <updated>2022-07-13</updated>
     </person>
     <person id="Christopher_Snazell">
       <name>Christopher Snazell</name>
@@ -12927,11 +13679,6 @@ by the IANA.</note>
       <name>Monty Solomon</name>
       <uri>mailto:monty&amp;noblenet.com</uri>
       <updated>1997-02-19</updated>
-    </person>
-    <person id="Lisa_Spellman">
-      <name>Lisa Spellman</name>
-      <uri>mailto:LSpellman&amp;medicalimaging.org</uri>
-      <updated>2018-03-06</updated>
     </person>
     <person id="Henry_Spencer">
       <name>Henry Spencer</name>
@@ -13187,10 +13934,20 @@ by the IANA.</note>
       <uri>mailto:chad&amp;iris.washington.edu</uri>
       <updated>2009-04-07</updated>
     </person>
+    <person id="Dana_Tripp">
+      <name>Dana Tripp</name>
+      <uri>mailto:trippdsc4&amp;gmail.com</uri>
+      <updated>2021-08-10</updated>
+    </person>
     <person id="Christian_Trosclair">
       <name>Christian Trosclair</name>
       <uri>mailto:christian&amp;patentdive.com</uri>
       <updated>2017-10-19</updated>
+    </person>
+    <person id="Martin_Tůma">
+      <name>Martin Tůma</name>
+      <uri>mailto:tumic&amp;gpxsee.org</uri>
+      <updated>2023-02-09</updated>
     </person>
     <person id="Jeff_Tupper">
       <name>Jeff Tupper</name>
@@ -13231,6 +13988,11 @@ by the IANA.</note>
       <name>Oleg Uryutin</name>
       <uri>mailto:oleg&amp;aplextor.com</uri>
       <updated>2019-11-21</updated>
+    </person>
+    <person id="Filippo_Valsorda">
+      <name>Filippo Valsorda</name>
+      <uri>mailto:age&amp;filippo.io</uri>
+      <updated>2021-10-05</updated>
     </person>
     <person id="Anne_van_Kesteren">
       <name>Anne van Kesteren</name>
@@ -13275,6 +14037,11 @@ by the IANA.</note>
       <name>W3C Music Notation Community Group</name>
       <uri>mailto:public-music-notation&amp;w3.org</uri>
       <updated>2017-01-19</updated>
+    </person>
+    <person id="W3C_PNG_Working_Group">
+      <name>PNG Working Group</name>
+      <uri>mailto:public-png&amp;w3.org</uri>
+      <updated>2022-11-21</updated>
     </person>
     <person id="W3C_RDF_Working_Group">
       <name>RDF Working Group</name>
@@ -13364,6 +14131,11 @@ by the IANA.</note>
       <name>Eric Wedel</name>
       <uri>mailto:ewedel&amp;meridian-data.com</uri>
       <updated>1996-10-19</updated>
+    </person>
+    <person id="Sebastian_A._Weiss">
+      <name>Sebastian A. Weiss</name>
+      <uri>mailto:sebastian.weiss&amp;nacamar.de</uri>
+      <updated>2021-09-27</updated>
     </person>
     <person id="Linda_Welsh">
       <name>Linda Welsh</name>
@@ -13470,6 +14242,11 @@ by the IANA.</note>
       <uri>mailto:don&amp;lexmark.com</uri>
       <updated>2001-08-20</updated>
     </person>
+    <person id="Peter_Wyatt">
+      <name>Peter Wyatt</name>
+      <uri>mailto:peter.wyatt&amp;pdfa.org</uri>
+      <updated>2022-02-25</updated>
+    </person>
     <person id="XENC_Working_Group">
       <name>XENC Working Group</name>
       <uri>mailto:xml-encryption&amp;w3.org</uri>
@@ -13500,6 +14277,11 @@ by the IANA.</note>
       <uri>mailto:yasuo.yamanaka&amp;dir-bi.co.jp</uri>
       <updated>2009-02-24</updated>
     </person>
+    <person id="Haorui_Yang">
+      <name>Haorui Yang</name>
+      <uri>mailto:yanghaorui&amp;oppo.com</uri>
+      <updated>2022-09-05</updated>
+    </person>
     <person id="Mr._Yellow">
       <name>Mr. Yellow</name>
       <uri>mailto:yellowriversw&amp;yahoo.com</uri>
@@ -13519,6 +14301,11 @@ by the IANA.</note>
       <name>Roy Yue</name>
       <uri>mailto:yuepeiyu&amp;huawei.com</uri>
       <updated>2009-03-04</updated>
+    </person>
+    <person id="Dmytro_Yunchyk">
+      <name>Dmytro Yunchyk</name>
+      <uri>mailto:yunchik&amp;belightsoft.com</uri>
+      <updated>2022-06-27</updated>
     </person>
     <person id="Giulio_Zambon">
       <name>Giulio Zambon</name>
@@ -13550,20 +14337,15 @@ by the IANA.</note>
       <uri>mailto:d&amp;liwa.li</uri>
       <updated>2015-03-16</updated>
     </person>
-    <person id="ZigBee">
-      <name>ZigBee Alliance</name>
-      <uri>mailto:http://www.zigbee.org</uri>
-      <updated>2012-11-27</updated>
-    </person>
-    <person id="Steve_Zilles">
-      <name>Steve Zilles</name>
-      <uri>mailto:szilles&amp;adobe.com</uri>
-      <updated>1996-10-19</updated>
-    </person>
     <person id="Gottfried_Zimmermann">
       <name>Gottfried Zimmermann</name>
       <uri>mailto:gzimmermann at acm.org</uri>
       <updated>2013-06-24</updated>
+    </person>
+    <person id="Michael_Zink">
+      <name>Michael Zink</name>
+      <uri>mailto:mike.zink&amp;siemens.com</uri>
+      <updated>2023-01-24</updated>
     </person>
     <person id="William_Zou">
       <name>William Zou</name>
