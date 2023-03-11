@@ -27,6 +27,13 @@ class MediaRange implements MediaTypeInterface
 
 	const ANY = '*';
 
+	/**
+	 *
+	 * @param string $type
+	 *        	Main type or '*'
+	 * @param string $subType
+	 *        	Sub type or '*'
+	 */
 	public function __construct($type = self::ANY, $subType = self::ANY)
 	{
 		$this->mainType = $type;
@@ -51,6 +58,12 @@ class MediaRange implements MediaTypeInterface
 		return $this->subType;
 	}
 
+	/**
+	 * Short string representation of the media type
+	 *
+	 * @return string Media type/subtype[+syntax] WITHOUT parameters
+	 */
+	#[\ReturnTypeWillChange]
 	public function __toString()
 	{
 		return $this->mainType . '/' . strval($this->subType);
@@ -62,6 +75,11 @@ class MediaRange implements MediaTypeInterface
 		$this->setParameters($this->getParameters());
 	}
 
+	/**
+	 *
+	 * {@inheritdoc}
+	 * @see \NoreSources\MediaType\MediaTypeInterface::match()
+	 */
 	public function match($b)
 	{
 		/**

@@ -49,12 +49,24 @@ class MediaType implements MediaTypeInterface
 		return $this->subType;
 	}
 
+	/**
+	 *
+	 * @param string $type
+	 *        	Main type
+	 * @param MediaSubType $subType
+	 *        	Sub type
+	 */
 	public function __construct($type, MediaSubType $subType = null)
 	{
 		$this->mainType = $type;
 		$this->subType = $subType;
 	}
 
+	/**
+	 * Short string representation
+	 *
+	 * @return string main type/sub type[+syntax] WITHOUT parameters
+	 */
 	public function __toString()
 	{
 		return strval($this->mainType) . '/' . strval($this->subType);
@@ -66,6 +78,11 @@ class MediaType implements MediaTypeInterface
 		$this->setParameters($this->getParameters());
 	}
 
+	/**
+	 *
+	 * {@inheritdoc}
+	 * @see \NoreSources\MediaType\MediaTypeInterface::match()
+	 */
 	public function match($b)
 	{
 		/**

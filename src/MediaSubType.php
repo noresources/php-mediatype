@@ -34,6 +34,12 @@ class MediaSubType implements StringRepresentation, ComparableInterface
 			$this->facets = explode('.', $facets);
 	}
 
+	/**
+	 * String representation of the subtype and structured syntax type if any
+	 *
+	 * @return string
+	 */
+	#[\ReturnTypeWillChange]
 	public function __toString()
 	{
 		$s = \implode('.', $this->facets);
@@ -63,6 +69,10 @@ class MediaSubType implements StringRepresentation, ComparableInterface
 		return Container::keyValue($this->facets, $index, null);
 	}
 
+	/**
+	 *
+	 * @return integer Number of sub type facets
+	 */
 	public function getFacetCount()
 	{
 		return count($this->facets);

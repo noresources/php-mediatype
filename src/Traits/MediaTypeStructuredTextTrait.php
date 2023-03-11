@@ -14,6 +14,12 @@ use NoreSources\MediaType\StructuredSyntaxSuffixRegistry;
 trait MediaTypeStructuredTextTrait
 {
 
+	/**
+	 *
+	 * @param boolean $registeredOnly
+	 *        	Return type only if it is a registered type
+	 * @return string|NULL Structured syntax type if any. NULL otherwise
+	 */
 	public function getStructuredSyntax($registeredOnly = false)
 	{
 		if (!($this->getSubType() instanceof MediaSubType))
