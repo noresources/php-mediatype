@@ -7,7 +7,6 @@
  */
 namespace NoreSources\MediaType;
 
-use NoreSources\ComparableInterface;
 use NoreSources\Http\ParameterMapProviderInterface;
 use NoreSources\Type\StringRepresentation;
 
@@ -27,7 +26,7 @@ use NoreSources\Type\StringRepresentation;
  * </ul>
  */
 interface MediaTypeInterface extends ParameterMapProviderInterface,
-	StringRepresentation, \Serializable, ComparableInterface
+	StringRepresentation, \Serializable, \JsonSerializable
 {
 
 	/**

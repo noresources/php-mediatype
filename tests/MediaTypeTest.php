@@ -166,7 +166,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 			$this->assertEquals(
 				Container::keyValue($parsed, 'serialized', $text),
-				$mediaType->serialize(), $text . ' (re-)serialized');
+				$mediaType->jsonSerialize(), $text . ' (re-)serialized');
 
 			if ($parsed['subtype'])
 			{
@@ -440,7 +440,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				$mt->getParameters()
 					->getArrayCopy(), 'Parameters');
 
-			$serialized = $mt->serialize();
+			$serialized = $mt->jsonSerialize();
 		}
 	}
 
@@ -584,18 +584,18 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 	public function testClone()
 	{
 		$a = MediaType::createFromString('text/plain');
-		$sa = $a->serialize();
+		$sa = $a->jsonSerialize();
 
 		$b = clone $a;
-		$this->assertEquals($sa, $b->serialize(), 'Clone');
+		$this->assertEquals($sa, $b->jsonSerialize(), 'Clone');
 
 		$b->getParameters()->offsetSet('charset', 'utf-8');
-		$sb = $b->serialize();
+		$sb = $b->jsonSerialize();
 
-		$this->assertEquals($sa, $a->serialize(),
+		$this->assertEquals($sa, $a->jsonSerialize(),
 			'Clone modification does not affect original parameter map');
 		$a->getParameters()->offsetSet('foo', 'bar');
-		$this->assertEquals($sb, $b->serialize(),
+		$this->assertEquals($sb, $b->jsonSerialize(),
 			'Source modification does not affect clone parameter map');
 	}
 }

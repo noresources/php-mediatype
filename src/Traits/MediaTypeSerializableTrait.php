@@ -14,7 +14,19 @@ trait MediaTypeSerializableTrait
 
 	/**
 	 *
+	 * @return string String representation of the media type and its optional parameters
+	 */
+	#[\ReturnTypeWillChange]
+	public function jsonSerialize()
+	{
+		return $this->serialize();
+	}
+
+	/**
+	 *
 	 * @return string Media Type / Range and parameters
+	 *
+	 * @deprecated Use jsonSerialize()
 	 */
 	public function serialize()
 	{
