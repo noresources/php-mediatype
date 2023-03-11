@@ -41,7 +41,7 @@ class MediaTypeFileExtensionRegistry
 
 		if (!($mediaType instanceof MediaTypeInterface))
 		{
-			$mediaType = MediaType::createFromString($mediaType, true);
+			$mediaType = MediaType::createFromString($mediaType);
 			$this->extensionMap[$extension] = $mediaType;
 		}
 

@@ -8,7 +8,6 @@
 namespace NoreSources\MediaType;
 
 use NoreSources\NotComparableException;
-use NoreSources\Container\Container;
 use NoreSources\MediaType\Traits\MediaTypeCompareTrait;
 use NoreSources\MediaType\Traits\MediaTypeMatchingTrait;
 use NoreSources\MediaType\Traits\MediaTypeParameterMapTrait;
@@ -131,55 +130,19 @@ class MediaType implements MediaTypeInterface
 	}
 
 	/**
-	 * Parse a media type string
 	 *
 	 * @param string $mediaTypeString
-	 *        	Mediga type string
-	 * @throws MediaTypeException
-	 * @return \NoreSources\MediaType\MediaType
+	 *        	Media type string
+	 * @param boolean $withParameters
+	 *        	Also parse parameters
+	 * @return MediaType
 	 */
 	public static function createFromString($mediaTypeString,
-		$strict = true)
+		$withParameters = false)
 	{
-		$pattern = RFC6838::MEDIA_TYPE_PATTERN;
-		if ($strict)
-			$pattern = '^' . $pattern . '$';
-		else
-			$pattern = '^[\x9\x20]*' . $pattern;
-
-		$matches = [];
-		if (!\preg_match(chr(1) . $pattern . chr(1) . 'i',
-			$mediaTypeString, $matches))
-			throw new MediaTypeException($mediaTypeString,
-				'Not a valid media type string');
-
-		$subType = null;
-		if (Container::keyExists($matches, 2))
-		{
-			$facets = $matches[2];
-			$length = \strlen($facets);
-			$syntax = null;
-
-			$lastPlus = \strrpos($facets, '+');
-			if ($lastPlus !== false && $lastPlus < ($length - 1))
-			{
-				$syntax = \substr($facets, $lastPlus + 1);
-				$facets = \substr($facets, 0, $lastPlus);
-			}
-
-			$subType = new MediaSubType(\explode('.', $facets), $syntax);
-		}
-
-		return new MediaType($matches[1], $subType);
-	}
-
-	/**
-	 *
-	 * @deprecated Use createFromString ()
-	 */
-	public static function fromString($mediaTypeString, $strict = true)
-	{
-		return self::createFromString($mediaTypeString, $strict);
+		return self::unserializeMediaTypeInterfaceInterface(
+			static::class, RFC6838::MEDIA_TYPE_PATTERN, $mediaTypeString,
+			$withParameters);
 	}
 
 	/**

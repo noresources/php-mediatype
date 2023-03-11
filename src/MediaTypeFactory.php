@@ -32,28 +32,14 @@ class MediaTypeFactory
 	{
 		try
 		{
-			$mediaType = new MediaType('');
-			$mediaType->unserialize($mediaTypeString);
-			return $mediaType;
+			return MediaType::createFromString($mediaTypeString, true);
 		}
 		catch (MediaTypeException $e)
 		{
 			if (!$acceptRange)
 				throw $e;
-			$mediaRange = new MediaRange(MediaRange::ANY);
-			$mediaRange->unserialize($mediaTypeString);
-			return $mediaRange;
+			return MediaRange::createFromString($mediaTypeString, true);
 		}
-	}
-
-	/**
-	 *
-	 * @deprecated Use createFromString()
-	 */
-	public static function fromString($mediaTypeString,
-		$acceptRange = true)
-	{
-		return self::createFromString($mediaTypeString, $acceptRange);
 	}
 
 	/**
@@ -136,10 +122,5 @@ class MediaTypeFactory
 
 		throw new MediaTypeException(null,
 			'Unable to recognize media type');
-	}
-
-	public static function fromMedia($media, $mode = self::FROM_ALL)
-	{
-		return self::createFromMedia($media, $mode);
 	}
 }
