@@ -8,6 +8,7 @@
 namespace NoreSources\MediaType;
 
 use NoreSources\Bitset;
+use NoreSources\Container\Container;
 
 /**
  * Media Type and Media Range factory
@@ -82,12 +83,11 @@ class MediaTypeFactory
 		$type = null;
 
 		if (($mode & self::FROM_EXTENSION) == self::FROM_EXTENSION &&
-			\is_file($media) ||
-			(\is_string($media) &&
-			\preg_match('/\.[a-zA-Z0-9_-]+$/', $media)))
+			\is_string($media) &&
+			($extension = pathinfo($media, PATHINFO_EXTENSION)))
 		{
 			$extensionType = MediaTypeFileExtensionRegistry::getInstance()->mediaTypeFromExtension(
-				pathinfo($media, PATHINFO_EXTENSION));
+				$extension);
 
 			if ($extensionType instanceof MediaTypeInterface)
 				if (($mode & self::FROM_EXTENSION_FIRST) ==
@@ -97,15 +97,29 @@ class MediaTypeFactory
 
 		if (($mode & self::FROM_CONTENT) == self::FROM_CONTENT)
 		{
-			if (\is_file($media) && \is_readable($media) &&
-				\class_exists('\finfo'))
+			if (\is_string($media) && \is_file($media))
 			{
-				$finfo = new \finfo(FILEINFO_MIME_TYPE);
-				$contentType = $finfo->file($media);
+				if (\class_exists('\finfo'))
+				{
+					$finfo = new \finfo(FILEINFO_MIME_TYPE);
+					$contentType = $finfo->file($media);
+				}
+				elseif (\function_exists('\mime_content_type'))
+				{
+					$contentType = @mime_content_type($media);
+				}
 			}
-			elseif (\function_exists('\mime_content_type'))
+			elseif (\is_resource($media) &&
+				\function_exists('\get_resource_type'))
 			{
-				$contentType = @mime_content_type($media);
+				$type = \get_resource_type($media);
+				if ($type == 'stream' &&
+					\function_exists('\stream_get_meta_data') &&
+					($meta = \stream_get_meta_data($media)))
+				{
+					$contentType = Container::keyValue($meta,
+						'mediatype', null);
+				}
 			}
 		}
 

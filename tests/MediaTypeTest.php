@@ -21,6 +21,21 @@ use NoreSources\Type\TypeDescription;
 class MediaTypeTest extends \PHPUnit\Framework\TestCase
 {
 
+	public function __construct($name = null, $data = array(),
+		$dataName = '')
+	{
+		parent::__construct($name, $data, $dataName);
+		$this->streams = [];
+	}
+
+	public function __destruct()
+	{
+		foreach ($this->streams as $value)
+		{
+			\fclose($value);
+		}
+	}
+
 	public function testParse()
 	{
 		$tests = [
@@ -203,27 +218,47 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 	{
 		$tests = [
 			'Existing JSON file' => [
-				'path' => __DIR__ . '/data/a.json',
-				'type' => 'application/json'
+				'media' => __DIR__ . '/data/a.json',
+				'expected' => 'application/json'
 			],
 			'C++ source in a .js file' => [
-				'path' => __DIR__ . '/data/c++.js',
-				'type' => 'text/x-c++'
+				'media' => __DIR__ . '/data/c++.js',
+				'expected' => 'text/x-c++'
 			],
 			'Empty XML file' => [
-				'path' => __DIR__ . '/data/empty.xml',
-				'type' => 'application/xml'
+				'media' => __DIR__ . '/data/empty.xml',
+				'expected' => 'application/xml'
+			],
+			'nada' => [
+				'media' => 'Skarabutcha !',
+				'expected' => MediaTypeException::class
+			],
+			'data:// stream' => [
+				'media' => $this->addStream(
+					\fopen('data://text/csv,foo,bar', 'r')),
+				'expected' => 'text/csv'
 			]
 		];
 
 		foreach ($tests as $label => $test)
 		{
-			$path = $test['path'];
-			$type = $test['type'];
-			$mediaType = MediaTypeFactory::createFromMedia($path,
-				MediaTypeFactory::FROM_ALL);
+			$media = $test['media'];
+			$expected = $test['expected'];
+			$message = '';
+			try
+			{
+				$mediaType = MediaTypeFactory::createFromMedia($media,
+					MediaTypeFactory::FROM_ALL);
+			}
+			catch (\Exception $e)
+			{
+				$message = $e->getMessage();
+				$mediaType = TypeDescription::getName($e);
+			}
 
-			$this->assertEquals($type, \strval($mediaType), $label);
+			if (\strlen($message))
+				$label .= ' ' . $message;
+			$this->assertEquals($expected, \strval($mediaType), $label);
 		}
 
 		$mode = MediaTypeFactory::FROM_ALL |
@@ -600,6 +635,12 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		$a->getParameters()->offsetSet('foo', 'bar');
 		$this->assertEquals($sb, $b->serializeToString(),
 			'Source modification does not affect clone parameter map');
+	}
+
+	private function addStream($stream)
+	{
+		$this->streams[] = $stream;
+		return $stream;
 	}
 }
 
