@@ -88,7 +88,8 @@ class MediaTypeFactory
 			\is_string($media) &&
 			($extension = pathinfo($media, PATHINFO_EXTENSION)))
 		{
-			$extensionType = MediaTypeFileExtensionRegistry::getInstance()->mediaTypeFromExtension(
+			$extensionRegistry = MediaTypeFileExtensionRegistry::getInstance();
+			$extensionType = $extensionRegistry->getExtensionMediaType(
 				$extension);
 
 			if ($extensionType instanceof MediaTypeInterface)
