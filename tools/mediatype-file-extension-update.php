@@ -5,7 +5,7 @@ require (__DIR__ . '/../vendor/autoload.php');
 
 use NoreSources\Container\Container;
 use NoreSources\Type\TypeConversion;
-$url = 'https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types';
+$url = 'https://raw.githubusercontent.com/apache/httpd/trunk/docs/conf/mime.types';
 $filename = __DIR__ . '/../resources/httpd/mime.types';
 
 $outputFileBase = __DIR__ . '/../src/MediaTypeFileExtensionRegistry';
@@ -15,6 +15,7 @@ $outputFileBase = __DIR__ . '/../src/MediaTypeFileExtensionRegistry';
  */
 if (\in_array('--download', $_SERVER['argv'])) // 403
 {
+	echo ('Download list from ' . $url . PHP_EOL);
 	$tmp = $filename . '.download';
 	$file = fopen($tmp, 'w');
 	$curl = curl_init($url);
@@ -62,8 +63,10 @@ foreach ($lines as $index => $line)
 	$mediaType = MediaType::createFromString($match[1]);
 	$extensions = \preg_split('/\s+/', $match[4]);
 
-	echo (sprintf('%-32.32s %s', \strval($mediaType),
-		\implode(', ', $extensions)) . PHP_EOL);
+	/*
+	 echo (sprintf('%-32.32s %s', \strval($mediaType),
+	 \implode(', ', $extensions)) . PHP_EOL);
+	 */
 
 	foreach ($extensions as $extension)
 	{

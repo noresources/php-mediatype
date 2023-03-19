@@ -21,6 +21,15 @@ class MediaTypeFileExtensionRegistry
 
 	use SingletonTrait;
 
+	public function __construct()
+	{
+		/*
+		 * Workaround non-standard media type for YAML
+		 */
+		$this->setExtensionMediaType('yaml', 'text/yaml', true);
+		$this->setExtensionMediaType('yml', 'text/yaml', true);
+	}
+
 	/**
 	 *
 	 * @param string $extension
@@ -30,11 +39,19 @@ class MediaTypeFileExtensionRegistry
 	 */
 	public function getExtensionMediaType($extension)
 	{
-		if (!isset($this->extensionMap))
-			$this->extensionMap = self::getData('extensions');
+		$mediaType = null;
+		if (isset($this->userdefinedExtensionMap))
+			$mediaType = Container::keyValue(
+				$this->userdefinedExtensionMap, $extension);
 
-		$mediaType = Container::keyValue($this->extensionMap, $extension,
-			false);
+		if (!$mediaType)
+		{
+			if (!isset($this->extensionMap))
+				$this->extensionMap = self::getData('extensions');
+
+			$mediaType = Container::keyValue($this->extensionMap,
+				$extension, false);
+		}
 
 		if (!$mediaType)
 			return false;
@@ -69,17 +86,72 @@ class MediaTypeFileExtensionRegistry
 	 */
 	public function getMediaTypeExtensions(MediaType $mediaType)
 	{
+		$mainType = $mediaType->getType();
+		$subType = \strval($mediaType->getSubType());
+
+		if (isset($this->userdefinedTypesMap) &&
+			Container::keyExists($this->userdefinedTypesMap, $mainType) &&
+			Container::keyExists($this->userdefinedTypesMap[$mainType],
+				$subType))
+			return $this->userdefinedTypesMap[$mainType][$subType];
+		{}
+
 		if (!isset($this->typesMap))
 			$this->typesMap = [];
-
-		$mainType = $mediaType->getType();
 
 		if (!Container::keyExists($this->typesMap, $mainType))
 			$this->typesMap[$mainType] = self::getData(
 				'types.' . $mainType);
 
-		return Container::keyValue($this->typesMap[$mainType],
-			\strval($mediaType->getSubType()), []);
+		return Container::keyValue($this->typesMap[$mainType], $subType,
+			[]);
+	}
+
+	public function setExtensionMediaType($extension, $mediaType,
+		$reverseMap = true)
+	{
+		if (!isset($this->userdefinedExtensionMap))
+			$this->userdefinedExtensionMap = [];
+
+		$this->userdefinedExtensionMap[$extension] = $mediaType;
+
+		if (!$reverseMap)
+			return;
+
+		$this->setMediaTypeExtension($mediaType, $extension, false);
+	}
+
+	public function setMediaTypeExtension($mediaType, $extension,
+		$reverseMap = true)
+	{
+		$type = null;
+		$subType = null;
+		if ($mediaType instanceof MediaTypeInterface)
+		{
+			$type = $mediaType->getType();
+			$subType = \strval($mediaType->getSubType());
+		}
+		else
+		{
+			$slash = \strpos($mediaType, '/');
+			$type = \substr($mediaType, 0, $slash);
+			$subType = \substr($mediaType, $slash + 1);
+		}
+
+		if (!isset($this->userdefinedTypesMap))
+			$this->userdefinedTypesMap = [];
+		if (!Container::keyExists($this->userdefinedTypesMap, $type))
+			$this->userdefinedTypesMap[$type] = [];
+		if (!Container::keyExists($this->userdefinedTypesMap[$type],
+			$subType))
+			$this->userdefinedTypesMap[$type][$subType] = [];
+
+		$this->userdefinedTypesMap[$type][$subType][] = $extension;
+
+		if (!$reverseMap)
+			return;
+
+		$this->setExtensionMediaType($extension, $mediaType, false);
 	}
 
 	private function getData($suffix)
@@ -93,7 +165,27 @@ class MediaTypeFileExtensionRegistry
 		return \json_decode(\file_get_contents($filename), true);
 	}
 
+	/**
+	 *
+	 * @var array
+	 */
 	private $typesMap;
 
+	/**
+	 *
+	 * @var string[]
+	 */
 	private $extensionMap;
+
+	/**
+	 *
+	 * @var string[]
+	 */
+	private $userdefinedExtensionMap;
+
+	/**
+	 *
+	 * @var array
+	 */
+	private $userdefinedTypesMap;
 }

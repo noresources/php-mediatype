@@ -12,14 +12,19 @@ class MediaTypeFileExtensionRegistryTest extends \PHPUnit\Framework\TestCase
 			'json' => [
 				'type' => 'application/json',
 				"extension" => 'json'
+			],
+			'user-defined YAML' => [
+				'type' => 'text/yaml',
+				'extension' => 'yaml'
 			]
 		];
 
+		$factory = MediaTypeFactory::getInstance();
 		$registry = MediaTypeFileExtensionRegistry::getInstance();
 
 		foreach ($tests as $label => $test)
 		{
-			$mt = MediaTypeFactory::getInstance()->createFromString($test['type']);
+			$mt = $factory->createFromString($test['type']);
 			$extension = $test['extension'];
 			$extensions = $registry->getMediaTypeExtensions($mt);
 			$this->assertEquals('array', gettype($extensions),
