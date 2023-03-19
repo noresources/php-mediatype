@@ -161,7 +161,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$mediaType = null;
 			try
 			{
-				$mediaType = MediaTypeFactory::createFromString($text,
+				$mediaType = MediaTypeFactory::getInstance()->createFromString($text,
 					$parsed['class'] == MediaRange::class);
 			}
 			catch (MediaTypeException $e)
@@ -247,7 +247,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$message = '';
 			try
 			{
-				$mediaType = MediaTypeFactory::createFromMedia($media,
+				$mediaType = MediaTypeFactory::getInstance()->createFromMedia($media,
 					MediaTypeFactory::FROM_ALL);
 			}
 			catch (\Exception $e)
@@ -266,7 +266,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 		$this->assertStringEndsWith('/javascript',
 			strval(
-				MediaTypeFactory::createFromMedia(
+				MediaTypeFactory::getInstance()->createFromMedia(
 					__DIR__ . '/data/c++.js', $mode)),
 			'C++ code in a .js file (extension first)');
 	}
@@ -386,8 +386,8 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 		foreach ($tests as $test)
 		{
-			$a = MediaTypeFactory::createFromString($test[0], true);
-			$b = MediaTypeFactory::createFromString($test[1], true);
+			$a = MediaTypeFactory::getInstance()->createFromString($test[0], true);
+			$b = MediaTypeFactory::getInstance()->createFromString($test[1], true);
 			$expected = $test[2];
 
 			$label = $test[0] . ' < ' . $test[1];
@@ -580,8 +580,8 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		];
 		foreach ($tests as $label => $test)
 		{
-			$a = MediaTypeFactory::createFromString($test['a']);
-			$b = MediaTypeFactory::createFromString($test['b']);
+			$a = MediaTypeFactory::getInstance()->createFromString($test['a']);
+			$b = MediaTypeFactory::getInstance()->createFromString($test['b']);
 			$expected = Container::keyValue($test, 'expected', true);
 
 			$actual = $a->match($b);
@@ -605,7 +605,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				'registered');
 			try
 			{
-				$type = MediaTypeFactory::createFromString($type);
+				$type = MediaTypeFactory::getInstance()->createFromString($type);
 			}
 			catch (\Exception $e)
 			{}

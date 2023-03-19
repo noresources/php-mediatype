@@ -8,6 +8,7 @@
 namespace NoreSources\MediaType;
 
 use NoreSources\Bitset;
+use NoreSources\SingletonTrait;
 use NoreSources\Container\Container;
 
 /**
@@ -17,6 +18,7 @@ use NoreSources\Container\Container;
  */
 class MediaTypeFactory
 {
+	use SingletonTrait;
 
 	/**
 	 * Parse a media type string

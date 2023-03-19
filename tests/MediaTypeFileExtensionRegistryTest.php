@@ -19,7 +19,7 @@ class MediaTypeFileExtensionRegistryTest extends \PHPUnit\Framework\TestCase
 
 		foreach ($tests as $label => $test)
 		{
-			$mt = MediaTypeFactory::createFromString($test['type']);
+			$mt = MediaTypeFactory::getInstance()->createFromString($test['type']);
 			$extension = $test['extension'];
 			$extensions = $registry->getMediaTypeExtensions($mt);
 			$this->assertEquals('array', gettype($extensions),
