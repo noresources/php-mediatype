@@ -1,7 +1,7 @@
 <?php
 namespace NoreSources\MediaType\Traits;
 
-trait MediaTypeMatchingTrait
+trait StructuredSyntaxMatchingTrait
 {
 
 	public static function matchStructuredSyntax($a, $b)

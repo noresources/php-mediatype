@@ -5,8 +5,9 @@
  *
  * @package MediaType
  */
-namespace NoreSources;
+namespace NoreSources\MediaType\Test;
 
+use NoreSources\NotComparableException;
 use NoreSources\Container\Container;
 use NoreSources\Http\ParameterMap;
 use NoreSources\MediaType\MediaRange;
@@ -161,8 +162,8 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$mediaType = null;
 			try
 			{
-				$mediaType = MediaTypeFactory::getInstance()->createFromString($text,
-					$parsed['class'] == MediaRange::class);
+				$mediaType = MediaTypeFactory::getInstance()->createFromString(
+					$text, $parsed['class'] == MediaRange::class);
 			}
 			catch (MediaTypeException $e)
 			{
@@ -247,8 +248,8 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$message = '';
 			try
 			{
-				$mediaType = MediaTypeFactory::getInstance()->createFromMedia($media,
-					MediaTypeFactory::FROM_ALL);
+				$mediaType = MediaTypeFactory::getInstance()->createFromMedia(
+					$media, MediaTypeFactory::FROM_ALL);
 			}
 			catch (\Exception $e)
 			{
@@ -386,8 +387,10 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 		foreach ($tests as $test)
 		{
-			$a = MediaTypeFactory::getInstance()->createFromString($test[0], true);
-			$b = MediaTypeFactory::getInstance()->createFromString($test[1], true);
+			$a = MediaTypeFactory::getInstance()->createFromString(
+				$test[0], true);
+			$b = MediaTypeFactory::getInstance()->createFromString(
+				$test[1], true);
 			$expected = $test[2];
 
 			$label = $test[0] . ' < ' . $test[1];
@@ -580,8 +583,10 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		];
 		foreach ($tests as $label => $test)
 		{
-			$a = MediaTypeFactory::getInstance()->createFromString($test['a']);
-			$b = MediaTypeFactory::getInstance()->createFromString($test['b']);
+			$a = MediaTypeFactory::getInstance()->createFromString(
+				$test['a']);
+			$b = MediaTypeFactory::getInstance()->createFromString(
+				$test['b']);
 			$expected = Container::keyValue($test, 'expected', true);
 
 			$actual = $a->match($b);
@@ -605,7 +610,8 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				'registered');
 			try
 			{
-				$type = MediaTypeFactory::getInstance()->createFromString($type);
+				$type = MediaTypeFactory::getInstance()->createFromString(
+					$type);
 			}
 			catch (\Exception $e)
 			{}

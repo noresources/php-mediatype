@@ -7,14 +7,12 @@
  */
 namespace NoreSources\MediaType;
 
-use NoreSources\NotComparableException;
+use NoreSources\MediaType\Traits\MediaRangeMatchingTrait;
 use NoreSources\MediaType\Traits\MediaTypeCompareTrait;
-use NoreSources\MediaType\Traits\MediaTypeMatchingTrait;
 use NoreSources\MediaType\Traits\MediaTypeParameterMapTrait;
 use NoreSources\MediaType\Traits\MediaTypeSerializableTrait;
 use NoreSources\MediaType\Traits\MediaTypeStructuredTextTrait;
-use NoreSources\Type\TypeConversion;
-use NoreSources\Type\TypeDescription;
+use NoreSources\MediaType\Traits\StructuredSyntaxMatchingTrait;
 
 /**
  *
@@ -27,8 +25,9 @@ class MediaType implements MediaTypeInterface
 	use MediaTypeStructuredTextTrait;
 	use MediaTypeParameterMapTrait;
 	use MediaTypeSerializableTrait;
+	use MediaRangeMatchingTrait;
 	use MediaTypeCompareTrait;
-	use MediaTypeMatchingTrait;
+	use StructuredSyntaxMatchingTrait;
 
 	/**
 	 *
@@ -82,51 +81,9 @@ class MediaType implements MediaTypeInterface
 	 * {@inheritdoc}
 	 * @see \NoreSources\MediaType\MediaTypeInterface::match()
 	 */
-	public function match($b)
+	public function match($mediaRange)
 	{
-		/**
-		 *
-		 * @var MediaTypeInterface $a
-		 * @var MediaTypeInterface $b
-		 */
-		$a = $this;
-
-		if (!($b instanceof MediaTypeInterface))
-		{
-			if (!TypeDescription::hasStringRepresentation($b))
-				throw new NotComparableException($a, $b);
-
-			$b = MediaRange::createFromString(
-				TypeConversion::toString($b));
-		}
-
-		if ($b->getType() == MediaRange::ANY)
-			return true;
-
-		if (\strcasecmp($a->getType(), $b->getType()) != 0)
-			return false;
-
-		$ast = \strval(\implode('.', $a->getSubType()->getFacets()));
-		$bst = \strval(\implode('.', $b->getSubType()->getFacets()));
-
-		if ($bst == MediaRange::ANY)
-			return true;
-
-		$c = 0;
-		try
-		{
-			$c = $a->getSubType()->compare($b);
-		}
-		catch (NotComparableException $e)
-		{
-			return false;
-		}
-
-		if ($c < 0)
-			return false;
-		return self::matchStructuredSyntax(
-			$a->getSubType()->getStructuredSyntax(),
-			$b->getSubType()->getStructuredSyntax());
+		return $this->isMediaTypeMatchMediaRange($this, $mediaRange);
 	}
 
 	/**

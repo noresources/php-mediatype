@@ -30,6 +30,13 @@ interface MediaTypeInterface extends ParameterMapProviderInterface,
 {
 
 	/**
+	 * Wildcard type or subtype
+	 *
+	 * @var string
+	 */
+	const ANY = '*';
+
+	/**
 	 * Check if the MediaType instance match the given MediaRange
 	 *
 	 * @param MediaTypeInterface|string $mediaRange
@@ -38,12 +45,23 @@ interface MediaTypeInterface extends ParameterMapProviderInterface,
 	public function match($mediaRange);
 
 	/**
+	 * Get media type main type
+	 *
+	 * Any RFC 6838 restricted name token or the wildcard token "*"
 	 *
 	 * @return string
 	 */
 	function getType();
 
 	/**
+	 * Get media type sub type and optional structured syntax suffix
+	 *
+	 * Any of the following
+	 * <ul>
+	 * <li>A RFC 6838 restricted name token, optionnaly followed by a "+" and a structured syntax
+	 * suffix</li>
+	 * <li>The wildcard token.</li>
+	 * </ul>
 	 *
 	 * @return \NoreSources\MediaType\MediaSubType|string
 	 */
