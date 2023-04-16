@@ -1,4 +1,5 @@
-# ns-php-mediatype
+NoreSources MediaType
+================================
 
 RFC 6838 Media Type (MIME type) parsing and comparison.  
 
@@ -15,7 +16,8 @@ use NoreSources\MediaType\MediaType;
 use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaRange;
 
-$mediaType = MediaTypeFactory::fromString ('text/vnd.noresources.incredibly.flexible+xml');
+$factory = MediaTypeFactory::getInstance ();
+$mediaType = $factory->createFromString ('text/vnd.noresources.incredibly.flexible+xml');
 
 var_dump ($mediaType->getMainType()); i       // "text"
 var_dump ($mediaType->getStructuredSyntax()); // "xml"
@@ -26,16 +28,16 @@ var_dump ($subType->getFacets());             // [ "vnd", "noresources", "incred
 
 
 // From a file or a stream
-$mediaType = MediaTypeFactory::fromMedia ('path/to/filename.html');
+$mediaType = $factory->createFromMedia ('path/to/filename.html');
 var_dump (\strval ($mediaType)); // "text/html"
 
 // Media range is also recognized
-$range = MediaTypeFactory::fromString ('image/*');
+$range = $factory->createFromString ('image/*');
 
 // Comparing
-$html = MediaTypeFactory::fromString ('text/html');
-$anyText = MediaTypeFactory::fromString ('text/*');
-$any = MediaTypeFactory::fromString ('*/*');
+$html = $factory->createFromString ('text/html');
+$anyText = $factory->createFromString ('text/*');
+$any = $factory->createFromString ('*/*');
 
 var_dump ([
 	'text/html vs text/*' => MediaRange::compare ($html, $anyText),
