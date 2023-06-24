@@ -13,7 +13,7 @@ use NoreSources\Type\TypeDescription;
 trait MediaRangeMatchingTrait
 {
 
-	public static function isMediaTypeMatchMediaRange($mediaType,
+	protected static function isMediaTypeMatchMediaRange($mediaType,
 		$mediaRange)
 	{
 		/**
