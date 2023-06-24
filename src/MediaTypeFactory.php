@@ -21,6 +21,44 @@ class MediaTypeFactory
 	use SingletonTrait;
 
 	/**
+	 *
+	 * @param string|NULL $type
+	 *        	Main type
+	 * @param MediaSubType|string|null $subtype
+	 *        	Media sub type
+	 * @param \Traversable|NULL $parameters
+	 *        	Media type parameter map
+	 * @return MediaType|MediaRange
+	 */
+	public function createFromProperties($type = null, $subtype = null,
+		$parameters = null)
+	{
+		$range = false;
+		if ($type === null)
+			$type = MediaRange::ANY;
+		if ($subtype === null)
+			$subtype = MediaRange::ANY;
+
+		if ($type == MediaRange::ANY ||
+			\strval($subtype) === MediaRange::ANY)
+			$range = true;
+
+		$instance = null;
+		if ($range)
+			$instance = new MediaRange($type, $subtype);
+		else
+		{
+			if (!($subtype instanceof MediaSubType))
+				$subtype = new MediaSubType($subtype);
+			$instance = new MediaType($type, $subtype);
+		}
+		if (Container::isTraversable($parameters))
+			foreach ($parameters as $k => $v)
+				$instance->getParameters()->offsetSet($k, $v);
+		return $instance;
+	}
+
+	/**
 	 * Parse a media type string
 	 *
 	 * @param string $mediaTypeString
