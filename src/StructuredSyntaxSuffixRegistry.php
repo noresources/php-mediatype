@@ -43,22 +43,22 @@ class StructuredSyntaxSuffixRegistry
 	{
 		if (!\is_array($this->suffixes))
 		{
-			$this->suffixes = [ /* Auto-generated code --<<sufixes>>--*/
-				'ber' => 'Basic Encoding Rules (BER) message transfer syntax',
-				'cbor' => 'Concise Binary Object Representation (CBOR)',
-				'cbor-seq' => 'CBOR Sequence',
-				'der' => 'Distinguished Encoding Rules (DER) message transfer syntax',
-				'fastinfoset' => 'Fast Infoset document format',
-				'gzip' => 'gzip file storage and transfer format',
-				'json' => 'JavaScript Object Notation (JSON)',
-				'json-seq' => 'JSON Text Sequence',
-				'jwt' => 'JSON Web Token (JWT)',
-				'sqlite3' => 'SQLite3 database',
-				'tlv' => 'Type Length Value',
-				'wbxml' => 'WAP Binary XML (WBXML) document format',
-				'xml' => 'Extensible Markup Language (XML)',
-				'zip' => 'ZIP file storage and transfer format',
-				'zstd' => 'Zstandard' /*--<</sufixes>>-- */
+			$this->suffixes = [ /* Auto-generated code --<<sufixes>>--*/'ber' => 'Basic Encoding Rules (BER) message transfer syntax', 
+				'cbor' => 'Concise Binary Object Representation (CBOR)', 
+				'cbor-seq' => 'CBOR Sequence', 
+				'der' => 'Distinguished Encoding Rules (DER) message transfer syntax', 
+				'fastinfoset' => 'Fast Infoset document format', 
+				'gzip' => 'gzip file storage and transfer format', 
+				'json' => 'JavaScript Object Notation (JSON)', 
+				'json-seq' => 'JSON Text Sequence', 
+				'jwt' => 'JSON Web Token (JWT)', 
+				'sqlite3' => 'SQLite3 database', 
+				'tlv' => 'Type Length Value', 
+				'wbxml' => 'WAP Binary XML (WBXML) document format', 
+				'xml' => 'Extensible Markup Language (XML)', 
+				'yaml' => 'YAML Ain\'t Markup Language (YAML)', 
+				'zip' => 'ZIP file storage and transfer format', 
+				'zstd' => 'Zstandard'/*--<</sufixes>>-- */
 			];
 		}
 	}
