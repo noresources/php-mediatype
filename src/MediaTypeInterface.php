@@ -26,7 +26,7 @@ use NoreSources\Type\StringRepresentation;
  * </ul>
  */
 interface MediaTypeInterface extends ParameterMapProviderInterface,
-	StringRepresentation, \JsonSerializable
+	StringRepresentation, \JsonSerializable, \Serializable
 {
 
 	/**

@@ -122,12 +122,24 @@ trait MediaTypeSerializableTrait
 		return $this->serializeToString();
 	}
 
+	#[\ReturnTypeWillChange]
+	public function __serialize()
+	{
+		return $this->serializeToString();
+	}
+
 	/**
 	 *
 	 * @deprecated use createFromString ($text, true)
 	 */
 	#[\ReturnTypeWillChange]
 	public function unserialize($serialized)
+	{
+		$this->__unserialize($serialized);
+	}
+
+	#[\ReturnTypeWillChange]
+	public function __unserialize($serialized)
 	{
 		/** @var MediaTypeInterface $m */
 		$m = \call_user_func([

@@ -648,11 +648,10 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		$this->streams[] = $stream;
 		return $stream;
 	}
+
+	/**
+	 *
+	 * @var array
+	 */
+	private $streams;
 }
-
-
-
-
-
-
-
