@@ -46,6 +46,7 @@ class StructuredSyntaxSuffixRegistry
 			$this->suffixes = [ /* Auto-generated code --<<sufixes>>--*/'ber' => 'Basic Encoding Rules (BER) message transfer syntax', 
 				'cbor' => 'Concise Binary Object Representation (CBOR)', 
 				'cbor-seq' => 'CBOR Sequence', 
+				'cose' => 'CBOR Object Signing and Encryption (COSE) object', 
 				'der' => 'Distinguished Encoding Rules (DER) message transfer syntax', 
 				'fastinfoset' => 'Fast Infoset document format', 
 				'gzip' => 'gzip file storage and transfer format', 

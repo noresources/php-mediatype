@@ -4,41 +4,50 @@
 <registry xmlns="http://www.iana.org/assignments" id="media-types">
   <title>Media Types</title>
   <category>Multipurpose Internet Mail Extensions (MIME) and Media Types</category>
-  <updated>2024-01-26</updated>
+  <updated>2024-08-29</updated>
   
   
  
-  <registration_rule>Expert Review for Vendor and Personal Trees</registration_rule>
+  <registration_rule>Expert Review for Vendor and Personal Trees. For Standards Tree, see <xref type="rfc" data="rfc6838"/>, Section 3.1.</registration_rule>
   <expert>Alexey Melnikov, Darrel Miller, Murray Kucherawy (backup)</expert>
   <xref type="rfc" data="rfc6838"/>
   <xref type="rfc" data="rfc4855"/>
-  <note>Per Section 3.1 of <xref type="rfc" data="rfc6838"/>, Standards Tree requests made through IETF
-documents will be reviewed and approved by the IESG, while requests made by
-other recognized standards organizations will be reviewed by the Designated
-Expert in accordance with the Specification Required policy. IANA will verify
-that this organization is recognized as a standards organization by the
-IESG.</note>
 <note><xref type="rfc" data="rfc2046"/> specifies that Media Types (formerly known as MIME types) and Media
 Subtypes will be assigned and listed by the IANA.
 
 Procedures for registering Media Types can be found in <xref type="rfc" data="rfc6838"/>, <xref type="rfc" data="rfc4289"/>, 
-and <xref type="rfc" data="rfc6657"/>. Additional procedures for registering media types for transfer via 
-Real-time Transport Protocol (RTP) can be found in <xref type="rfc" data="rfc4855"/>.
+and <xref type="rfc" data="rfc6657"/>. Additional procedures for registering media types for transfer 
+via Real-time Transport Protocol (RTP) can be found in <xref type="rfc" data="rfc4855"/>.
 
-The following is the list of Directories of Content Types and Subtypes. If you wish to 
-register a Media Type with the IANA, please see the following for the online application:
+Per Section 3.1 of <xref type="rfc" data="rfc6838"/>, Standards Tree requests made through IETF
+documents will be reviewed and approved by the IESG, while requests made by
+other recognized standards organizations will be reviewed by the Designated
+Expert in accordance with the Specification Required policy. IANA will verify
+that this organization is recognized as a standards organization by the
+IESG.
 
-<xref type="uri" data="https://www.iana.org/form/media-types">Application for registration of Media Types</xref>
+To request registration, please submit the form at the link below:
 
+<xref type="uri" data="https://www.iana.org/form/media-types"/>
+
+Related registries:
+
+Top-Level Media Types: <xref type="registry" data="top-level-media-types"/>
+Provisional Standard Media Type Registry: <xref type="registry" data="provisional-standard-media-types"/>
 Other Media Type Parameters: <xref type="registry" data="media-types-parameters"/>
 Media Type Sub-Parameters: <xref type="registry" data="media-type-sub-parameters"/>
-Provisional Standard Media Type Registry: <xref type="registry" data="provisional-standard-media-types"/>
+
+The following is the list of Directories of Content Types and Subtypes. 
+</note>
+<note>Some early registrations have no registration template. The absence of a 
+template does not imply a different or reduced registration status.
 </note>
 <note>Per Section 12.5.1 of <xref type="rfc" data="rfc9110"/>, use of the "q" parameter name to control 
-content negotiation would interfere with any media type parameter having the same name. 
-Hence, the media type registry disallows parameters named "q".
+content negotiation would interfere with any media type parameter having the 
+same name. Hence, the media type registry disallows parameters named "q".
 
 </note>
+
   
   
   <registry id="application">
@@ -78,6 +87,11 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="ASAM"/>
       <xref type="person" data="Thomas_Thomsen"/>
       <file type="template">application/A2L</file>
+    </record>
+    <record date="2024-04-22">
+      <name>ace-groupcomm+cbor</name>
+      <xref type="draft" data="RFC-ietf-ace-key-groupcomm-18"/>
+      <file type="template">application/ace-groupcomm+cbor</file>
     </record>
     <record date="2021-07-27">
       <name>ace+cbor</name>
@@ -321,6 +335,12 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="rfc" data="rfc3080"/>
       <file type="template">application/beep+xml</file>
     </record>
+    <record date="2024-07-05">
+      <name>bufr</name>
+      <xref type="person" data="World_Meterological_Organization"/>
+      <xref type="person" data="Anna_Milan"/>
+      <file type="template">application/bufr</file>
+    </record>
     <record date="2023-09-25">
       <name>c2pa</name>
       <xref type="person" data="C2PA"/>
@@ -442,7 +462,7 @@ Hence, the media type registry disallows parameters named "q".
     </record>
     <record date="2023-08-29">
       <name>cid-edhoc+cbor-seq</name>
-      <xref type="draft" data="RFC-ietf-lake-edhoc-22"/>
+      <xref type="rfc" data="rfc9528"/>
       <file type="template">application/cid-edhoc+cbor-seq</file>
     </record>
     <record date="2022-01-13">
@@ -559,6 +579,12 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="CWL_Project"/>
       <xref type="person" data="Michael_R._Crusoe"/>
       <file type="template">application/cwl+json</file>
+    </record>
+    <record date="2024-04-17">
+      <name>cwl+yaml</name>
+      <xref type="person" data="CWL_Project"/>
+      <xref type="person" data="Michael_R._Crusoe"/>
+      <file type="template">application/cwl+yaml</file>
     </record>
     <record date="2018-03-22">
       <name>cwt</name>
@@ -694,7 +720,7 @@ Hence, the media type registry disallows parameters named "q".
     </record>
     <record date="2023-08-29">
       <name>edhoc+cbor-seq</name>
-      <xref type="draft" data="RFC-ietf-lake-edhoc-22"/>
+      <xref type="rfc" data="rfc9528"/>
       <file type="template">application/edhoc+cbor-seq</file>
     </record>
     <record>
@@ -799,6 +825,11 @@ Hence, the media type registry disallows parameters named "q".
       <name>encaprtp</name>
       <xref type="rfc" data="rfc6849"/>
       <file type="template">application/encaprtp</file>
+    </record>
+    <record date="2024-08-29">
+      <name>entity-statement+jwt</name>
+      <xref type="person" data="OpenID_Foundation_Artifact_Binding_WG"/>
+      <file type="template">application/entity-statement+jwt</file>
     </record>
     <record>
       <name>epp+xml</name>
@@ -922,6 +953,12 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="Scott_Simmons"/>
       <file type="template">application/geopackage+sqlite3</file>
     </record>
+    <record date="2024-08-19">
+      <name>geopose+json</name>
+      <xref type="person" data="OGC"/>
+      <xref type="person" data="Scott_Simmons"/>
+      <file type="template">application/geopose+json</file>
+    </record>
     <record date="2023-11-27">
       <name>geoxacml+json</name>
       <xref type="person" data="OGC"/>
@@ -945,6 +982,32 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="OGC"/>
       <xref type="person" data="Clemens_Portele"/>
       <file type="template">application/gml+xml</file>
+    </record>
+    <record date="2024-03-21">
+      <name>gnap-binding-jws</name>
+      <xref type="draft" data="RFC-ietf-gnap-core-protocol-20"/>
+      <file type="template">application/gnap-binding-jws</file>
+    </record>
+    <record date="2024-03-21">
+      <name>gnap-binding-jwsd</name>
+      <xref type="draft" data="RFC-ietf-gnap-core-protocol-20"/>
+      <file type="template">application/gnap-binding-jwsd</file>
+    </record>
+    <record date="2024-03-21">
+      <name>gnap-binding-rotation-jws</name>
+      <xref type="draft" data="RFC-ietf-gnap-core-protocol-20"/>
+      <file type="template">application/gnap-binding-rotation-jws</file>
+    </record>
+    <record date="2024-03-21">
+      <name>gnap-binding-rotation-jwsd</name>
+      <xref type="draft" data="RFC-ietf-gnap-core-protocol-20"/>
+      <file type="template">application/gnap-binding-rotation-jwsd</file>
+    </record>
+    <record date="2024-07-05">
+      <name>grib</name>
+      <xref type="person" data="World_Meterological_Organization"/>
+      <xref type="person" data="Anna_Milan"/>
+      <file type="template">application/grib</file>
     </record>
     <record>
       <name>gzip</name>
@@ -1098,7 +1161,7 @@ Hence, the media type registry disallows parameters named "q".
     </record>
     <record updated="2023-10-27">
       <name>jscontact+json</name>
-      <xref type="draft" data="RFC-ietf-calext-jscontact-16"/>
+      <xref type="rfc" data="rfc9553"/>
       <file type="template">application/jscontact+json</file>
     </record>
     <record updated="2017-07-21">
@@ -1118,7 +1181,7 @@ Hence, the media type registry disallows parameters named "q".
     </record>
     <record date="2023-10-03">
       <name>jsonpath</name>
-      <xref type="draft" data="RFC-ietf-jsonpath-base-21"/>
+      <xref type="rfc" data="rfc9535"/>
       <file type="template">application/jsonpath</file>
     </record>
     <record date="2015-01-23">
@@ -1130,6 +1193,11 @@ Hence, the media type registry disallows parameters named "q".
       <name>jwk-set+json</name>
       <xref type="rfc" data="rfc7517"/>
       <file type="template">application/jwk-set+json</file>
+    </record>
+    <record date="2024-08-29">
+      <name>application/jwk-set+jwt</name>
+      <xref type="person" data="OpenID_Foundation_Artifact_Binding_WG"/>
+      <file type="template">application/jwk-set+jwt</file>
     </record>
     <record date="2015-01-23">
       <name>jwt</name>
@@ -1747,17 +1815,17 @@ Hence, the media type registry disallows parameters named "q".
     </record>
     <record date="2023-10-09">
       <name>private-token-issuer-directory</name>
-      <xref type="draft" data="RFC-ietf-privacypass-protocol-16"/>
+      <xref type="rfc" data="rfc9578"/>
       <file type="template">application/private-token-issuer-directory</file>
     </record>
     <record date="2023-10-09">
       <name>private-token-request</name>
-      <xref type="draft" data="RFC-ietf-privacypass-protocol-16"/>
+      <xref type="rfc" data="rfc9578"/>
       <file type="template">application/private-token-request</file>
     </record>
     <record date="2023-10-09">
       <name>private-token-response</name>
-      <xref type="draft" data="RFC-ietf-privacypass-protocol-16"/>
+      <xref type="rfc" data="rfc9578"/>
       <file type="template">application/private-token-response</file>
     </record>
     <record date="2016-02-04" updated="2023-05-02">
@@ -1825,6 +1893,11 @@ Hence, the media type registry disallows parameters named "q".
       <name>prs.implied-structure</name>
       <xref type="person" data="Marek_Čermák"/>
       <file type="template">application/prs.implied-structure</file>
+    </record>
+    <record date="2024-08-14">
+      <name>prs.mayfile</name>
+      <xref type="person" data="Azalea_Gardenia"/>
+      <file type="template">application/prs.mayfile</file>
     </record>
     <record>
       <name>prs.nprend</name>
@@ -1910,13 +1983,18 @@ Hence, the media type registry disallows parameters named "q".
       <name>remote-printing (OBSOLETE)</name>
       <xref type="rfc" data="rfc1486"/>
       <xref type="person" data="Marshall_Rose"/>
-      <xref type="uri" data="https://datatracker.ietf.org/doc/status-change-int-tlds-to-historic">status-change-int-tlds-to-historic</xref>
+      <xref type="uri" data="https://datatracker.ietf.org/doc/status-change-int-tlds-to-historic">Moving TPC.INT and NSAP.INT infrastructure domains to historic</xref>
       <file type="template">application/remote-printing</file>
     </record>
     <record>
       <name>reputon+json</name>
       <xref type="rfc" data="rfc7071"/>
       <file type="template">application/reputon+json</file>
+    </record>
+    <record date="2024-08-29">
+      <name>application/resolve-response+jwt</name>
+      <xref type="person" data="OpenID_Foundation_Artifact_Binding_WG"/>
+      <file type="template">application/resolve-response+jwt</file>
     </record>
     <record>
       <name>resource-lists-diff+xml</name>
@@ -1970,8 +2048,13 @@ Hence, the media type registry disallows parameters named "q".
     </record>
     <record updated="2023-12-15">
       <name>rpki-roa</name>
-      <xref type="draft" data="RFC-ietf-sidrops-rfc6482bis-09"/>
+      <xref type="rfc" data="rfc9582"/>
       <file type="template">application/rpki-roa</file>
+    </record>
+    <record date="2024-05-24">
+      <name>rpki-signed-tal</name>
+      <xref type="draft" data="RFC-ietf-sidrops-signed-tal-16"/>
+      <file type="template">application/rpki-signed-tal</file>
     </record>
     <record>
       <name>rpki-updown</name>
@@ -2118,16 +2201,16 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="rfc" data="rfc8428"/>
       <file type="template">application/sensml+xml</file>
     </record>
-    <record>
+    <record updated="2024-04-16">
       <name>sep-exi</name>
       <xref type="person" data="Robby_Simpson"/>
-      <xref type="person" data="Connectivity_Standards_Alliance"/>
+      <xref type="person" data="IEEE"/>
       <file type="template">application/sep-exi</file>
     </record>
-    <record>
+    <record updated="2024-04-16">
       <name>sep+xml</name>
       <xref type="person" data="Robby_Simpson"/>
-      <xref type="person" data="Connectivity_Standards_Alliance"/>
+      <xref type="person" data="IEEE"/>
       <file type="template">application/sep+xml</file>
     </record>
     <record>
@@ -2271,16 +2354,33 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="rfc" data="rfc6207"/>
       <file type="template">application/sru+xml</file>
     </record>
+    <record date="2024-07-29">
+      <name>sslkeylogfile</name>
+      <xref type="draft" data="RFC-ietf-tls-keylogfile-02"/>
+      <file type="template">application/sslkeylogfile</file>
+    </record>
     <record>
       <name>ssml+xml</name>
       <xref type="rfc" data="rfc4267"/>
       <file type="template">application/ssml+xml</file>
+    </record>
+    <record date="2024-06-07">
+      <name>ST2110-41</name>
+      <xref type="person" data="SMPTE"/>
+      <xref type="person" data="SMPTE_Director_of_Standards_Development"/>
+      <file type="template">application/ST2110-41</file>
     </record>
     <record date="2018-07-05" updated="2020-04-23">
       <name>stix+json</name>
       <xref type="person" data="OASIS"/>
       <xref type="person" data="Chet_Ensign"/>
       <file type="template">application/stix+json</file>
+    </record>
+    <record date="2024-05-06">
+      <name>stratum</name>
+      <xref type="person" data="Ben_van_Hartingsveldt"/>
+      <xref type="note" data="1"/>
+      <file type="template">application/stratum</file>
     </record>
     <record date="2022-08-01">
       <name>swid+cbor</name>
@@ -2429,6 +2529,21 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="W3C_RDF_Working_Group"/>
       <file type="template">application/trig</file>
     </record>
+    <record date="2024-08-29">
+      <name>application/trust-chain+json</name>
+      <xref type="person" data="OpenID_Foundation_Artifact_Binding_WG"/>
+      <file type="template">application/trust-chain+json</file>
+    </record>
+    <record date="2024-08-29">
+      <name>application/trust-mark+jwt</name>
+      <xref type="person" data="OpenID_Foundation_Artifact_Binding_WG"/>
+      <file type="template">application/trust-mark+jwt</file>
+    </record>
+    <record date="2024-08-29">
+      <name>application/trust-mark-delegation+jwt</name>
+      <xref type="person" data="OpenID_Foundation_Artifact_Binding_WG"/>
+      <file type="template">application/trust-mark-delegation+jwt</file>
+    </record>
     <record date="2014-02-04" updated="2016-09-30">
       <name>ttml+xml</name>
       <xref type="person" data="W3C"/>
@@ -2440,14 +2555,14 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="Linda_Welsh"/>
       <file type="template">application/tve-trigger</file>
     </record>
-    <record date="2018-12-06">
+    <record date="2018-12-06" updated="2024-05-09">
       <name>tzif</name>
-      <xref type="rfc" data="rfc8536"/>
+      <xref type="draft" data="RFC-murchison-rfc8536bis-15"/>
       <file type="template">application/tzif</file>
     </record>
-    <record date="2018-12-06">
+    <record date="2018-12-06" updated="2024-05-09">
       <name>tzif-leap</name>
-      <xref type="rfc" data="rfc8536"/>
+      <xref type="draft" data="RFC-murchison-rfc8536bis-15"/>
       <file type="template">application/tzif-leap</file>
     </record>
     <record>
@@ -2477,6 +2592,12 @@ Hence, the media type registry disallows parameters named "q".
       <name>urc-uisocketdesc+xml</name>
       <xref type="person" data="Gottfried_Zimmermann"/>
       <file type="template">application/urc-uisocketdesc+xml</file>
+    </record>
+    <record date="2024-07-05">
+      <name>vc</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="Ivan_Herman"/>
+      <file type="template">application/vc</file>
     </record>
     <record>
       <name>vcard+json</name>
@@ -2508,6 +2629,18 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="_3GPP"/>
       <xref type="person" data="Jones_Lu_Yunjie"/>
       <file type="template">application/vnd.3gpp.5gnas</file>
+    </record>
+    <record date="2024-04-01">
+      <name>vnd.3gpp.5gsa2x</name>
+      <xref type="person" data="_3GPP_CT1"/>
+      <xref type="person" data="Dongwook_Kim"/>
+      <file type="template">application/vnd.3gpp.5gsa2x</file>
+    </record>
+    <record date="2024-04-01">
+      <name>vnd.3gpp.5gsa2x-local-service-information</name>
+      <xref type="person" data="_3GPP_CT1"/>
+      <xref type="person" data="Dongwook_Kim"/>
+      <file type="template">application/vnd.3gpp.5gsa2x-local-service-information</file>
     </record>
     <record date="2015-10-06">
       <name>vnd.3gpp.access-transfer-events+xml</name>
@@ -2737,6 +2870,12 @@ Hence, the media type registry disallows parameters named "q".
       <name>vnd.3gpp.pic-bw-var</name>
       <xref type="person" data="John_M_Meredith"/>
       <file type="template">application/vnd.3gpp.pic-bw-var</file>
+    </record>
+    <record date="2024-04-17">
+      <name>vnd.3gpp.pinapp-info+xml</name>
+      <xref type="person" data="_3GPP_CT1"/>
+      <xref type="person" data="Dongwook_Kim"/>
+      <file type="template">application/vnd.3gpp.pinapp-info+xml</file>
     </record>
     <record date="2022-09-05">
       <name>vnd.3gpp-prose-pc3a+xml</name>
@@ -3092,6 +3231,11 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="Apache_Arrow_Project"/>
       <file type="template">application/vnd.apache.arrow.stream</file>
     </record>
+    <record date="2024-02-14" updated="2024-03-05">
+      <name>vnd.apache.parquet</name>
+      <xref type="person" data="Apache_Parquet_Project"/>
+      <file type="template">application/vnd.apache.parquet</file>
+    </record>
     <record date="2014-09-09">
       <name>vnd.apache.thrift.binary</name>
       <xref type="person" data="Roger_Meier"/>
@@ -3303,6 +3447,11 @@ Hence, the media type registry disallows parameters named "q".
       <name>vnd.bzip3</name>
       <xref type="person" data="Kamila_Szewczyk"/>
       <file type="template">application/vnd.bzip3</file>
+    </record>
+    <record date="2024-04-01">
+      <name>vnd.c3voc.schedule+xml</name>
+      <xref type="person" data="Andreas_Hubel"/>
+      <file type="template">application/vnd.c3voc.schedule+xml</file>
     </record>
     <record>
       <name>vnd.cab-jscript</name>
@@ -4349,6 +4498,11 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="Simon_Birtwistle"/>
       <file type="template">application/vnd.fuzzysheet</file>
     </record>
+    <record date="2024-05-14">
+      <name>vnd.ga4gh.passport+jwt</name>
+      <xref type="person" data="GA4GH_Secretariat"/>
+      <file type="template">application/vnd.ga4gh.passport+jwt</file>
+    </record>
     <record>
       <name>vnd.genomatix.tuxedo</name>
       <xref type="person" data="Torben_Frey"/>
@@ -4833,27 +4987,27 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="Greg_Scratchley"/>
       <file type="template">application/vnd.intu.qfx</file>
     </record>
-    <record date="2022-05-19">
+    <record date="2022-05-19" updated="2024-02-08">
       <name>vnd.ipfs.ipns-record</name>
       <xref type="person" data="Marcin_Rataj"/>
       <file type="template">application/vnd.ipfs.ipns-record</file>
     </record>
-    <record date="2022-04-01">
+    <record date="2022-04-01" updated="2024-02-08">
       <name>vnd.ipld.car</name>
       <xref type="person" data="Marcin_Rataj"/>
       <file type="template">application/vnd.ipld.car</file>
     </record>
-    <record date="2022-10-19">
+    <record date="2022-10-19" updated="2024-02-08">
       <name>vnd.ipld.dag-cbor</name>
       <xref type="person" data="Marcin_Rataj"/>
       <file type="template">application/vnd.ipld.dag-cbor</file>
     </record>
-    <record date="2022-10-19">
+    <record date="2022-10-19" updated="2024-02-08">
       <name>vnd.ipld.dag-json</name>
       <xref type="person" data="Marcin_Rataj"/>
       <file type="template">application/vnd.ipld.dag-json</file>
     </record>
-    <record date="2022-04-01">
+    <record date="2022-04-01" updated="2024-02-08">
       <name>vnd.ipld.raw</name>
       <xref type="person" data="Marcin_Rataj"/>
       <file type="template">application/vnd.ipld.raw</file>
@@ -5584,6 +5738,11 @@ Hence, the media type registry disallows parameters named "q".
       <name>vnd.mseq</name>
       <xref type="person" data="Gwenael_Le_Bodic"/>
       <file type="template">application/vnd.mseq</file>
+    </record>
+    <record date="2024-05-13">
+      <name>vnd.msgpack</name>
+      <xref type="person" data="Alexander_Ivanov"/>
+      <file type="template">application/vnd.msgpack</file>
     </record>
     <record>
       <name>vnd.msign</name>
@@ -7780,6 +7939,11 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="David_Matthewman"/>
       <file type="template">application/vnd.xara</file>
     </record>
+    <record date="2024-08-19">
+      <name>vnd.xarin.cpj</name>
+      <xref type="person" data="Ben_Brown"/>
+      <file type="template">application/vnd.xarin.cpj</file>
+    </record>
     <record date="2024-01-03">
       <name>vnd.xecrets-encrypted</name>
       <xref type="person" data="Svante_Seleborg"/>
@@ -7909,6 +8073,12 @@ Hence, the media type registry disallows parameters named "q".
       <name>voucher-cms+json</name>
       <xref type="rfc" data="rfc8366"/>
       <file type="template">application/voucher-cms+json</file>
+    </record>
+    <record date="2024-07-05">
+      <name>vp</name>
+      <xref type="person" data="W3C"/>
+      <xref type="person" data="Ivan_Herman"/>
+      <file type="template">application/vp</file>
     </record>
     <record>
       <name>vq-rtcpxr</name>
@@ -8111,7 +8281,7 @@ Hence, the media type registry disallows parameters named "q".
     <record date="2023-06-02">
       <name>yaml</name>
       <xref type="uri" data="https://yaml.org/spec/1.2.2/">YAML</xref>
-      <xref type="draft" data="RFC-ietf-httpapi-yaml-mediatypes-10"/>
+      <xref type="rfc" data="rfc9512"/>
       <file type="template">application/yaml</file>
     </record>
     <record>
@@ -8146,7 +8316,7 @@ Hence, the media type registry disallows parameters named "q".
     </record>
     <record date="2024-01-26">
       <name>yang-sid+json</name>
-      <xref type="draft" data="RFC-ietf-core-sid-24"/>
+      <xref type="rfc" data="rfc9595"/>
       <file type="template">application/yang-sid+json</file>
     </record>
     <record>
@@ -8169,6 +8339,9 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="rfc" data="rfc8878"/>
       <file type="template">application/zstd</file>
     </record>
+    <footnote anchor="1">Approved by IESG on 2024-05-02 in accordance with <xref type="rfc" data="rfc6838"/>, Appendix A. 
+<xref type="uri" data="https://datatracker.ietf.org/doc/minutes-interim-2024-iesg-10-202405021400/"/>.
+    </footnote>
   </registry>
   
   
@@ -8401,6 +8574,12 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="rfc" data="rfc4735"/>
       <file type="template">audio/example</file>
     </record>
+
+    <record date="2024-02-29">
+      <name>flac</name>
+      <xref type="draft" data="RFC-ietf-cellar-flac-14"/>
+      <file type="template">audio/flac</file>
+    </record>
     <record date="2019-05-23">
       <name>flexfec</name>
       <xref type="rfc" data="rfc8627"/>
@@ -8565,6 +8744,12 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="person" data="Ingo_Hofmann"/>
       <file type="template">audio/mhas</file>
     </record>
+    <record date="2024-03-18">
+      <name>midi-clip</name>
+      <xref type="person" data="MIDI_Association"/>
+      <xref type="person" data="Benjamin_Israel"/>
+      <file type="template">audio/midi-clip</file>
+    </record>
     <record>
       <name>mobile-xmf</name>
       <xref type="rfc" data="rfc4723"/>
@@ -8680,11 +8865,9 @@ Hence, the media type registry disallows parameters named "q".
       <xref type="rfc" data="rfc4588"/>
       <file type="template">audio/rtx</file>
     </record>
-    <record date="2021-01-29">
+    <record date="2021-01-29" updated="2024-03-04">
       <name>scip</name>
-      <xref type="person" data="SCIP"/>
-      <xref type="person" data="Michael_Faller"/>
-      <xref type="person" data="Daniel_Hanson"/>
+      <xref type="rfc" data="rfc9607"/>
       <file type="template">audio/scip</file>
     </record>
     <record>
@@ -8995,6 +9178,21 @@ Hence, the media type registry disallows parameters named "q".
     </record>
   </registry>
   
+  <registry id="example">
+    <title>example</title>
+    <hide/>
+    <note>The 'example' media type is used for examples. Any subtype following the media
+type syntax may be used in those examples. No subtype can be registered with
+IANA. For more information see<xref type="rfc" data="rfc4735"/>.
+
+Note: The occurrence of an 'example' media type as a media type outside
+of examples, e.g. in a Content-Type header, is an error and should be
+reported to the implementor.<xref type="rfc" data="rfc2045"/><xref type="rfc" data="rfc2046"/> 
+specifies that Content Types, Content Subtypes, Character Sets, Access 
+Types, and conversion values for MIME mail will be assigned and listed 
+by the IANA.</note>
+    <note>Other MIME Media Type Parameters: <xref type="registry" data="media-types-parameters"/></note>
+  </registry>
   
   <registry id="font">
     <title>font</title>
@@ -9031,24 +9229,27 @@ Hence, the media type registry disallows parameters named "q".
     </record>
   </registry>
   
-  
-  <registry id="examples">
-    <title>example</title>
+  <registry id="haptics">
+    <title>haptics</title>
     <hide/>
-    <note>The 'example' media type is used for examples. Any subtype following the media
-type syntax may be used in those examples. No subtype can be registered with
-IANA. For more information see<xref type="rfc" data="rfc4735"/>.
-
-Note: The occurrence of an 'example' media type as a media type outside
-of examples, e.g. in a Content-Type header, is an error and should be
-reported to the implementor.<xref type="rfc" data="rfc2045"/><xref type="rfc" data="rfc2046"/> 
-specifies that Content Types, Content Subtypes, Character Sets, Access 
-Types, and conversion values for MIME mail will be assigned and listed 
-by the IANA.</note>
-    <note>Other MIME Media Type Parameters: <xref type="registry" data="media-types-parameters"/></note>
+    <record date="2024-06-25">
+      <name>ivs</name>
+      <xref type="draft" data="RFC-ietf-mediaman-haptics-05"/>
+      <file type="template">haptics/ivs</file>
+    </record>
+    <record date="2024-06-25">
+      <name>hjif</name>
+      <xref type="draft" data="RFC-ietf-mediaman-haptics-05"/>
+      <file type="template">haptics/hjif</file>
+    </record>
+    <record date="2024-06-25">
+      <name>hmpg</name>
+      <xref type="draft" data="RFC-ietf-mediaman-haptics-05"/>
+      <file type="template">haptics/hmpg</file>
+    </record>
   </registry>
-  
-  
+
+
   <registry id="image">
     <title>image</title>
     <hide/>
@@ -9098,7 +9299,7 @@ by the IANA.</note>
       <xref type="person" data="David_Clunie"/>
       <file type="template">image/dicom-rle</file>
     </record>
-    <record date="2022-07-13">
+    <record date="2022-07-13" updated="2024-06-18">
       <name>dpx</name>
       <xref type="person" data="SMPTE"/>
       <xref type="person" data="SMPTE_Director_of_Standards_Development"/>
@@ -9128,6 +9329,7 @@ by the IANA.</note>
       <name>gif</name>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
+      <file type="template">image/gif</file>
     </record>
     <record date="2018-07-30">
       <name>heic</name>
@@ -9168,6 +9370,7 @@ by the IANA.</note>
     <record>
       <name>ief</name>
       <xref type="rfc" data="rfc1314"/>
+      <file type="template">image/ief</file>
     </record>
     <record date="2023-06-12">
       <name>j2c</name>
@@ -9187,10 +9390,11 @@ by the IANA.</note>
       <xref type="rfc" data="rfc3745"/>
       <file type="template">image/jp2</file>
     </record>
-    <record>
+    <record updated="2024-08-06">
       <name>jpeg</name>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
+      <file type="template">image/jpeg</file>
     </record>
     <record date="2019-05-17">
       <name>jph</name>
@@ -9212,7 +9416,14 @@ by the IANA.</note>
     <record>
       <name>jpx</name>
       <xref type="rfc" data="rfc3745"/>
+      <xref type="person" data="ISO-IEC_JTC_1_SC_29_WG_1"/>
       <file type="template">image/jpx</file>
+    </record>
+    <record date="2024-03-04">
+      <name>jxl</name>
+      <xref type="person" data="ISO-IEC_JTC_1_SC_29_WG_1"/>
+      <xref type="person" data="ISO-IEC_JTC_1"/>
+      <file type="template">image/jxl</file>
     </record>
     <record date="2019-03-28">
       <name>jxr</name>
@@ -9464,9 +9675,9 @@ by the IANA.</note>
       <xref type="person" data="Chris_Charabaruk"/>
       <file type="template">image/vnd.zbrush.pcx</file>
     </record>
-    <record date="2023-01-18">
+    <record date="2023-01-18" updated="2024-04-09">
       <name>webp</name>
-      <xref type="draft" data="RFC-zern-webp-12"/>
+      <xref type="draft" data="RFC-zern-webp-15"/>
       <file type="template">image/webp</file>
     </record>
     <record date="2016-05-16">
@@ -9477,12 +9688,12 @@ by the IANA.</note>
     <record date="2016-05-24">
       <name>x-emf - DEPRECATED in favor of image/emf</name>
       <xref type="rfc" data="rfc7903"/>
-      <file type="template">image/emf</file>
+      <file type="template" name="image/x-emf">image/emf</file>
     </record>
     <record date="2016-05-24">
       <name>x-wmf - DEPRECATED in favor of image/wmf</name>
       <xref type="rfc" data="rfc7903"/>
-      <file type="template">image/wmf</file>
+      <file type="template" name="image/x-wmf">image/wmf</file>
     </record>
   </registry>
   
@@ -9519,6 +9730,7 @@ by the IANA.</note>
       <name>external-body</name>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
+      <file type="template">message/external-body</file>
     </record>
     <record>
       <name>feedback-report</name>
@@ -9580,16 +9792,18 @@ by the IANA.</note>
       <name>partial</name>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
+      <file type="template">message/partial</file>
     </record>
     <record>
       <name>rfc822</name>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
+      <file type="template">message/rfc822</file>
     </record>
     <record updated="2021-12-23">
       <name>s-http (OBSOLETE)</name>
       <xref type="rfc" data="rfc2660"/>
-      <xref type="uri" data="https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic">status-change-http-experiments-to-historic</xref>
+      <xref type="uri" data="https://datatracker.ietf.org/doc/status-change-http-experiments-to-historic">Status change of HTTP experiments to Historic</xref>
       <file type="template">message/s-http</file>
     </record>
     <record>
@@ -9666,6 +9880,7 @@ by the IANA.</note>
     <record>
       <name>mesh</name>
       <xref type="rfc" data="rfc2077"/>
+      <file type="template">model/mesh</file>
     </record>
     <record date="2020-02-13" updated="2022-09-20">
       <name>mtl</name>
@@ -9828,6 +10043,7 @@ by the IANA.</note>
     <record>
       <name>vrml</name>
       <xref type="rfc" data="rfc2077"/>
+      <file type="template">model/vrml</file>
     </record>
     <record date="2014-01-15">
       <name>x3d-vrml</name>
@@ -9856,6 +10072,7 @@ by the IANA.</note>
       <name>alternative</name>
       <xref type="rfc" data="rfc2046"/>
       <xref type="rfc" data="rfc2045"/>
+      <file type="template">multipart/alternative</file>
     </record>
     <record>
       <name>appledouble</name>
@@ -9870,7 +10087,8 @@ by the IANA.</note>
     <record>
       <name>digest</name>
       <xref type="rfc" data="rfc2046"/>
-      <xref type="rfc" data="rfc2045"/>  
+      <xref type="rfc" data="rfc2045"/>
+      <file type="template">multipart/digest</file>
     </record>
     <record>
       <name>encrypted</name>
@@ -9896,6 +10114,7 @@ by the IANA.</note>
       <name>mixed</name>
       <xref type="rfc" data="rfc2046"/>
       <xref type="rfc" data="rfc2045"/>
+      <file type="template">multipart/mixed</file>
     </record>
     <record date="2017-08-30">
       <name>multilingual</name>
@@ -9906,6 +10125,7 @@ by the IANA.</note>
       <name>parallel</name>
       <xref type="rfc" data="rfc2046"/>
       <xref type="rfc" data="rfc2045"/>
+      <file type="template">multipart/parallel</file>
     </record>
     <record>
       <name>related</name>
@@ -10018,6 +10238,7 @@ by the IANA.</note>
     <record>
       <name>enriched</name>
       <xref type="rfc" data="rfc1896"/>
+      <file type="template">text/enriched</file>
     </record>
     <record>
       <name>example</name>
@@ -10103,6 +10324,7 @@ by the IANA.</note>
       <xref type="rfc" data="rfc2046"/>
       <xref type="rfc" data="rfc3676"/>
       <xref type="rfc" data="rfc5147"/>
+      <file type="template">text/plain</file>
     </record>
     <record>
       <name>provenance-notation</name>
@@ -10149,6 +10371,7 @@ by the IANA.</note>
       <name>richtext</name>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
+      <file type="template">text/richtext</file>
     </record>
     <record>
       <name>rtf</name>
@@ -10390,6 +10613,11 @@ by the IANA.</note>
       <xref type="person" data="David_Lee_Lambert"/>
       <file type="template">text/vnd.trolltech.linguist</file>
     </record>
+    <record date="2024-06-27">
+      <name>vnd.vcf</name>
+      <xref type="person" data="Anand_Jahagirdar"/>
+      <file type="template">text/vnd.vcf</file>
+    </record>
     <record>
       <name>vnd.wap.si</name>
       <xref type="person" data="WAP-Forum"/>
@@ -10409,6 +10637,11 @@ by the IANA.</note>
       <name>vnd.wap.wmlscript</name>
       <xref type="person" data="Peter_Stark"/>
       <file type="template">text/vnd.wap.wmlscript</file>
+    </record>
+    <record date="2024-05-30">
+      <name>vnd.zoo.kcl</name>
+      <xref type="person" data="Jessie_Frazelle"/>
+      <file type="template">text/vnd.zoo.kcl</file>
     </record>
     <record date="2019-10-14">
       <name>vtt</name>
@@ -10489,6 +10722,11 @@ by the IANA.</note>
       <name>encaprtp</name>
       <xref type="rfc" data="rfc6849"/>
       <file type="template">video/encaprtp</file>
+    </record>
+    <record date="2024-02-05">
+      <name>evc</name>
+      <xref type="rfc" data="rfc9584"/>
+      <file type="template">video/evc</file>
     </record>
     <record>
       <name>example</name>
@@ -10622,6 +10860,7 @@ by the IANA.</note>
       <name>mpeg</name>
       <xref type="rfc" data="rfc2045"/>
       <xref type="rfc" data="rfc2046"/>
+      <file type="template">video/mpeg</file>
     </record>
     <record>
       <name>mpeg4-generic</name>
@@ -10680,11 +10919,9 @@ by the IANA.</note>
       <xref type="rfc" data="rfc4588"/>
       <file type="template">video/rtx</file>
     </record>
-    <record date="2021-01-28">
+    <record date="2021-01-28" updated="2024-03-04">
       <name>scip</name>
-      <xref type="person" data="SCIP"/>
-      <xref type="person" data="Michael_Faller"/>
-      <xref type="person" data="Daniel_Hanson"/>
+      <xref type="rfc" data="rfc9607"/>
       <file type="template">video/scip</file>
     </record>
     <record date="2017-10-22">
@@ -10910,6 +11147,10 @@ by the IANA.</note>
       <name>3GPP - Third Generation Partnership Project</name>
       <uri>mailto:3gppContact&amp;etsi.org</uri>
     </person>
+    <person id="_3GPP_CT1">
+      <name>3GPP CT1 Working Group</name>
+      <uri>mailto:3GPP_TSG_CT_WG1&amp;LIST.ETSI.ORG</uri>
+    </person>
     <person id="_3MF">
       <name>3MF Consortium</name>
       <uri>http://3mf.io</uri>
@@ -10992,6 +11233,11 @@ by the IANA.</note>
       <name>Apache Arrow Project Management Committee</name>
       <uri>mailto:private&amp;arrow.apache.org</uri>
       <updated>2021-06-23</updated>
+    </person>
+    <person id="Apache_Parquet_Project">
+      <name>Apache Parquet Project Management Committee</name>
+      <uri>mailto:private&amp;parquet.apache.org</uri>
+      <updated>2024-02-14</updated>
     </person>
     <person id="David_Applebaum">
       <name>David Applebaum</name>
@@ -11298,6 +11544,11 @@ by the IANA.</note>
       <uri>mailto:dev+aion&amp;veritone.com</uri>
       <updated>2021-06-24</updated>
     </person>
+    <person id="Ben_Brown">
+      <name>Ben Brown</name>
+      <uri>mailto:ben&amp;xarin.com</uri>
+      <updated>2024-08-19</updated>
+    </person>
     <person id="C._Titus_Brown">
       <name>C. Titus Brown</name>
       <uri>mailto:khmer-project&amp;idyll.org</uri>
@@ -11470,11 +11721,6 @@ by the IANA.</note>
       <uri>mailto:mconley&amp;wi-fi.org</uri>
       <updated>2013-09-06</updated>
     </person>
-    <person id="Connectivity_Standards_Alliance">
-      <name>Connectivity Standards Alliance</name>
-      <uri>https://csa-iot.org</uri>
-      <updated>2023-01-24</updated>
-    </person>
     <person id="Victor_Costan">
       <name>Victor Costan</name>
       <uri>mailto:pwnall&amp;chromium.org</uri>
@@ -11506,7 +11752,7 @@ by the IANA.</note>
     <person id="Michael_R._Crusoe">
       <name>Michael R. Crusoe</name>
       <uri>mailto:mrc&amp;commonwl.org</uri>
-      <updated>2022-05-09</updated>
+      <updated>2024-04-17</updated>
     </person>
     <person id="Frank_Cusack">
       <name>Frank Cusack</name>
@@ -11516,7 +11762,7 @@ by the IANA.</note>
     <person id="CWL_Project">
       <name>CWL Project</name>
       <uri>mailto:commonworkflowlanguage&amp;sfconservancy.org</uri>
-      <updated>2022-05-09</updated>
+      <updated>2024-04-17</updated>
     </person>
     <person id="Marek_Čermák">
       <name>Marek Čermák</name>
@@ -11786,11 +12032,6 @@ by the IANA.</note>
       <uri>mailto:b.fallenstein&amp;gmx.de</uri>
       <updated>2003-10-20</updated>
     </person>
-    <person id="Michael_Faller">
-      <name>Michael Faller</name>
-      <uri>mailto:michael.faller&amp;gd-ms.com</uri>
-      <updated>2021-01-29</updated>
-    </person>
     <person id="Patrik_Faltstrom">
       <name>Patrik Faltstrom</name>
       <uri>mailto:paf&amp;nada.kth.se</uri>
@@ -11910,6 +12151,11 @@ by the IANA.</note>
       <uri>mailto:mark&amp;getusroi.com</uri>
       <updated>2018-06-26</updated>
     </person>
+    <person id="Jessie_Frazelle">
+      <name>Jessie Frazelle</name>
+      <uri>mailto:jess&amp;zoo.dev</uri>
+      <updated>2024-05-30</updated>
+    </person>
     <person id="Torben_Frey">
       <name>Torben Frey</name>
       <uri>mailto:frey&amp;genomatix.de</uri>
@@ -11969,6 +12215,11 @@ by the IANA.</note>
       <name>Xiang Gao</name>
       <uri>mailto:xiang&amp;kernel.org</uri>
       <updated>2024-01-02</updated>
+    </person>
+    <person id="Azalea_Gardenia">
+      <name>Azalea Gardenia</name>
+      <uri>mailto:bestie&amp;mayf.pink</uri>
+      <updated>2024-08-14</updated>
     </person>
     <person id="Cliff_Gauntlett">
       <name>Cliff Gauntlett</name>
@@ -12175,11 +12426,6 @@ by the IANA.</note>
       <uri>mailto:mimetype.registration&amp;nokia.com</uri>
       <updated>2017-09-15</updated>
     </person>
-    <person id="Daniel_Hanson">
-      <name>Daniel Hanson</name>
-      <uri>mailto:dan.hanson&amp;gd-ms.com</uri>
-      <updated>2021-01-29</updated>
-    </person>
     <person id="Anders_Hansson">
       <name>Anders Hansson</name>
       <uri>mailto:anders.hansson&amp;securedemail.com</uri>
@@ -12248,7 +12494,7 @@ by the IANA.</note>
     <person id="Ivan_Herman">
       <name>Ivan Herman</name>
       <uri>mailto:ivan&amp;w3.org</uri>
-      <updated>2020-03-18</updated>
+      <updated>2024-07-05</updated>
     </person>
     <person id="Uwe_Hermann">
       <name>Uwe Hermann</name>
@@ -12359,6 +12605,11 @@ by the IANA.</note>
       <uri>mailto:shicheng.hu&amp;etsi.org</uri>
       <updated>2009-09-15</updated>
     </person>
+    <person id="Andreas_Hubel">
+      <name>Andreas Hubel</name>
+      <uri>mailto:voc&amp;c3voc.de</uri>
+      <updated>2024-04-01</updated>
+    </person>
     <person id="Ni_Hui">
       <name>Ni Hui</name>
       <uri>mailto:nihuini&amp;tencent.com</uri>
@@ -12416,6 +12667,10 @@ by the IANA.</note>
       <name>Kiran Kapale</name>
       <uri>mailto:kiran.kapale&amp;samsung.com</uri>
       <updated>2023-03-16</updated>
+    </person>
+    <person id="IEEE">
+      <name>IEEE</name>
+      <uri>https://www.ieee.org</uri>
     </person>
     <person id="IEEE-ISTO-PWG-PPP">
       <name>ISTO-PWG Internet Printing Protocol Workgroup</name>
@@ -12498,15 +12753,30 @@ by the IANA.</note>
       <uri>mailto:keitaro.ishida.yu&amp;fujifilm.com</uri>
       <updated>2021-04-27</updated>
     </person>
+    <person id="Benjamin_Israel">
+      <name>Benjamin Israel</name>
+      <uri>mailto:info&amp;midi.org</uri>
+      <updated>2024-03-18</updated>
+    </person>
     <person id="Prakash_Iyer">
       <name>Prakash Iyer</name>
       <uri>mailto:Prakash.iyer&amp;intel.com</uri>
       <updated>2008-02-07</updated>
     </person>
+    <person id="Alexander_Ivanov">
+      <name>Alexander Ivanov</name>
+      <uri>mailto:saiv46.dev+msgpack&amp;gmail.com</uri>
+      <updated>2024-05-13</updated>
+    </person>
     <person id="Ronald_Jacobs">
       <name>Ronald Jacobs</name>
       <uri>mailto:ron.jacobs&amp;shopkick.com</uri>
       <updated>2019-07-08</updated>
+    </person>
+    <person id="Anand_Jahagirdar">
+      <name>Anand Jahagirdar</name>
+      <uri>mailto:Anand.Jahagirdar&amp;karkinos.in</uri>
+      <updated>2024-06-27</updated>
     </person>
     <person id="Bill_Janssen">
       <name>Bill Janssen</name>
@@ -12671,6 +12941,11 @@ by the IANA.</note>
       <name>Frank Kilcommins</name>
       <uri>mailto:fkilcommins&amp;gmail.com</uri>
       <updated>2023-11-29</updated>
+    </person>
+    <person id="Dongwook_Kim">
+      <name>Dongwook Kim</name>
+      <uri>mailto:dongwook.kim&amp;etsi.org</uri>
+      <updated>2024-04-17</updated>
     </person>
     <person id="Yokoyama_Kiyonobu">
       <name>Yokoyama Kiyonobu</name>
@@ -13129,7 +13404,12 @@ by the IANA.</note>
     <person id="MIDI_Association">
       <name>MIDI Manufacturers Association (d/b/a The MIDI Association)</name>
       <uri>mailto:info&amp;midi.org</uri>
-      <updated>2022-10-04</updated>
+      <updated>2024-03-18</updated>
+    </person>
+    <person id="Anna_Milan">
+      <name>Anna Milan</name>
+      <uri>mailto:amilan&amp;wmo.int</uri>
+      <updated>2024-07-05</updated>
     </person>
     <person id="Andy_Miller">
       <name>Andy Miller</name>
@@ -13426,7 +13706,7 @@ by the IANA.</note>
     <person id="OpenID_Foundation_Artifact_Binding_WG">
       <name>OpenID Foundation Artifact Binding Working Group</name>
       <uri>mailto:openid-specs-ab&amp;lists.openid.net</uri>
-      <updated>2022-10-07</updated>
+      <updated>2024-08-29</updated>
     </person> 
     <person id="Open_Mobile_Naming_Authority">
       <name>Open Mobile Naming Authority (OMNA)</name>
@@ -13442,6 +13722,11 @@ by the IANA.</note>
       <name>Organization for the Promotion, Protection and Progress of Frogans Technology (OP3FT)</name>
       <uri>mailto:contact-standards&amp;op3ft.org</uri>
       <updated>2020-05-04</updated>
+    </person>
+    <person id="World_Meterological_Organization">
+      <name>World Meteorological Organization (WMO)</name>
+      <uri>https://wmo.int/</uri>
+      <updated>2024-07-05</updated>
     </person>
     <person id="Miguel_Angel_Reina_Ortega">
       <name>Miguel Angel Reina Ortega</name>
@@ -13686,8 +13971,8 @@ by the IANA.</note>
     </person>
     <person id="Marcin_Rataj">
       <name>Marcin Rataj</name>
-      <uri>mailto:lidel&amp;protocol.ai</uri>
-      <updated>2023-05-22</updated>
+      <uri>mailto:lidel&amp;ipshipyard.com</uri>
+      <updated>2024-02-08</updated>
     </person>
     <person id="Uwe_Rauschenbach">
       <name>Uwe Rauschenbach</name>
@@ -13914,11 +14199,6 @@ by the IANA.</note>
       <uri>mailto:contact&amp;covac-software.com</uri>
       <updated>2008-09-19</updated>
     </person>
-    <person id="SCIP">
-      <name>SCIP Working Group</name>
-      <uri>mailto:ncia.cis3&amp;ncia.nato.int</uri>
-      <updated>2021-01-29</updated>
-    </person>
     <person id="Greg_Scratchley">
       <name>Greg Scratchley</name>
       <uri>mailto:greg_scratchley&amp;intuit.com</uri>
@@ -13928,6 +14208,11 @@ by the IANA.</note>
       <name>Meredith Searcy</name>
       <uri>mailto:msearcy&amp;newmoon.com</uri>
       <updated>1997-06-19</updated>
+    </person>
+    <person id="GA4GH_Secretariat">
+      <name>GA4GH Secretariat</name>
+      <uri>mailto:info&amp;ga4gh.org</uri>
+      <updated>2024-05-14</updated>
     </person>
     <person id="Svante_Seleborg">
       <name>Svante Seleborg</name>
@@ -14000,7 +14285,7 @@ by the IANA.</note>
     <person id="Scott_Simmons">
       <name>Scott Simmons</name>
       <uri>mailto:ssimmons&amp;ogc.org</uri>
-      <updated>2023-11-27</updated>
+      <updated>2024-08-19</updated>
     </person>
     <person id="Ben_Simon">
       <name>Ben Simon</name>
@@ -14019,8 +14304,8 @@ by the IANA.</note>
     </person>
     <person id="Robby_Simpson">
       <name>Robby Simpson</name>
-      <uri>mailto:rsimpson&amp;gmail.com</uri>
-      <updated>2012-11-27</updated>
+      <uri>mailto:robby.simpson&amp;ieee.org</uri>
+      <updated>2024-04-16</updated>
     </person>
     <person id="Daniel_Sims">
       <name>Daniel Sims</name>
@@ -14083,8 +14368,8 @@ by the IANA.</note>
     </person>
     <person id="SMPTE_Director_of_Standards_Development">
       <name>Director of Standards Development</name>
-      <uri>mailto:standards-support&amp;smpte.org</uri>
-      <updated>2022-07-13</updated>
+      <uri>mailto:dir.standards&amp;smpte.org</uri>
+      <updated>2024-06-07</updated>
     </person>
     <person id="Christopher_Snazell">
       <name>Christopher Snazell</name>
@@ -14419,6 +14704,11 @@ by the IANA.</note>
       <name>Filippo Valsorda</name>
       <uri>mailto:age&amp;filippo.io</uri>
       <updated>2021-10-05</updated>
+    </person>
+    <person id="Ben_van_Hartingsveldt">
+      <name>Ben van Hartingsveldt</name>
+      <uri>mailto:ben.vanhartingsveldt&amp;yocto.com</uri>
+      <updated>2024-05-06</updated>
     </person>
     <person id="Anne_van_Kesteren">
       <name>Anne van Kesteren</name>
