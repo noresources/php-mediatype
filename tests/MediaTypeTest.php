@@ -73,6 +73,20 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				],
 				'syntax' => 'x-c++'
 			],
+			'text/x-cs' => [
+				'valid' => true,
+				'class' => MediaType::class,
+				'type' => 'text',
+				'subtype' => [
+					'text' => 'x-cs',
+					'facets' => [
+						'x-cs'
+					],
+					'syntax' => null
+				],
+				'toleranceFlags' => MediaTypeInterface::STRUCTURED_TEXT_REMOVE_LEGACY_UNREGISTERED_PREFIX,
+				'syntax' => 'cs'
+			],
 			'*/*' => [
 				'valid' => true,
 				'class' => MediaRange::class,
@@ -210,8 +224,11 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				$this->assertEquals(MediaRange::ANY,
 					$mediaType->getSubType(), 'Subtype is a range');
 
+			$toleranceFlags = Container::keyValue($parsed,
+				'toleranceFlags', 0);
 			$this->assertEquals(Container::keyValue($parsed, 'syntax'),
-				$mediaType->getStructuredSyntax(), $text . ' syntax');
+				$mediaType->getStructuredSyntax($toleranceFlags),
+				$text . ' syntax');
 		}
 	}
 

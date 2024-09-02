@@ -67,15 +67,27 @@ interface MediaTypeInterface extends ParameterMapProviderInterface,
 	 */
 	function getSubType();
 
+	const STRUCTURED_TEXT_ONLY_REGISTERED = 0x01;
+
+	/**
+	 *
+	 * See RFC 6838 Section 3
+	 *
+	 * @var number
+	 */
+	const STRUCTURED_TEXT_BYPASS_KNOWN_TREE_FACET = 0x02;
+
+	const STRUCTURED_TEXT_REMOVE_LEGACY_UNREGISTERED_PREFIX = 0x04;
+
 	/**
 	 * Get the subtype structured syntax name if any.
 	 *
-	 * @param boolean $registeredOnly
-	 *        	When the structured syntax suffix is not present. The subtype may be returned.
-	 *        	If $registeredOnly is true. Only the subtype will be returned
-	 *        	only if it correspond to a registered suffix.
+	 * @param integer|boolean $toleranceFlags
+	 *        	Tolerance flags.
+	 *        	For backward compatibility, true is interpreted as
+	 *        	STRUCTURED_TEXT_ONLY_REGISTERED.Y
 	 *
 	 * @return string|array|string|NULL
 	 */
-	function getStructuredSyntax($registeredOnly = false);
+	function getStructuredSyntax($toleranceFlags = 0);
 }

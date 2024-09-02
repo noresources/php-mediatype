@@ -9,48 +9,63 @@ namespace NoreSources\MediaType\Traits;
 
 use NoreSources\MediaType\MediaRange;
 use NoreSources\MediaType\MediaSubType;
+use NoreSources\MediaType\MediaTypeInterface;
 use NoreSources\MediaType\StructuredSyntaxSuffixRegistry;
 
 trait MediaTypeStructuredTextTrait
 {
 
-	/**
-	 *
-	 * @param boolean $registeredOnly
-	 *        	Return type only if it is a registered type
-	 * @return string|NULL Structured syntax type if any. NULL otherwise
-	 */
-	public function getStructuredSyntax($registeredOnly = false)
+	public function getStructuredSyntax($toleranceFlags = 0)
 	{
-		if (!($this->getSubType() instanceof MediaSubType))
+		$registeredOnly = false;
+		if (\is_bool($toleranceFlags))
+		{
+			$registeredOnly = $toleranceFlags;
+			$toleranceFlags = ($toleranceFlags) ? MediaTypeInterface::STRUCTURED_TEXT_ONLY_REGISTERED : 0;
+		}
+		$bypassTreePrefix = ($toleranceFlags &
+			MediaTypeInterface::STRUCTURED_TEXT_BYPASS_KNOWN_TREE_FACET) ==
+			MediaTypeInterface::STRUCTURED_TEXT_BYPASS_KNOWN_TREE_FACET;
+		$st = $this->getSubType();
+
+		if (!($st instanceof MediaSubType))
 			return null;
 
-		$s = $this->getSubType()->getStructuredSyntax();
+		$s = $st->getStructuredSyntax();
 		if (!empty($s))
 			return $s;
 
-		if ($this->getSubType()->getFacetCount() == 1)
-		{
-			$facet = $this->getSubType()->getFacet(0);
-			if (\strtolower($this->getType()) == 'text')
-			{
-				if ($registeredOnly &&
-					!StructuredSyntaxSuffixRegistry::getInstance()->isRegistered(
-						$facet))
-					return null;
+		$c = $st->getFacetCount();
+		if ($c == 0)
+			return null;
 
-				if ($facet != MediaRange::ANY)
-					return $facet;
-			}
+		if ($c == 1)
+			$facet = $st->getFacet(0);
+		elseif ($c == 2 && !$registeredOnly && $bypassTreePrefix &&
+			\in_array($st->getFacet(0),
+				[
+					MediaSubType::FACET_PERSONAL,
+					MediaSubType::FACET_UNREGISTERED,
+					MediaSubType::FACET_VENDOR
+				]))
+			$facet = $st->getFacet(1);
+		else
+			return null;
 
-			/*
-			 * Other types such as application/json
-			 */
-			if (StructuredSyntaxSuffixRegistry::getInstance()->isRegistered(
+		if ($registeredOnly &&
+			!StructuredSyntaxSuffixRegistry::getInstance()->isRegistered(
 				$facet))
-				return $facet;
-		}
+			return null;
 
-		return null;
+		if ($facet == MediaRange::ANY)
+			return null;
+
+		if ((($toleranceFlags &
+			MediaTypeInterface::STRUCTURED_TEXT_REMOVE_LEGACY_UNREGISTERED_PREFIX) ==
+			MediaTypeInterface::STRUCTURED_TEXT_REMOVE_LEGACY_UNREGISTERED_PREFIX) &&
+			\strcasecmp('x-', \substr($facet, 0, 2)) == 0)
+			return \substr($facet, 2);
+
+		return $facet;
 	}
 }
