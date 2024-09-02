@@ -20,6 +20,12 @@ use NoreSources\Type\TypeDescription;
 class MediaSubType implements StringRepresentation, ComparableInterface
 {
 
+	const FACET_PERSONAL = 'prs';
+
+	const FACET_VENDOR = 'vnd';
+
+	const FACET_UNREGISTERED = 'x';
+
 	/**
 	 *
 	 * @param array|string $facets
