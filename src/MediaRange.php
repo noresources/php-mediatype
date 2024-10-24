@@ -10,7 +10,7 @@ namespace NoreSources\MediaType;
 use NoreSources\MediaType\Traits\MediaRangeMatchingTrait;
 use NoreSources\MediaType\Traits\MediaTypeCompareTrait;
 use NoreSources\MediaType\Traits\MediaTypeParameterMapTrait;
-use NoreSources\MediaType\Traits\MediaTypeSerializableTrait;
+use NoreSources\MediaType\Traits\MediaTypeSerializationTrait;
 use NoreSources\MediaType\Traits\MediaTypeStructuredTextTrait;
 use NoreSources\MediaType\Traits\StructuredSyntaxMatchingTrait;
 
@@ -18,7 +18,7 @@ class MediaRange implements MediaTypeInterface
 {
 	use MediaTypeStructuredTextTrait;
 	use MediaTypeParameterMapTrait;
-	use MediaTypeSerializableTrait;
+	use MediaTypeSerializationTrait;
 	use MediaRangeMatchingTrait;
 	use MediaTypeCompareTrait;
 	use StructuredSyntaxMatchingTrait;
@@ -96,19 +96,6 @@ class MediaRange implements MediaTypeInterface
 		return self::unserializeMediaTypeInterfaceInterface(
 			static::class, RFC6838::MEDIA_RANGE_PATTERN,
 			$mediaTypeString, $withParameters);
-	}
-
-	/**
-	 * Compare media range precision
-	 *
-	 * @param MediaTypeInterface $a
-	 * @param MediaTypeInterface $b
-	 * @return number -1 if $a < $b, 1 if $a > $b, 0 if equal or not comparable
-	 */
-	public static function compareMediaRanges(MediaTypeInterface $a,
-		MediaTypeInterface $b)
-	{
-		return $a->compare($b);
 	}
 
 	/**

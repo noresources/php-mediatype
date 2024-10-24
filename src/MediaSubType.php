@@ -7,7 +7,6 @@
  */
 namespace NoreSources\MediaType;
 
-use NoreSources\ComparableInterface;
 use NoreSources\NotComparableException;
 use NoreSources\Container\Container;
 use NoreSources\Type\StringRepresentation;
@@ -17,7 +16,7 @@ use NoreSources\Type\TypeDescription;
 /**
  * Media sub type
  */
-class MediaSubType implements StringRepresentation, ComparableInterface
+class MediaSubType implements StringRepresentation
 {
 
 	const FACET_PERSONAL = 'prs';
@@ -114,7 +113,7 @@ class MediaSubType implements StringRepresentation, ComparableInterface
 	 *         < 0 if $this is less precise than $b,
 	 *         and > 0 if $this is more precise than $b
 	 */
-	public function compare($b)
+	public function precisionCompare($b)
 	{
 		$a = $this;
 		if ($b instanceof MediaTypeInterface)

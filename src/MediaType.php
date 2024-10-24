@@ -10,7 +10,7 @@ namespace NoreSources\MediaType;
 use NoreSources\MediaType\Traits\MediaRangeMatchingTrait;
 use NoreSources\MediaType\Traits\MediaTypeCompareTrait;
 use NoreSources\MediaType\Traits\MediaTypeParameterMapTrait;
-use NoreSources\MediaType\Traits\MediaTypeSerializableTrait;
+use NoreSources\MediaType\Traits\MediaTypeSerializationTrait;
 use NoreSources\MediaType\Traits\MediaTypeStructuredTextTrait;
 use NoreSources\MediaType\Traits\StructuredSyntaxMatchingTrait;
 
@@ -24,7 +24,7 @@ class MediaType implements MediaTypeInterface
 
 	use MediaTypeStructuredTextTrait;
 	use MediaTypeParameterMapTrait;
-	use MediaTypeSerializableTrait;
+	use MediaTypeSerializationTrait;
 	use MediaRangeMatchingTrait;
 	use MediaTypeCompareTrait;
 	use StructuredSyntaxMatchingTrait;

@@ -10,6 +10,7 @@ namespace NoreSources\MediaType\Test;
 use NoreSources\NotComparableException;
 use NoreSources\Container\Container;
 use NoreSources\Http\ParameterMap;
+use NoreSources\MediaType\Comparison;
 use NoreSources\MediaType\MediaRange;
 use NoreSources\MediaType\MediaSubType;
 use NoreSources\MediaType\MediaType;
@@ -232,6 +233,28 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		}
 	}
 
+	public function testParseParameters()
+	{
+		$tests = [
+			'text/plain; charset=us-ascii' => [
+				'charset' => 'us-ascii'
+			],
+			'text/plain; empty=""' => [
+				'empty' => ''
+			]
+		];
+
+		foreach ($tests as $input => $expected)
+		{
+			$mediaType = MediaTypeFactory::getInstance()->createFromString(
+				$input);
+			$actual = $mediaType->getParameters();
+			// Just to get a POD array
+			$actual = Container::mapValues($actual, '\strval');
+			$this->assertEquals($expected, $actual, $input);
+		}
+	}
+
 	public function testFromMedia()
 	{
 		$tests = [
@@ -336,7 +359,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 					'whatever/' . $test[1]);
 				$b = $b->getSubType();
 
-				$actual = $a->compare($b);
+				$actual = $a->precisionCompare($b);
 			}
 			catch (\Exception $e)
 			{
@@ -420,7 +443,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$actual = null;
 			try
 			{
-				$actual = MediaRange::compareMediaRanges($a, $b);
+				$actual = Comparison::rangePrecision($a, $b);
 			}
 			catch (\Exception $e)
 			{
@@ -436,7 +459,7 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$label = $test[1] . ' < ' . $test[0];
 			try
 			{
-				$actual = MediaRange::compareMediaRanges($b, $a);
+				$actual = Comparison::rangePrecision($b, $a);
 			}
 			catch (\Exception $e)
 			{
@@ -445,6 +468,119 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 
 			$this->assertEquals($expected, $actual,
 				$label . ' = ' . $expected);
+		}
+	}
+
+	public function testLexicalCompare()
+	{
+		$tests = [
+			'Basic equal' => [
+				'text/plain',
+				'text/PlaiN',
+				0
+			],
+			'Parameter ordering does not matter' => [
+				'text/plain; key=value; foo=bar',
+				'text/plain; foo=bar; key=value',
+				0
+			],
+			'Type differ' => [
+				'application/json',
+				'foo/bar',
+				-1
+			],
+			'Parameters differ' => [
+				'a/b; key=value',
+				'a/b; foo=bar',
+				1
+			],
+			'Shorter type' => [
+				'audio/loud',
+				'audio/loud-and-clear',
+				-1
+			],
+			'Less parameters' => [
+				'audio/wav; bitrate=256kbps',
+				'audio/wav; bitrate=256kbps; rate=44000Hz',
+				-1
+			]
+		];
+
+		$factory = MediaTypeFactory::getInstance();
+		foreach ($tests as $label => $test)
+		{
+			$a = $factory->createFromString($test[0]);
+			$b = $factory->createFromString($test[1]);
+			$expected = $test[2];
+
+			$actual = Comparison::lexical($a, $b);
+			if ($actual < 0)
+				$actual = -1;
+			elseif ($actual > 0)
+				$actual = 1;
+			$this->assertEquals($expected, $actual, $label);
+
+			$expected = -$expected;
+			$actual = Comparison::lexical($b, $a);
+			if ($actual < 0)
+				$actual = -1;
+			elseif ($actual > 0)
+				$actual = 1;
+			$this->assertEquals($expected, $actual,
+				$label . '(reversed)');
+		}
+	}
+
+	public function testToString()
+	{
+		$tests = [
+			[
+				'text/plain',
+				MediaTypeInterface::PART_ALL,
+				'text/plain'
+			],
+			[
+				'text/plain',
+				MediaTypeInterface::PART_MAINTYPE,
+				'text'
+			],
+			[
+				'text/plain',
+				MediaTypeInterface::PART_SUBTYPE,
+				'plain'
+			],
+			[
+				'application/vnd.special+json',
+				MediaTypeInterface::PART_SYNTAX_SUFFIX,
+				'json'
+			],
+			[
+				'application/vnd.special+json',
+				MediaTypeInterface::PART_MAINTYPE |
+				MediaTypeInterface::PART_SYNTAX_SUFFIX,
+				'application+json'
+			],
+			'Subtype facets and syntax suffix' => [
+				'application/vnd.special+json',
+				MediaTypeInterface::PART_SUBTYPE_FACETS |
+				MediaTypeInterface::PART_SYNTAX_SUFFIX,
+				'vnd.special+json'
+			],
+			[
+				'a/b; key=value',
+				MediaTypeInterface::PART_PARAMETERS,
+				'key=value'
+			]
+		];
+
+		foreach ($tests as $label => $test)
+		{
+			$mediaType = MediaTypeFactory::getInstance()->createFromString(
+				$test[0]);
+			$partFlags = $test[1];
+			$expected = $test[2];
+			$actual = $mediaType->toString($partFlags);
+			$this->assertEquals($expected, $actual, $label);
 		}
 	}
 
@@ -648,15 +784,15 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 		$sa = $a->jsonSerialize();
 
 		$b = clone $a;
-		$this->assertEquals($sa, $b->serializeToString(), 'Clone');
+		$this->assertEquals($sa, $b->toString(), 'Clone');
 
 		$b->getParameters()->offsetSet('charset', 'utf-8');
-		$sb = $b->serializeToString();
+		$sb = $b->toString();
 
-		$this->assertEquals($sa, $a->serializeToString(),
+		$this->assertEquals($sa, $a->toString(),
 			'Clone modification does not affect original parameter map');
 		$a->getParameters()->offsetSet('foo', 'bar');
-		$this->assertEquals($sb, $b->serializeToString(),
+		$this->assertEquals($sb, $b->toString(),
 			'Source modification does not affect clone parameter map');
 	}
 

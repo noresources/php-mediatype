@@ -57,7 +57,7 @@ trait MediaRangeMatchingTrait
 		$c = 0;
 		try
 		{
-			$c = $mediaType->getSubType()->compare($mediaRange);
+			$c = $mediaType->getSubType()->precisionCompare($mediaRange);
 		}
 		catch (NotComparableException $e)
 		{

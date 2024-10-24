@@ -2,12 +2,11 @@ name: PHP Composer and PHPUnit tests
 on:
   push:
     branches:
-    - master
-    - devel
+    - main
     - test
   pull_request:
     branches:
-    - master
+    - main
 jobs:
   phpunit:
     runs-on: ${{ matrix.os }}
@@ -33,4 +32,6 @@ jobs:
       matrix:
         os:
         - macos-12
+        - ubuntu-latest
+        - ubuntu-22.04
         - ubuntu-20.04

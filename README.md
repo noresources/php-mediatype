@@ -1,4 +1,4 @@
-NoreSources MediaType
+noresources/mediatype
 ================================
 
 RFC 6838 Media Type (MIME type) parsing and comparison.  
@@ -6,7 +6,7 @@ RFC 6838 Media Type (MIME type) parsing and comparison.
 ## Installation
 
 ```bash
-composer require noresources/ns-php-mediatype ~1.0
+composer require noresources/mediatype
 ```
 
 ## Usage

@@ -7,6 +7,7 @@
  */
 namespace NoreSources\MediaType\Traits;
 
+use NoreSources\Bitset;
 use NoreSources\Container\Container;
 use NoreSources\Http\ParameterMapSerializer;
 use NoreSources\MediaType\MediaRange;
@@ -14,7 +15,7 @@ use NoreSources\MediaType\MediaSubType;
 use NoreSources\MediaType\MediaTypeException;
 use NoreSources\MediaType\MediaTypeInterface;
 
-trait MediaTypeSerializableTrait
+trait MediaTypeSerializationTrait
 {
 
 	/**
@@ -24,16 +25,7 @@ trait MediaTypeSerializableTrait
 	#[\ReturnTypeWillChange]
 	public function jsonSerialize()
 	{
-		return $this->serializeToString();
-	}
-
-	/**
-	 *
-	 * @return string Media type and parameter string representation
-	 */
-	public function serializeToString()
-	{
-		return self::serializeMediaTypeInterfaceToString($this);
+		return $this->toString();
 	}
 
 	/**
@@ -41,14 +33,41 @@ trait MediaTypeSerializableTrait
 	 * @return string Media Type / Range and parameters
 	 */
 	public static function serializeMediaTypeInterfaceToString(
-		MediaTypeInterface $mediaType)
+		MediaTypeInterface $mediaType,
+		$partFlags = MediaTypeInterface::PART_ALL)
 	{
-		$s = \strval($mediaType);
-		if ($mediaType->getParameters()->count())
-			$s .= '; ' .
-				ParameterMapSerializer::serializeParameters(
-					$mediaType->getParameters());
-		return $s;
+		$parts = new Bitset($partFlags);
+		$text = '';
+
+		if ($parts->match(MediaTypeInterface::PART_MAINTYPE))
+			$text .= $mediaType->getType();
+
+		if ($parts->match(MediaTypeInterface::PART_SUBTYPE_FACETS) &&
+			$mediaType->getSubType()->getFacetCount())
+		{
+			if (\strlen($text))
+				$text .= '/';
+			$text .= \implode('.', $mediaType->getSubType()->getFacets());
+		}
+
+		if ($parts->match(MediaTypeInterface::PART_SYNTAX_SUFFIX) &&
+			!empty($mediaType->getSubType()->getStructuredSyntax()))
+		{
+			if (\strlen($text))
+				$text .= '+';
+			$text .= $mediaType->getSubType()->getStructuredSyntax();
+		}
+
+		if ($parts->match(MediaTypeInterface::PART_PARAMETERS) &&
+			$mediaType->getParameters()->count())
+		{
+			if (\strlen($text))
+				$text .= '; ';
+			$text .= ParameterMapSerializer::serializeParameters(
+				$mediaType->getParameters());
+		}
+
+		return $text;
 	}
 
 	/**
@@ -112,30 +131,16 @@ trait MediaTypeSerializableTrait
 		return $mediaType;
 	}
 
-	/**
-	 *
-	 * @deprecated Use jsonSerialize ()
-	 */
-	#[\ReturnTypeWillChange]
-	public function serialize()
+	public function toString($partFlags = MediaTypeInterface::PART_ALL)
 	{
-		return $this->serializeToString();
+		return self::serializeMediaTypeInterfaceToString($this,
+			$partFlags);
 	}
 
 	#[\ReturnTypeWillChange]
 	public function __serialize()
 	{
-		return $this->serializeToString();
-	}
-
-	/**
-	 *
-	 * @deprecated use createFromString ($text, true)
-	 */
-	#[\ReturnTypeWillChange]
-	public function unserialize($serialized)
-	{
-		$this->__unserialize($serialized);
+		return $this->toString();
 	}
 
 	#[\ReturnTypeWillChange]

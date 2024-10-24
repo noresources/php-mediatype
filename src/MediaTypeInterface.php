@@ -26,7 +26,7 @@ use NoreSources\Type\StringRepresentation;
  * </ul>
  */
 interface MediaTypeInterface extends ParameterMapProviderInterface,
-	StringRepresentation, \JsonSerializable, \Serializable
+	StringRepresentation, \JsonSerializable
 {
 
 	/**
@@ -36,13 +36,35 @@ interface MediaTypeInterface extends ParameterMapProviderInterface,
 	 */
 	const ANY = '*';
 
+	const PART_MAINTYPE = 0x01;
+
+	const PART_SUBTYPE_FACETS = 0x02;
+
+	const PART_SYNTAX_SUFFIX = 0x04;
+
+	const PART_SUBTYPE = 0x06;
+
+	const PART_TYPE = 0x07;
+
+	const PART_PARAMETERS = 0x08;
+
+	const PART_ALL = 0x0F;
+
+	/**
+	 *
+	 * @param integer $partFlags
+	 *        	Media type parts to return
+	 * @return string Stringification of the media type
+	 */
+	function toString($partFlags = self::PART_ALL);
+
 	/**
 	 * Check if the MediaType instance match the given MediaRange
 	 *
 	 * @param MediaTypeInterface|string $mediaRange
 	 * @return true if $mediaRange is identical or less restrictive than $this
 	 */
-	public function match($mediaRange);
+	function match($mediaRange);
 
 	/**
 	 * Get media type main type
