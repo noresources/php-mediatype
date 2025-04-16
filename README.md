@@ -12,40 +12,40 @@ composer require noresources/mediatype
 ## Usage
 ```php
 
-use NoreSources\MediaType\MediaType;
-use NoreSources\MediaType\MediaTypeFactory;
+use NoreSources\MediaType\MediaType;
+use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaRange;
 
-$factory = MediaTypeFactory::getInstance ();
-$mediaType = $factory->createFromString ('text/vnd.noresources.incredibly.flexible+xml');
+$factory = MediaTypeFactory::getInstance();
+$mediaType = $factory->createFromString('text/vnd.noresources.incredibly.flexible+xml');
 
-var_dump ($mediaType->getMainType()); i       // "text"
-var_dump ($mediaType->getStructuredSyntax()); // "xml"
+var_dump($mediaType->getMainType());         // "text"
+var_dump($mediaType->getStructuredSyntax()); // "xml"
 
-$subType = $mediaType->getSubType ();
-var_dump (\strval ($subType));                // "vnd.noresources.incredibly.flexible+xml"
-var_dump ($subType->getFacets());             // [ "vnd", "noresources", "incredibly", "flexible" ]
+$subType = $mediaType->getSubType();
+var_dump(\strval($subType));                 // "vnd.noresources.incredibly.flexible+xml"
+var_dump($subType->getFacets());             // [ "vnd", "noresources", "incredibly", "flexible" ]
 
 
 // From a file or a stream
-$mediaType = $factory->createFromMedia ('path/to/filename.html');
-var_dump (\strval ($mediaType)); // "text/html"
+$mediaType = $factory->createFromMedia('path/to/filename.html');
+var_dump(\strval($mediaType)); // "text/html"
 
 // Media range is also recognized
-$range = $factory->createFromString ('image/*');
+$range = $factory->createFromString('image/*');
 
 // Comparing
-$html = $factory->createFromString ('text/html');
-$anyText = $factory->createFromString ('text/*');
-$any = $factory->createFromString ('*/*');
+$html = $factory->createFromString('text/html');
+$anyText = $factory->createFromString('text/*');
+$any = $factory->createFromString('*/*');
 
-var_dump ([
-	'text/html vs text/*' => MediaRange::compare ($html, $anyText),
-	'text/* vs */*' => MediaRange::compare ($anyText, $any),
-	'*/* vs text/html' => MediaRange::compare ($any, $html)
+var_dump([
+	'text/html vs text/*' => MediaRange::compare($html, $anyText),
+	'text/* vs */*' => MediaRange::compare($anyText, $any),
+	'*/* vs text/html' => MediaRange::compare($any, $html)
 ]);
 
-/* 
+/*
 array(3) {
   ["text/html vs text/*"]=> int(1)
   ["text/* vs */*"]=> int(1)
