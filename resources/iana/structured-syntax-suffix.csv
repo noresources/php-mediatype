@@ -263,3 +263,6 @@ Section 2 of [RFC9052]. A COSE processor handling a media type ""foo+cose"" and 
   it MUST assume only the generic COSE object structure and
   it MUST NOT perform security-critical operations using the
   COSE object.",N/A,See [RFC9052],IETF COSE Working Group or IETF (iesg@ietf.org),IETF ANIMA Working Group (iesg@ietf.org). The IETF has change control over this registration.,2024-02-12,
+CBOR Web Token (CWT),+cwt,[RFC8392],binary,N/A,"The syntax and semantics of fragment identifiers specified for +cwt SHOULD be as specified for application/cwt. (At publication of this
+  document, there is no fragment identification syntax defined for
+  application/cwt.)",See Section 8 of [RFC8392].,"RATS WG mailing list (rats@ietf.org), or IETF Security Area (saag@ietf.org)",Remote ATtestation ProcedureS (RATS) Working Group. The IETF has change control over this registration.,2024-11-26,
