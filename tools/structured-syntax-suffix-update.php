@@ -45,7 +45,12 @@ if (\in_array('--download', $_SERVER['argv'])) // 403
 $file = fopen($filename, 'r');
 $suffixes = [];
 $rowIndex = 0;
-while ($row = \fgetcsv($file))
+
+$length = null;
+$separator = ",";
+$enclosure = "\"";
+$escape = "\\";
+while ($row = \fgetcsv($file, $length, $separator, $enclosure, $escape))
 {
 	if ($rowIndex++ == 0)
 		continue;

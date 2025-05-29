@@ -54,7 +54,7 @@ class MediaType implements MediaTypeInterface
 	 * @param MediaSubType $subType
 	 *        	Sub type
 	 */
-	public function __construct($type, MediaSubType $subType = null)
+	public function __construct($type, ?MediaSubType $subType = null)
 	{
 		$this->mainType = $type;
 		$this->subType = $subType;
